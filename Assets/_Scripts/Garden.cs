@@ -6,9 +6,15 @@ public class Garden : MonoBehaviour
 	[SerializeField]
 	private GameObject interactObject;
 
+	[SerializeField]
+	private Tree treePrefab;
+	private Tree tree;
+
 	private Transform playerTrnasform;
 	[SerializeField]
 	private float interactDistance = 2.5f;
+
+	private bool interactable;
 
 	private void Awake()
 	{
@@ -20,27 +26,66 @@ public class Garden : MonoBehaviour
 		if (interactObject == null)
 			return;
 
+		CheckInteraction();
+
+		if (interactable && Keyboard.current.eKey.wasPressedThisFrame)
+		{
+			Interact();
+
+			//TODO
+			//AudioManager.Instance.PlayOneShot(FMODEvents.Instance.InteractSound, this.transform.position);
+		}
+	}
+
+	private void CheckInteraction()
+	{
 		if (PlayerStandingNear())
 		{
-			interactObject.SetActive(true);
-
-			if (Keyboard.current.eKey.wasPressedThisFrame)
+			if (tree == null)
 			{
-				Interact();
-
 				//TODO
-				//AudioManager.Instance.PlayOneShot(FMODEvents.Instance.InteractSound, this.transform.position);
+				//set plant interaction object
+				interactObject.SetActive(true);
+				interactable = true;
+			}
+			else if (tree.NeedsWater)
+			{
+				//TODO
+				//set pour water interaction object
+				interactObject.SetActive(true);
+				interactable = true;
 			}
 		}
 		else
 		{
-			interactObject.SetActive(false);
+			ResetInteraction();
 		}
+	}
+
+	private void ResetInteraction()
+	{
+		interactObject.SetActive(false);
+		interactable = false;
 	}
 
 	private void Interact()
 	{
-		Debug.Log("We are interacting");
+		if (tree == null)
+		{
+			//plant
+			var pos = this.transform.position;
+			pos.y += 0.75f;
+			tree = Instantiate(treePrefab, pos, Quaternion.identity);
+
+			Debug.Log("Planted Tree. " + tree.GrowthState);
+		}
+		else if (tree.NeedsWater)
+		{
+			//pour water
+			tree.Grow();
+			Debug.Log("Watering Tree. " + tree.GrowthState);
+			ResetInteraction();
+		}
 	}
 
 	private bool PlayerStandingNear()
