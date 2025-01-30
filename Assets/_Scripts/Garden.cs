@@ -11,7 +11,8 @@ public class Garden : MonoBehaviour, IInteractable
 
 	public void EnableSprite()
 	{
-		interactSprite.enabled = true;
+		if (tree == null)
+			interactSprite.enabled = true;
 	}
 
 	public void DisableSprite()
@@ -27,15 +28,6 @@ public class Garden : MonoBehaviour, IInteractable
 			var pos = this.transform.position;
 			pos.y += 0.75f;
 			tree = Instantiate(treePrefab, pos, Quaternion.identity);
-
-			Debug.Log("Planted Tree. " + tree.GrowthState);
-		}
-		else if (tree.NeedsWater)
-		{
-			//pour water
-			tree.Grow();
-			Debug.Log("Watering Tree. " + tree.GrowthState);
-			//ResetInteraction();
 		}
 	}
 }
