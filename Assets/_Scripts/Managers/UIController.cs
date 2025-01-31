@@ -3,17 +3,20 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-	[SerializeField]
-	private Button btnBucket;
+	[SerializeField] private Button btnBucket;
+	[SerializeField] private Button btnTree;
+	[SerializeField] private Button btnHouse;
+	[SerializeField] private Button btnFactory;
 
-	[SerializeField]
-	private Button btnTree;
+	[SerializeField] private BuildingTypeSO houseSO;
+	[SerializeField] private BuildingTypeSO factorySO;
 
-	[SerializeField]
-	private Button btnHouse;
+	private BuildingManager buildingManager;
 
-	[SerializeField]
-	private Button btnFactory;
+	private void Awake()
+	{
+		buildingManager = GetComponent<BuildingManager>();
+	}
 
 	public void OnBucketClicked()
 	{
@@ -42,11 +45,11 @@ public class UIController : MonoBehaviour
 
 	public void OnHouseClicked()
 	{
-		Debug.Log("House Clicked");
+		buildingManager.SetActiveBuildingType(houseSO);
 	}
 
 	public void OnFactoryClicked()
 	{
-		Debug.Log("Factory Clicked");
+		buildingManager.SetActiveBuildingType(factorySO);
 	}
 }

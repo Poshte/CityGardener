@@ -71,6 +71,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseLeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""209a0e60-71eb-4999-ae02-4b6e82a49892"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Factory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a141f124-d520-49d6-b575-d98f2817820e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""MouseLeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -191,6 +211,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_PlayerInputs_Tree = m_PlayerInputs.FindAction("Tree", throwIfNotFound: true);
         m_PlayerInputs_House = m_PlayerInputs.FindAction("House", throwIfNotFound: true);
         m_PlayerInputs_Factory = m_PlayerInputs.FindAction("Factory", throwIfNotFound: true);
+        m_PlayerInputs_MouseLeftClick = m_PlayerInputs.FindAction("MouseLeftClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,6 +278,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInputs_Tree;
     private readonly InputAction m_PlayerInputs_House;
     private readonly InputAction m_PlayerInputs_Factory;
+    private readonly InputAction m_PlayerInputs_MouseLeftClick;
     public struct PlayerInputsActions
     {
         private @PlayerInput m_Wrapper;
@@ -266,6 +288,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Tree => m_Wrapper.m_PlayerInputs_Tree;
         public InputAction @House => m_Wrapper.m_PlayerInputs_House;
         public InputAction @Factory => m_Wrapper.m_PlayerInputs_Factory;
+        public InputAction @MouseLeftClick => m_Wrapper.m_PlayerInputs_MouseLeftClick;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -290,6 +313,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Factory.started += instance.OnFactory;
             @Factory.performed += instance.OnFactory;
             @Factory.canceled += instance.OnFactory;
+            @MouseLeftClick.started += instance.OnMouseLeftClick;
+            @MouseLeftClick.performed += instance.OnMouseLeftClick;
+            @MouseLeftClick.canceled += instance.OnMouseLeftClick;
         }
 
         private void UnregisterCallbacks(IPlayerInputsActions instance)
@@ -309,6 +335,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Factory.started -= instance.OnFactory;
             @Factory.performed -= instance.OnFactory;
             @Factory.canceled -= instance.OnFactory;
+            @MouseLeftClick.started -= instance.OnMouseLeftClick;
+            @MouseLeftClick.performed -= instance.OnMouseLeftClick;
+            @MouseLeftClick.canceled -= instance.OnMouseLeftClick;
         }
 
         public void RemoveCallbacks(IPlayerInputsActions instance)
@@ -342,5 +371,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnTree(InputAction.CallbackContext context);
         void OnHouse(InputAction.CallbackContext context);
         void OnFactory(InputAction.CallbackContext context);
+        void OnMouseLeftClick(InputAction.CallbackContext context);
     }
 }
