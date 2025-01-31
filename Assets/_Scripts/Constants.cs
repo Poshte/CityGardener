@@ -5,6 +5,11 @@ public static class Constants
 		public const string Player = "Player";
 	}
 
+	public static class LayerMasks
+	{
+		public const string Interactable = "Interactable";
+	}
+
 	public static class TreeGrowthRate
 	{
 		public const float ToSprout = 30f;

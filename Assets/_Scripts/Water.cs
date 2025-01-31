@@ -8,15 +8,12 @@ public class Water : MonoBehaviour, IInteractable
 	public void EnableSprite()
 	{
 		interactSprite.enabled = true;
+		GameManager.NearWater = true;
 	}
 
 	public void DisableSprite()
 	{
 		interactSprite.enabled = false;
-	}
-
-	public void Interact()
-	{
-		Debug.Log("We are interacting with water!");
+		GameManager.NearWater = false;
 	}
 }

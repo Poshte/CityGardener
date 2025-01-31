@@ -14,6 +14,11 @@ public class Tree : MonoBehaviour, IInteractable
 	[SerializeField]
 	private SpriteRenderer interactSprite;
 
+	private void Start()
+	{
+		GameEvents.Instance.OnWateringTree += WaterTree;
+	}
+
 	private void Update()
 	{
 		if (!NeedsWater)
@@ -43,14 +48,6 @@ public class Tree : MonoBehaviour, IInteractable
 		growthRate = GetGrowthRate();
 	}
 
-	public void PourWater()
-	{
-		NeedsWater = false;
-		waterTimer = 0f;
-
-		Debug.Log("Pouring water...");
-	}
-
 	private float GetGrowthRate()
 	{
 		return stage switch
@@ -66,15 +63,34 @@ public class Tree : MonoBehaviour, IInteractable
 	public void EnableSprite()
 	{
 		interactSprite.enabled = true;
+		GameManager.NearTree = true;
 	}
 
 	public void DisableSprite()
 	{
 		interactSprite.enabled = false;
+		GameManager.NearTree = false;
 	}
 
-	public void Interact()
+	public void WaterTree()
 	{
-		PourWater();
+		if (GameManager.BucketFilledWithWater)
+		{
+			PourWater();
+			GameManager.BucketFilledWithWater = false;
+		}
+	}
+
+	public void PourWater()
+	{
+		NeedsWater = false;
+		waterTimer = 0f;
+
+		Debug.Log("Pouring water...");
+	}
+
+	private void OnDisable()
+	{
+		GameEvents.Instance.OnWateringTree -= WaterTree;
 	}
 }

@@ -25,21 +25,48 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     ""maps"": [
         {
             ""name"": ""PlayerInputs"",
-            ""id"": ""0a6a03fb-cc5c-4e6d-9251-79786efab7ba"",
+            ""id"": ""eabde8a3-7662-4d65-b5d1-e085a8ab55a4"",
             ""actions"": [
                 {
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
-                    ""id"": ""a5d7b924-bf63-4ff7-8ab3-fd6507bb3964"",
+                    ""id"": ""d1182dff-5c88-48c8-8a08-eddf263678d4"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Interaction"",
+                    ""name"": ""Bucket"",
                     ""type"": ""Button"",
-                    ""id"": ""e6003a55-9b99-4460-b5c1-69334db472e3"",
+                    ""id"": ""e68a3484-a32c-4dc1-894c-276afae2e6b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tree"",
+                    ""type"": ""Button"",
+                    ""id"": ""187e4978-5fc5-4788-a324-387abe5262fc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""House"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5484207-7295-4d6e-9c38-ec9478289473"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Factory"",
+                    ""type"": ""Button"",
+                    ""id"": ""8541dd99-8b1f-4fb0-a577-9a77187e55cf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -49,7 +76,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": ""2D Vector"",
-                    ""id"": ""fa127954-5325-4095-aceb-9ee633ec94d1"",
+                    ""id"": ""1b7ccff8-7652-48c5-8cc9-48f9cd12d6e1"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -60,7 +87,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""90c22a8f-8102-424c-968d-d7fec43949b6"",
+                    ""id"": ""8f3e2855-2cbc-467a-976d-e5e1eb445cfa"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -71,7 +98,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""3837b113-5a86-494d-8a4a-b8dd570ad0c5"",
+                    ""id"": ""df439dfe-40d6-4aaa-a708-2ee821ff4715"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -82,7 +109,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""e5e28e8f-74a3-4322-8251-f4cf110be52c"",
+                    ""id"": ""0a38733b-859d-4f25-a613-fa33f48e4469"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -93,7 +120,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""3e61b4d2-5d2b-4379-8502-a77eb8304ed2"",
+                    ""id"": ""71f74ccb-24c5-469b-8353-5babaf94c906"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -104,24 +131,66 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d4d17ece-1f56-402b-b515-e19f75cdd0ff"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""id"": ""8e0a59d6-f7fd-483c-86c9-915dc4599f66"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interaction"",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""Bucket"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3d1cd46-5105-4ebe-90fb-5163f50132c6"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""Tree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2dcc5f11-28c8-4980-b8f5-b7bcddab1906"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""House"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86fcee07-ecbd-4efd-8976-818da453cc12"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""Factory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""New control scheme"",
+            ""bindingGroup"": ""New control scheme"",
+            ""devices"": []
+        }
+    ]
 }");
         // PlayerInputs
         m_PlayerInputs = asset.FindActionMap("PlayerInputs", throwIfNotFound: true);
         m_PlayerInputs_Movement = m_PlayerInputs.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerInputs_Interaction = m_PlayerInputs.FindAction("Interaction", throwIfNotFound: true);
+        m_PlayerInputs_Bucket = m_PlayerInputs.FindAction("Bucket", throwIfNotFound: true);
+        m_PlayerInputs_Tree = m_PlayerInputs.FindAction("Tree", throwIfNotFound: true);
+        m_PlayerInputs_House = m_PlayerInputs.FindAction("House", throwIfNotFound: true);
+        m_PlayerInputs_Factory = m_PlayerInputs.FindAction("Factory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -184,13 +253,19 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerInputs;
     private List<IPlayerInputsActions> m_PlayerInputsActionsCallbackInterfaces = new List<IPlayerInputsActions>();
     private readonly InputAction m_PlayerInputs_Movement;
-    private readonly InputAction m_PlayerInputs_Interaction;
+    private readonly InputAction m_PlayerInputs_Bucket;
+    private readonly InputAction m_PlayerInputs_Tree;
+    private readonly InputAction m_PlayerInputs_House;
+    private readonly InputAction m_PlayerInputs_Factory;
     public struct PlayerInputsActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerInputsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerInputs_Movement;
-        public InputAction @Interaction => m_Wrapper.m_PlayerInputs_Interaction;
+        public InputAction @Bucket => m_Wrapper.m_PlayerInputs_Bucket;
+        public InputAction @Tree => m_Wrapper.m_PlayerInputs_Tree;
+        public InputAction @House => m_Wrapper.m_PlayerInputs_House;
+        public InputAction @Factory => m_Wrapper.m_PlayerInputs_Factory;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -203,9 +278,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Interaction.started += instance.OnInteraction;
-            @Interaction.performed += instance.OnInteraction;
-            @Interaction.canceled += instance.OnInteraction;
+            @Bucket.started += instance.OnBucket;
+            @Bucket.performed += instance.OnBucket;
+            @Bucket.canceled += instance.OnBucket;
+            @Tree.started += instance.OnTree;
+            @Tree.performed += instance.OnTree;
+            @Tree.canceled += instance.OnTree;
+            @House.started += instance.OnHouse;
+            @House.performed += instance.OnHouse;
+            @House.canceled += instance.OnHouse;
+            @Factory.started += instance.OnFactory;
+            @Factory.performed += instance.OnFactory;
+            @Factory.canceled += instance.OnFactory;
         }
 
         private void UnregisterCallbacks(IPlayerInputsActions instance)
@@ -213,9 +297,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Interaction.started -= instance.OnInteraction;
-            @Interaction.performed -= instance.OnInteraction;
-            @Interaction.canceled -= instance.OnInteraction;
+            @Bucket.started -= instance.OnBucket;
+            @Bucket.performed -= instance.OnBucket;
+            @Bucket.canceled -= instance.OnBucket;
+            @Tree.started -= instance.OnTree;
+            @Tree.performed -= instance.OnTree;
+            @Tree.canceled -= instance.OnTree;
+            @House.started -= instance.OnHouse;
+            @House.performed -= instance.OnHouse;
+            @House.canceled -= instance.OnHouse;
+            @Factory.started -= instance.OnFactory;
+            @Factory.performed -= instance.OnFactory;
+            @Factory.canceled -= instance.OnFactory;
         }
 
         public void RemoveCallbacks(IPlayerInputsActions instance)
@@ -233,9 +326,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public PlayerInputsActions @PlayerInputs => new PlayerInputsActions(this);
+    private int m_NewcontrolschemeSchemeIndex = -1;
+    public InputControlScheme NewcontrolschemeScheme
+    {
+        get
+        {
+            if (m_NewcontrolschemeSchemeIndex == -1) m_NewcontrolschemeSchemeIndex = asset.FindControlSchemeIndex("New control scheme");
+            return asset.controlSchemes[m_NewcontrolschemeSchemeIndex];
+        }
+    }
     public interface IPlayerInputsActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnInteraction(InputAction.CallbackContext context);
+        void OnBucket(InputAction.CallbackContext context);
+        void OnTree(InputAction.CallbackContext context);
+        void OnHouse(InputAction.CallbackContext context);
+        void OnFactory(InputAction.CallbackContext context);
     }
 }

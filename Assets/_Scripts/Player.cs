@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -16,19 +14,8 @@ public class Player : MonoBehaviour
 
 	private void Awake()
 	{
-		input = new PlayerInput();
 		rigidBody2D = GetComponent<Rigidbody2D>();
-	}
-
-	private void Update()
-	{
-		//if detecting an object
-		if (Keyboard.current.eKey.wasPressedThisFrame)
-		{
-			interactable?.Interact();
-		}
-		//turn interaction for that object on
-		//allow interaction
+		input = new PlayerInput();
 	}
 
 	private void FixedUpdate()
@@ -44,7 +31,7 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+		if (collision.gameObject.layer == LayerMask.NameToLayer(Constants.LayerMasks.Interactable))
 		{
 			interactable = collision.gameObject.GetComponentInParent<IInteractable>();
 			interactable.EnableSprite();
@@ -53,7 +40,7 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		if (collision.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+		if (collision.gameObject.layer == LayerMask.NameToLayer(Constants.LayerMasks.Interactable))
 		{
 			if (interactable != null)
 			{
