@@ -2347,6 +2347,7 @@ GameObject:
   - component: {fileID: 1524636756}
   - component: {fileID: 1524636755}
   - component: {fileID: 1524636757}
+  - component: {fileID: 1524636758}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2367,9 +2368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBucket: {fileID: 982115237}
-  btnTree: {fileID: 0}
-  btnHouse: {fileID: 0}
-  btnFactory: {fileID: 0}
+  btnTree: {fileID: 614480381}
+  btnHouse: {fileID: 986337948}
+  btnFactory: {fileID: 11122144}
 --- !u!4 &1524636756
 Transform:
   m_ObjectHideFlags: 0
@@ -2395,6 +2396,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19d1f160382c9b64993116300eba5a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1524636758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524636754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b833259907048045abde9c3afc511d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1525751902

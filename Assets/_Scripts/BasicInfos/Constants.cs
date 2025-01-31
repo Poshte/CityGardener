@@ -17,6 +17,6 @@ public static class Constants
 		public const float ToSapling = 50f;
 		public const float ToMature = 60f;
 
-		public const float WaterInterval = 15f;
+		public const float WaterInterval = 5f;
 	}
 }

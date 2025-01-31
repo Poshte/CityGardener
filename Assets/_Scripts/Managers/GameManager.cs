@@ -6,9 +6,10 @@ public static class GameManager
 	private static int co2;
 
 	public static bool NearWater;
-	public static bool NearGarden;
-	public static bool NearTree;
 	public static bool BucketFilledWithWater;
+	
+	public static Garden ActiveGarden;
+	public static TreeEntity ActiveTree;
 
 	public static void AddWealth(float amount)
 	{

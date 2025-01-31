@@ -1,26 +1,24 @@
 using UnityEngine;
 
-public class Tree : MonoBehaviour, IInteractable
+public class TreeEntity : MonoBehaviour, IInteractable
 {
 	[SerializeField]
 	private GrowthStage stage;
 
-	public bool NeedsWater = true;
+	private bool NeedsWater = true;
 	private float waterTimer;
 
+	private float growthRate = 30f;
 	private float growthTimer;
-	private float growthRate;
 
 	[SerializeField]
 	private SpriteRenderer interactSprite;
 
-	private void Start()
-	{
-		GameEvents.Instance.OnWateringTree += WaterTree;
-	}
-
 	private void Update()
 	{
+		if (stage == GrowthStage.Mature)
+			return;
+
 		if (!NeedsWater)
 			growthTimer += Time.deltaTime;
 		else
@@ -42,7 +40,6 @@ public class Tree : MonoBehaviour, IInteractable
 		stage += 1;
 		Debug.Log(stage);
 
-		NeedsWater = false;
 		waterTimer = 0f;
 		growthTimer = 0f;
 		growthRate = GetGrowthRate();
@@ -63,13 +60,13 @@ public class Tree : MonoBehaviour, IInteractable
 	public void EnableSprite()
 	{
 		interactSprite.enabled = true;
-		GameManager.NearTree = true;
+		GameManager.ActiveTree = this;
 	}
 
 	public void DisableSprite()
 	{
 		interactSprite.enabled = false;
-		GameManager.NearTree = false;
+		GameManager.ActiveTree = null;
 	}
 
 	public void WaterTree()
@@ -81,16 +78,11 @@ public class Tree : MonoBehaviour, IInteractable
 		}
 	}
 
-	public void PourWater()
+	private void PourWater()
 	{
 		NeedsWater = false;
 		waterTimer = 0f;
 
 		Debug.Log("Pouring water...");
-	}
-
-	private void OnDisable()
-	{
-		GameEvents.Instance.OnWateringTree -= WaterTree;
 	}
 }

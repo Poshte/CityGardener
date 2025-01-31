@@ -3,30 +3,25 @@ using UnityEngine;
 public class Garden : MonoBehaviour, IInteractable
 {
 	[SerializeField]
-	private Tree treePrefab;
-	private Tree tree;
+	private TreeEntity treePrefab;
+	private TreeEntity tree;
 
 	[SerializeField]
 	private SpriteRenderer interactSprite;
-
-	private void Start()
-	{
-		GameEvents.Instance.OnPlantingTree += PlantTree;
-	}
 
 	public void EnableSprite()
 	{
 		if (tree == null)
 		{
 			interactSprite.enabled = true;
-			GameManager.NearGarden = true;
+			GameManager.ActiveGarden = this;
 		}
 	}
 
 	public void DisableSprite()
 	{
 		interactSprite.enabled = false;
-		GameManager.NearGarden = false;
+		GameManager.ActiveGarden = null;
 	}
 
 	public void PlantTree()
@@ -38,10 +33,5 @@ public class Garden : MonoBehaviour, IInteractable
 			tree = Instantiate(treePrefab, pos, Quaternion.identity);
 			DisableSprite();
 		}
-	}
-
-	private void OnDisable()
-	{
-		GameEvents.Instance.OnPlantingTree -= PlantTree;
 	}
 }

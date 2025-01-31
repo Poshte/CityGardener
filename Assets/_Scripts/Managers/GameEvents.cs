@@ -25,10 +25,4 @@ public class GameEvents : MonoBehaviour
 
 		DontDestroyOnLoad(gameObject);
 	}
-
-	public event Action OnPlantingTree;
-	public void PlantingTree() => OnPlantingTree?.Invoke();
-
-	public event Action OnWateringTree;
-	public void WateringTree() => OnWateringTree?.Invoke();
 }

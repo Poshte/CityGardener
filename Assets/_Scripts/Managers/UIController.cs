@@ -22,21 +22,21 @@ public class UIController : MonoBehaviour
 			GameManager.BucketFilledWithWater = true;
 			btnBucket.image.color = Color.blue;
 		}
-		else if (GameManager.NearTree)
+		else if (GameManager.ActiveTree != null)
 		{
 			btnBucket.image.color = Color.yellow;
-			GameEvents.Instance.WateringTree();
+			GameManager.ActiveTree.WaterTree();
 		}
 	}
 
 	public void OnTreeClicked()
 	{
-		if (GameManager.NearGarden)
+		if (GameManager.ActiveGarden != null)
 		{
 			//TODO
 			//should implement a feature to plant different trees
 			//btnTree.image.color = Color.red;
-			GameEvents.Instance.PlantingTree();
+			GameManager.ActiveGarden.PlantTree();
 		}
 	}
 

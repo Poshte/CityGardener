@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private float speed;
 
-	private SpriteRenderer interactSprite;
 	private IInteractable interactable;
 
 	private void Awake()
