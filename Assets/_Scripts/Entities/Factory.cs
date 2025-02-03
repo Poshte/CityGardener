@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Factory : MonoBehaviour
@@ -11,6 +13,10 @@ public class Factory : MonoBehaviour
 	private float productionRate = 1f;
 	private float productionTimer;
 
+    public List<Citizen> Workers = new();
+	public bool IsOperational;
+	public bool MaxedOut;
+
 	private void Awake()
 	{
 		var gameController = GameObject.FindGameObjectWithTag(Constants.Tags.GameController);
@@ -18,8 +24,20 @@ public class Factory : MonoBehaviour
 		wealthManager = gameController.GetComponent<WealthManager>();
 	}
 
+	private void Start()
+	{
+		GameEvents.Instance.FactoryCreated(this);
+	}
+
 	private void Update()
 	{
+		if (!IsOperational)
+		{
+			//TODO
+			//show the factory is not operational in UI
+			return;
+		}
+
 		productionTimer += Time.deltaTime;
 
 		if (productionTimer > productionRate)

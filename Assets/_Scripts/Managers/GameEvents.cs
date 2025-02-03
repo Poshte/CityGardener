@@ -25,4 +25,10 @@ public class GameEvents : MonoBehaviour
 
 		DontDestroyOnLoad(gameObject);
 	}
+
+	public event Action<House> OnHouseCreated;
+	public void HouseCreated(House house) => OnHouseCreated?.Invoke(house);
+
+	public event Action<Factory> OnFactoryCreated;
+	public void FactoryCreated(Factory factory) => OnFactoryCreated?.Invoke(factory);
 }

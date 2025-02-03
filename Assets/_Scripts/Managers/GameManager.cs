@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameManager
@@ -6,5 +7,5 @@ public static class GameManager
 	public static bool BucketFilledWithWater;
 	
 	public static Garden ActiveGarden;
-	public static TreeEntity ActiveTree;	
+	public static TreeEntity ActiveTree;
 }
