@@ -2,13 +2,21 @@ using UnityEngine;
 
 public class Factory : MonoBehaviour
 {
-	[SerializeField]
-	private float wealthAmount = 100f;
-	[SerializeField]
-	private int pollutionAmount = 1;
+	private WealthManager wealthManager;
+	private PollutionManager pollutionManager;
 
-	private float productionRate = 100f;
+	[SerializeField] private float wealthAmount = 100f;
+	[SerializeField] private int pollutionAmount = 10;
+
+	private float productionRate = 1f;
 	private float productionTimer;
+
+	private void Awake()
+	{
+		var gameController = GameObject.FindGameObjectWithTag(Constants.Tags.GameController);
+		pollutionManager = gameController.GetComponent<PollutionManager>();
+		wealthManager = gameController.GetComponent<WealthManager>();
+	}
 
 	private void Update()
 	{
@@ -16,11 +24,13 @@ public class Factory : MonoBehaviour
 
 		if (productionTimer > productionRate)
 		{
-			//add wealth
-			GameManager.AddWealth(wealthAmount);
+			//emit pollution
+			pollutionManager.IncreasePollution(pollutionAmount);
 
-			//emit CO2
-			GameManager.EmitCO2(pollutionAmount);
+			//increase wealth
+			wealthManager.AddWealth(wealthAmount);
+
+			productionTimer = 0f;
 		}
 	}
 }
