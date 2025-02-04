@@ -4,7 +4,7 @@ using UnityEngine;
 public class WealthManager : MonoBehaviour
 {
 	private float wealth = 1500f;
-	[SerializeField] private TextMeshProUGUI wealthText;
+	[SerializeField] private TextMeshProUGUI wealthUI;
 
 	private void Start()
 	{
@@ -32,6 +32,6 @@ public class WealthManager : MonoBehaviour
 
 	private void UpdateWealthUI()
 	{
-		wealthText.text = wealth.ToString();
+		wealthUI.text = wealth.ToString();
 	}
 }

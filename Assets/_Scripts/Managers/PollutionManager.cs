@@ -3,9 +3,14 @@ using UnityEngine;
 
 public class PollutionManager : MonoBehaviour
 {
-	private int pollution;
+	private int pollution = 200;
 
-	[SerializeField] private TextMeshProUGUI pollutionAmount;
+	[SerializeField] private TextMeshProUGUI pollutionUI;
+
+	private void Start()
+	{
+		UpdatePollutionUI();
+	}
 
 	public void IncreasePollution(int amount)
 	{
@@ -45,7 +50,7 @@ public class PollutionManager : MonoBehaviour
 				break;
 		}
 
-		pollutionAmount.color = color;
-		pollutionAmount.text = pollution.ToString();
+		pollutionUI.color = color;
+		pollutionUI.text = pollution.ToString();
 	}
 }
