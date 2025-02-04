@@ -2538,6 +2538,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   employedText: {fileID: 76179356}
   populationText: {fileID: 2123633080}
+--- !u!114 &1634609719 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6501389056413609814, guid: bede6b1d7dc4b084fbff91f91b0ab99b, type: 3}
+  m_PrefabInstance: {fileID: 7861800540856968972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634609711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c27740fed317fa488542ef8a39b408b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1695657188
 GameObject:
   m_ObjectHideFlags: 3
@@ -3855,6 +3866,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2506050910985840969, guid: bede6b1d7dc4b084fbff91f91b0ab99b, type: 3}
+      propertyPath: wealthManager
+      value: 
+      objectReference: {fileID: 1634609719}
     - target: {fileID: 2970141275024057485, guid: bede6b1d7dc4b084fbff91f91b0ab99b, type: 3}
       propertyPath: pollutionAmount
       value: 

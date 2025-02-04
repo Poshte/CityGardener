@@ -1,3 +1,4 @@
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,7 @@ public class BuildingManager : MonoBehaviour
 {
 	private BuildingTypeSO activeBuildingType;
 	private PlayerInput input;
+	[SerializeField] private WealthManager wealthManager;
 
 	private void Awake()
 	{
@@ -15,9 +17,17 @@ public class BuildingManager : MonoBehaviour
 	{
 		if (input.PlayerInputs.MouseLeftClick.WasPressedThisFrame())
 		{
-			if (activeBuildingType != null)
+			if (activeBuildingType == null)
+				return;
+
+			if (PayBuildingCost())
 				ConstructBuilding();
 		}
+	}
+
+	private bool PayBuildingCost()
+	{
+		return wealthManager.SpendWealth(activeBuildingType.Cost);
 	}
 
 	private void ConstructBuilding()

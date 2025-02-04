@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Factory
   m_EditorClassIdentifier: 
   Prefab: {fileID: 984327031845352386, guid: d72816813d38c974ebcdee66deb6d523, type: 3}
+  Cost: 1000
