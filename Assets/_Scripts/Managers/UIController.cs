@@ -8,10 +8,17 @@ public class UIController : MonoBehaviour
 	[SerializeField] private Button btnHouse;
 	[SerializeField] private Button btnFactory;
 
+	[SerializeField] private GameObject TreeTypesUI;
+	[SerializeField] private Button btnPineTree;
+	[SerializeField] private Button btnOakTree;
+	[SerializeField] private Button btnBirchTree;
+
 	[SerializeField] private BuildingTypeSO houseSO;
 	[SerializeField] private BuildingTypeSO factorySO;
 
 	private BuildingManager buildingManager;
+
+	private bool treeTypesActive;
 
 	private void Awake()
 	{
@@ -36,11 +43,33 @@ public class UIController : MonoBehaviour
 	{
 		if (GameManager.ActiveGarden != null)
 		{
-			//TODO
-			//should implement a feature to plant different trees
-			//btnTree.image.color = Color.red;
-			GameManager.ActiveGarden.PlantTree();
+			btnTree.image.color = Color.red;
+
+			TreeTypesUI.SetActive(!treeTypesActive);
+			treeTypesActive = !treeTypesActive;
 		}
+	}
+
+	public void OnPineTreeClicked()
+	{
+		PlantTree(TreeType.Pine);
+	}
+
+	public void OnOakTreeClicked()
+	{
+		PlantTree(TreeType.Oak);
+	}
+
+	public void OnBirchTreeClicked()
+	{
+		PlantTree(TreeType.Birch);
+	}
+
+	private void PlantTree(TreeType treeType)
+	{
+		GameManager.ActiveGarden.PlantTree(treeType);
+		btnTree.image.color = Color.yellow;
+		TreeTypesUI.SetActive(false);
 	}
 
 	public void OnHouseClicked()
@@ -51,5 +80,12 @@ public class UIController : MonoBehaviour
 	public void OnFactoryClicked()
 	{
 		buildingManager.SetActiveBuildingType(factorySO);
+	}
+
+	private void ClearUp()
+	{
+		//TODO
+		//When mouse is clicked anywhere other than UI
+		//When player moves away from garden
 	}
 }

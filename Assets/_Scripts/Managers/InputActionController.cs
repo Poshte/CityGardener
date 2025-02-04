@@ -3,12 +3,11 @@ using UnityEngine;
 public class InputActionController : MonoBehaviour
 {
 	private PlayerInput input;
-	private UIController uiController;
+	[SerializeField] private UIController uiController;
 
 	private void Awake()
 	{
 		input = new PlayerInput();
-		uiController = GetComponent<UIController>();
 	}
 
 	private void Update()
