@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Garden : MonoBehaviour, IInteractable
 {
-	[SerializeField]
-	private TreeEntity treePrefab;
 	private TreeEntity tree;
+
+	[SerializeField] private List<TreeEntity> treePrefabs = new();
 
 	[SerializeField]
 	private SpriteRenderer interactSprite;
@@ -24,13 +25,13 @@ public class Garden : MonoBehaviour, IInteractable
 		GameManager.ActiveGarden = null;
 	}
 
-	public void PlantTree()
+	public void PlantTree(TreeType treeType)
 	{
 		if (tree == null)
 		{
 			var pos = this.transform.position;
 			pos.y += 0.75f;
-			tree = Instantiate(treePrefab, pos, Quaternion.identity);
+			tree = Instantiate(treePrefabs.Find(p => p.Type == treeType), pos, Quaternion.identity);
 			DisableSprite();
 		}
 	}

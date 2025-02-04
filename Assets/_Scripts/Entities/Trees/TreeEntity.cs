@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class TreeEntity : MonoBehaviour, IInteractable
+public abstract class TreeEntity : MonoBehaviour, IInteractable
 {
+	public abstract TreeType Type { get; }
+	public abstract float GrowthRate { get; }
+	public abstract float WateringInterval { get; }
+
 	[SerializeField]
 	private GrowthStage stage;
 
+	[SerializeField]
 	private bool NeedsWater = true;
 	private float waterTimer;
-
-	private float growthRate = 30f;
 	private float growthTimer;
 
 	[SerializeField]
@@ -19,19 +22,18 @@ public class TreeEntity : MonoBehaviour, IInteractable
 		if (stage == GrowthStage.Mature)
 			return;
 
-		if (!NeedsWater)
-			growthTimer += Time.deltaTime;
-		else
+		if (NeedsWater)
 		{
 			Debug.Log("NEED WATER!!!");
+			return;
 		}
 
-		if (growthTimer > growthRate)
+		growthTimer += Time.deltaTime;
+		if (growthTimer > GrowthRate)
 			Grow();
 
 		waterTimer += Time.deltaTime;
-
-		if (waterTimer > Constants.TreeGrowthRate.WaterInterval)
+		if (waterTimer > WateringInterval)
 			NeedsWater = true;
 	}
 
@@ -42,19 +44,6 @@ public class TreeEntity : MonoBehaviour, IInteractable
 
 		waterTimer = 0f;
 		growthTimer = 0f;
-		growthRate = GetGrowthRate();
-	}
-
-	private float GetGrowthRate()
-	{
-		return stage switch
-		{
-			GrowthStage.Seed => Constants.TreeGrowthRate.ToSprout,
-			GrowthStage.Sprout => Constants.TreeGrowthRate.ToSeedling,
-			GrowthStage.Seedling => Constants.TreeGrowthRate.ToSapling,
-			GrowthStage.Sapling => Constants.TreeGrowthRate.ToMature,
-			_ => 0,
-		};
 	}
 
 	public void EnableSprite()
