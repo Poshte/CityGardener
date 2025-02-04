@@ -6,3 +6,10 @@ public enum GrowthStage
 	Sapling,
 	Mature
 }
+
+public enum TreeType
+{
+	Pine,
+	Oak,
+	Birch
+}

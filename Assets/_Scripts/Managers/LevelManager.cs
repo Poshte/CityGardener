@@ -1,18 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private LevelSO levelGoals;
+	[SerializeField] private TextMeshProUGUI treeGoalsUI;
+	[SerializeField] private TextMeshProUGUI pollutionGoalsUI;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Start()
+	{
+		UpdateLevelGoalsUI();
+	}
+
+	private void UpdateLevelGoalsUI()
+	{
+		pollutionGoalsUI.text = GetPollutionText();
+		treeGoalsUI.text = GetTreeText();
+	}
+
+	private string GetTreeText()
+	{
+		var groupedTrees = levelGoals.TreesToPlant.GroupBy(t => t)
+			.Select(g => new { Type = g.Key, Count = g.Count() });
+
+		var uiText = Constants.PredefinedTexts.TreeUIText;
+		foreach (var tree in groupedTrees)
+		{
+			uiText += Environment.NewLine;
+			uiText += $"{tree.Count} {tree.Type} Trees";
+		}
+
+		return uiText;
+	}
+
+	private string GetPollutionText()
+	{
+		return Constants.PredefinedTexts.PollutionUIText + " " + levelGoals.PollutionGoal + " " + "index";
+	}
 }
