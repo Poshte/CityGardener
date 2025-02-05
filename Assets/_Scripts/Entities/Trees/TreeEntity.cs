@@ -5,6 +5,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	public abstract TreeType Type { get; }
 	public abstract float GrowthRate { get; }
 	public abstract float WateringInterval { get; }
+	public abstract SpriteRenderer InteractSprite { get; }
 
 	[SerializeField]
 	private GrowthStage stage;
@@ -14,8 +15,6 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	private float waterTimer;
 	private float growthTimer;
 
-	[SerializeField]
-	private SpriteRenderer interactSprite;
 
 	private void Update()
 	{
@@ -48,13 +47,13 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	public void EnableSprite()
 	{
-		interactSprite.enabled = true;
+		InteractSprite.enabled = true;
 		GameManager.ActiveTree = this;
 	}
 
 	public void DisableSprite()
 	{
-		interactSprite.enabled = false;
+		InteractSprite.enabled = false;
 		GameManager.ActiveTree = null;
 	}
 

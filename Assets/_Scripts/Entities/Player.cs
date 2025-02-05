@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private float speed;
 
-	private IInteractable interactable;
-
 	private void Awake()
 	{
 		rigidBody2D = GetComponent<Rigidbody2D>();
@@ -32,7 +30,7 @@ public class Player : MonoBehaviour
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer(Constants.LayerMasks.Interactable))
 		{
-			interactable = collision.gameObject.GetComponentInParent<IInteractable>();
+			var interactable = collision.gameObject.GetComponentInParent<IInteractable>();
 			interactable.EnableSprite();
 		}
 	}
@@ -41,11 +39,8 @@ public class Player : MonoBehaviour
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer(Constants.LayerMasks.Interactable))
 		{
-			if (interactable != null)
-			{
-				interactable.DisableSprite();
-				interactable = null;
-			}
+			var interactable = collision.gameObject.GetComponentInParent<IInteractable>();
+			interactable.DisableSprite();
 		}
 	}
 

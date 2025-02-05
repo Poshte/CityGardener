@@ -16,14 +16,9 @@ public class UIController : MonoBehaviour
 	[SerializeField] private BuildingTypeSO houseSO;
 	[SerializeField] private BuildingTypeSO factorySO;
 
-	private BuildingManager buildingManager;
-
+	[SerializeField] private BuildingManager buildingManager;
+	
 	private bool treeTypesActive;
-
-	private void Awake()
-	{
-		buildingManager = GetComponent<BuildingManager>();
-	}
 
 	public void OnBucketClicked()
 	{

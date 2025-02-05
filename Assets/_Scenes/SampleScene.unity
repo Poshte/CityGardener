@@ -1869,6 +1869,7 @@ MonoBehaviour:
   btnBirchTree: {fileID: 162965797}
   houseSO: {fileID: 11400000, guid: 83e19e690692fe84e8f86e46d65a9454, type: 2}
   factorySO: {fileID: 11400000, guid: df931165845f5a4439953bf359e2c365, type: 2}
+  buildingManager: {fileID: 1652800221}
 --- !u!4 &750939963
 Transform:
   m_ObjectHideFlags: 0
@@ -3191,11 +3192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8846576158308840447, guid: 3609db83192f2bc409f08b76305d7686, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.49
+      value: -6.8
       objectReference: {fileID: 0}
     - target: {fileID: 8846576158308840447, guid: 3609db83192f2bc409f08b76305d7686, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26
+      value: -5.57
       objectReference: {fileID: 0}
     - target: {fileID: 8846576158308840447, guid: 3609db83192f2bc409f08b76305d7686, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3414,6 +3415,51 @@ MonoBehaviour:
   levelGoals: {fileID: 11400000, guid: 13634942d840e7a4c8ad9d5387ba59a2, type: 2}
   treeGoalsUI: {fileID: 1800409076}
   pollutionGoalsUI: {fileID: 1961542633}
+--- !u!1 &1652800220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652800222}
+  - component: {fileID: 1652800221}
+  m_Layer: 0
+  m_Name: BuildingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1652800221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652800220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7f96a112f0ee94da690fe2a2847ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wealthManager: {fileID: 1634609719}
+--- !u!4 &1652800222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652800220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.032708, y: -3.136069, z: -0.118702516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1695657188
 GameObject:
   m_ObjectHideFlags: 3
@@ -4894,6 +4940,7 @@ PrefabInstance:
       objectReference: {fileID: 978508588}
     m_RemovedComponents:
     - {fileID: 5553884816458485578, guid: bede6b1d7dc4b084fbff91f91b0ab99b, type: 3}
+    - {fileID: 2506050910985840969, guid: bede6b1d7dc4b084fbff91f91b0ab99b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
