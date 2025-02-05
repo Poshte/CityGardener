@@ -1,5 +1,5 @@
-using System.Reflection;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class BuildingManager : MonoBehaviour
@@ -15,13 +15,20 @@ public class BuildingManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (input.PlayerInputs.MouseLeftClick.WasPressedThisFrame())
+		if (activeBuildingType == null)
+			return;
+
+		if (input.PlayerInputs.MouseLeftClick.WasPressedThisFrame() && !EventSystem.current.IsPointerOverGameObject())
 		{
-			if (activeBuildingType == null)
+			var mousePos = GetMouseWorldPosition();
+
+			if (!CanSpawnBuilding(mousePos))
 				return;
 
-			if (PayBuildingCost())
-				ConstructBuilding();
+			if (!PayBuildingCost())
+				return;
+
+			ConstructBuilding(mousePos);
 		}
 	}
 
@@ -30,10 +37,9 @@ public class BuildingManager : MonoBehaviour
 		return wealthManager.SpendWealth(activeBuildingType.Cost);
 	}
 
-	private void ConstructBuilding()
+	private void ConstructBuilding(Vector2 spawnPos)
 	{
-		var mousePos = GetMouseWorldPosition();
-		Instantiate(activeBuildingType.Prefab, mousePos, Quaternion.identity);
+		Instantiate(activeBuildingType.Prefab, spawnPos, Quaternion.identity);
 		activeBuildingType = null;
 	}
 
@@ -47,6 +53,16 @@ public class BuildingManager : MonoBehaviour
 		var worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
 		worldPos.z = 0f;
 		return worldPos;
+	}
+
+	private bool CanSpawnBuilding(Vector2 pos)
+	{
+		var buildingCollider = activeBuildingType.Prefab.GetComponent<BoxCollider2D>();
+
+		if (Physics2D.OverlapBox(pos + buildingCollider.offset, buildingCollider.size, 0))
+			return false;
+
+		return true;
 	}
 
 	private void OnEnable()
