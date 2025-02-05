@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
 	private void Move()
 	{
-		playerMovement = input.PlayerInputs.Movement.ReadValue<Vector2>();
+		playerMovement = input.Movement.PlayerMovements.ReadValue<Vector2>();
 		rigidBody2D.velocity = playerMovement * speed;
 	}
 
@@ -46,12 +46,12 @@ public class Player : MonoBehaviour
 
 	private void OnEnable()
 	{
-		input.PlayerInputs.Enable();
+		input.Movement.Enable();
 	}
 
 	private void OnDisable()
 	{
-		input.PlayerInputs.Disable();
+		input.Movement.Disable();
 	}
 
 	public bool StandingNear(Vector2 targetPos, float interactDistance)

@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour
 	[SerializeField] private BuildingTypeSO factorySO;
 
 	[SerializeField] private BuildingManager buildingManager;
-	
+
 	public void OnBucketClicked()
 	{
 		if (GameManager.NearWater)
@@ -74,7 +74,7 @@ public class UIController : MonoBehaviour
 		buildingManager.SetActiveBuildingType(factorySO);
 	}
 
-	private void ClearUp()
+	public void ClearUp()
 	{
 		//TODO
 		//When mouse is clicked anywhere other than UI

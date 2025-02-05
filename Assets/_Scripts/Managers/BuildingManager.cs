@@ -18,7 +18,7 @@ public class BuildingManager : MonoBehaviour
 		if (activeBuildingType == null)
 			return;
 
-		if (input.PlayerInputs.MouseLeftClick.WasPressedThisFrame() && !EventSystem.current.IsPointerOverGameObject())
+		if (input.Construction.MouseLeftClick.WasPerformedThisFrame() && !EventSystem.current.IsPointerOverGameObject())
 		{
 			var mousePos = GetMouseWorldPosition();
 
@@ -60,18 +60,21 @@ public class BuildingManager : MonoBehaviour
 		var buildingCollider = activeBuildingType.Prefab.GetComponent<BoxCollider2D>();
 
 		if (Physics2D.OverlapBox(pos + buildingCollider.offset, buildingCollider.size, 0))
+		{
+			Debug.Log("Can't place there.");
 			return false;
+		}
 
 		return true;
 	}
 
 	private void OnEnable()
 	{
-		input.PlayerInputs.Enable();
+		input.Construction.Enable();
 	}
 
 	private void OnDisable()
 	{
-		input.PlayerInputs.Disable();
+		input.Construction.Disable();
 	}
 }
