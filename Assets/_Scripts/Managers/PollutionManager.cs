@@ -5,7 +5,7 @@ public class PollutionManager : MonoBehaviour
 {
 	private int pollution = 200;
 
-	[SerializeField] private TextMeshProUGUI pollutionUI;
+	[SerializeField] private TextMeshProUGUI pollutionAmount;
 
 	private void Start()
 	{
@@ -50,7 +50,7 @@ public class PollutionManager : MonoBehaviour
 				break;
 		}
 
-		pollutionUI.color = color;
-		pollutionUI.text = pollution.ToString();
+		pollutionAmount.color = color;
+		pollutionAmount.text = pollution.ToString();
 	}
 }

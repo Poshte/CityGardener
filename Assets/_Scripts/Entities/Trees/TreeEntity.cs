@@ -23,7 +23,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 		if (NeedsWater)
 		{
-			Debug.Log("NEED WATER!!!");
+			//Debug.Log("NEED WATER!!!");
 			return;
 		}
 

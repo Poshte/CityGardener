@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 		if (collision.gameObject.layer == LayerMask.NameToLayer(Constants.LayerMasks.Interactable))
 		{
 			var interactable = collision.gameObject.GetComponentInParent<IInteractable>();
-			interactable.EnableSprite();
+			interactable?.EnableSprite();
 		}
 	}
 
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 		if (collision.gameObject.layer == LayerMask.NameToLayer(Constants.LayerMasks.Interactable))
 		{
 			var interactable = collision.gameObject.GetComponentInParent<IInteractable>();
-			interactable.DisableSprite();
+			interactable?.DisableSprite();
 		}
 	}
 

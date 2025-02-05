@@ -11,7 +11,6 @@ public class CityManager : MonoBehaviour
 	private const int minFactoryOperators = 2;
 	private const int maxFactoryOperators = 5;
 
-	[SerializeField] private TextMeshProUGUI employedText;
 	[SerializeField] private TextMeshProUGUI populationText;
 
 	private void Start()
@@ -63,8 +62,7 @@ public class CityManager : MonoBehaviour
 
 	private void UpdatePopulationUI()
 	{
-		employedText.text = citizens.Count(c => c.Employed).ToString();
-		populationText.text = citizens.Count.ToString();
+		populationText.text = citizens.Count(c => c.Employed).ToString() + "/" + citizens.Count.ToString();
 	}
 
 	private void OnDestroy()

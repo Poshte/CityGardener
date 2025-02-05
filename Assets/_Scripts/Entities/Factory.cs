@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,9 +18,8 @@ public class Factory : MonoBehaviour
 
 	private void Awake()
 	{
-		var gameController = GameObject.FindGameObjectWithTag(Constants.Tags.GameController);
-		pollutionManager = gameController.GetComponent<PollutionManager>();
-		wealthManager = gameController.GetComponent<WealthManager>();
+		pollutionManager = GameObject.FindGameObjectWithTag(Constants.Tags.PollutionManager).GetComponent<PollutionManager>();
+		wealthManager = GameObject.FindGameObjectWithTag(Constants.Tags.WealthManager).GetComponent<WealthManager>();
 	}
 
 	private void Start()

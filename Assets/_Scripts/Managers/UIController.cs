@@ -18,8 +18,6 @@ public class UIController : MonoBehaviour
 
 	[SerializeField] private BuildingManager buildingManager;
 	
-	private bool treeTypesActive;
-
 	public void OnBucketClicked()
 	{
 		if (GameManager.NearWater)
@@ -40,8 +38,7 @@ public class UIController : MonoBehaviour
 		{
 			btnTree.image.color = Color.red;
 
-			TreeTypesUI.SetActive(!treeTypesActive);
-			treeTypesActive = !treeTypesActive;
+			TreeTypesUI.SetActive(true);
 		}
 	}
 

@@ -1,29 +1,27 @@
 using System;
-using UnityEngine;
 
-public class GameEvents : MonoBehaviour
+public class GameEvents
 {
+	private static readonly object _lock = new();
 	private static GameEvents _instance;
 	public static GameEvents Instance
 	{
 		get
 		{
+			if (_instance == null)
+			{
+				lock (_lock)
+				{
+					_instance ??= new();
+				}
+			}
+
 			return _instance;
 		}
 	}
 
-	private void Awake()
+	private GameEvents()
 	{
-		if (_instance != null)
-		{
-			Destroy(gameObject);
-		}
-		else
-		{
-			_instance = this;
-		}
-
-		DontDestroyOnLoad(gameObject);
 	}
 
 	public event Action<House> OnHouseCreated;
