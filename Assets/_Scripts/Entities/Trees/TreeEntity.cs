@@ -3,18 +3,16 @@ using UnityEngine;
 public abstract class TreeEntity : MonoBehaviour, IInteractable
 {
 	public abstract TreeType Type { get; }
+	public abstract float Cost { get; }
 	public abstract float GrowthRate { get; }
 	public abstract float WateringInterval { get; }
 	public abstract SpriteRenderer InteractSprite { get; }
 
-	[SerializeField]
-	private GrowthStage stage;
+	[SerializeField] private GrowthStage stage;
+	[SerializeField] private bool NeedsWater = true;
 
-	[SerializeField]
-	private bool NeedsWater = true;
 	private float waterTimer;
 	private float growthTimer;
-
 
 	private void Update()
 	{
