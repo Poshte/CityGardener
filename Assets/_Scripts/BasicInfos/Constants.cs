@@ -11,10 +11,4 @@ public static class Constants
 	{
 		public const string Interactable = "Interactable";
 	}
-
-	public static class PredefinedTexts
-	{
-		public const string PollutionUIText = "- Reduce the amount of pollution to";
-		public const string TreeUIText = "- Plant:";
-	}
 }

@@ -29,4 +29,7 @@ public class GameEvents
 
 	public event Action<Factory> OnFactoryCreated;
 	public void FactoryCreated(Factory factory) => OnFactoryCreated?.Invoke(factory);
+
+	public event Action<TreeType> OnTreePlanted;
+	public void TreePlanted(TreeType tree) => OnTreePlanted?.Invoke(tree);
 }

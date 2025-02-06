@@ -42,6 +42,9 @@ public class Garden : MonoBehaviour, IInteractable
 			var pos = this.transform.position;
 			pos.y += 0.75f;
 			gardenPlantedTree = Instantiate(tree, pos, Quaternion.identity);
+
+			GameEvents.Instance.TreePlanted(gardenPlantedTree.Type);
+
 			DisableSprite();
 		}
 	}
