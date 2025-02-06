@@ -81,7 +81,7 @@ public class UIController : MonoBehaviour
 
 	public void ClearUp()
 	{
-		btnTree.image.color = Color.yellow;
+		btnTree.image.color = btnHouse.image.color = btnFactory.image.color = Color.yellow;
 		TreeTypesUI.SetActive(false);
 		buildingManager.SetActiveBuildingType(null);
 	}

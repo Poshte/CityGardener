@@ -9,7 +9,7 @@ public class Factory : MonoBehaviour
 	[SerializeField] private float wealthAmount = 100f;
 	[SerializeField] private int pollutionAmount = 10;
 
-	private float productionRate = 1f;
+	private const float productionRate = 3f;
 	private float productionTimer;
 
     public List<Citizen> Workers = new();
@@ -37,16 +37,14 @@ public class Factory : MonoBehaviour
 		}
 
 		productionTimer += Time.deltaTime;
-
 		if (productionTimer > productionRate)
-		{
-			//emit pollution
-			pollutionManager.IncreasePollution(pollutionAmount);
+			Produce();
+	}
 
-			//increase wealth
-			wealthManager.AddWealth(wealthAmount);
-
-			productionTimer = 0f;
-		}
+	private void Produce()
+	{
+		pollutionManager.IncreasePollution(pollutionAmount);
+		wealthManager.AddWealth(wealthAmount);
+		productionTimer = 0f;
 	}
 }
