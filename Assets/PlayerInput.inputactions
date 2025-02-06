@@ -167,15 +167,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "MouseLeftClick",
-                    "type": "Button",
-                    "id": "e08bad27-ec75-4b46-99ed-81d253f9c85c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -222,17 +213,6 @@
                     "action": "Factory",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e379bc1e-cc97-462a-9ce1-842dc02f8321",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "MouseLeftClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
@@ -262,6 +242,15 @@
                     "name": "Birch",
                     "type": "Button",
                     "id": "bec303db-690f-4ef3-b317-c1ef56ee0887",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseLeftClick",
+                    "type": "Button",
+                    "id": "eb7e5e7e-b81a-4c95-9e06-0279460061a3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -299,6 +288,17 @@
                     "processors": "",
                     "groups": "New control scheme",
                     "action": "Birch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "621dfc9d-e867-41a8-8219-77ccecc28dab",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme",
+                    "action": "MouseLeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

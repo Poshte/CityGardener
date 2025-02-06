@@ -189,15 +189,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MouseLeftClick"",
-                    ""type"": ""Button"",
-                    ""id"": ""e08bad27-ec75-4b46-99ed-81d253f9c85c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -244,17 +235,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Factory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e379bc1e-cc97-462a-9ce1-842dc02f8321"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""New control scheme"",
-                    ""action"": ""MouseLeftClick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -284,6 +264,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Birch"",
                     ""type"": ""Button"",
                     ""id"": ""bec303db-690f-4ef3-b317-c1ef56ee0887"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseLeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb7e5e7e-b81a-4c95-9e06-0279460061a3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -321,6 +310,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
                     ""action"": ""Birch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""621dfc9d-e867-41a8-8219-77ccecc28dab"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""MouseLeftClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -400,12 +400,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_MainActionBar_Tree = m_MainActionBar.FindAction("Tree", throwIfNotFound: true);
         m_MainActionBar_House = m_MainActionBar.FindAction("House", throwIfNotFound: true);
         m_MainActionBar_Factory = m_MainActionBar.FindAction("Factory", throwIfNotFound: true);
-        m_MainActionBar_MouseLeftClick = m_MainActionBar.FindAction("MouseLeftClick", throwIfNotFound: true);
         // TreeTypes
         m_TreeTypes = asset.FindActionMap("TreeTypes", throwIfNotFound: true);
         m_TreeTypes_Pine = m_TreeTypes.FindAction("Pine", throwIfNotFound: true);
         m_TreeTypes_Oak = m_TreeTypes.FindAction("Oak", throwIfNotFound: true);
         m_TreeTypes_Birch = m_TreeTypes.FindAction("Birch", throwIfNotFound: true);
+        m_TreeTypes_MouseLeftClick = m_TreeTypes.FindAction("MouseLeftClick", throwIfNotFound: true);
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_Interact = m_Interaction.FindAction("Interact", throwIfNotFound: true);
@@ -523,7 +523,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_MainActionBar_Tree;
     private readonly InputAction m_MainActionBar_House;
     private readonly InputAction m_MainActionBar_Factory;
-    private readonly InputAction m_MainActionBar_MouseLeftClick;
     public struct MainActionBarActions
     {
         private @PlayerInput m_Wrapper;
@@ -532,7 +531,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Tree => m_Wrapper.m_MainActionBar_Tree;
         public InputAction @House => m_Wrapper.m_MainActionBar_House;
         public InputAction @Factory => m_Wrapper.m_MainActionBar_Factory;
-        public InputAction @MouseLeftClick => m_Wrapper.m_MainActionBar_MouseLeftClick;
         public InputActionMap Get() { return m_Wrapper.m_MainActionBar; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -554,9 +552,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Factory.started += instance.OnFactory;
             @Factory.performed += instance.OnFactory;
             @Factory.canceled += instance.OnFactory;
-            @MouseLeftClick.started += instance.OnMouseLeftClick;
-            @MouseLeftClick.performed += instance.OnMouseLeftClick;
-            @MouseLeftClick.canceled += instance.OnMouseLeftClick;
         }
 
         private void UnregisterCallbacks(IMainActionBarActions instance)
@@ -573,9 +568,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Factory.started -= instance.OnFactory;
             @Factory.performed -= instance.OnFactory;
             @Factory.canceled -= instance.OnFactory;
-            @MouseLeftClick.started -= instance.OnMouseLeftClick;
-            @MouseLeftClick.performed -= instance.OnMouseLeftClick;
-            @MouseLeftClick.canceled -= instance.OnMouseLeftClick;
         }
 
         public void RemoveCallbacks(IMainActionBarActions instance)
@@ -600,6 +592,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_TreeTypes_Pine;
     private readonly InputAction m_TreeTypes_Oak;
     private readonly InputAction m_TreeTypes_Birch;
+    private readonly InputAction m_TreeTypes_MouseLeftClick;
     public struct TreeTypesActions
     {
         private @PlayerInput m_Wrapper;
@@ -607,6 +600,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Pine => m_Wrapper.m_TreeTypes_Pine;
         public InputAction @Oak => m_Wrapper.m_TreeTypes_Oak;
         public InputAction @Birch => m_Wrapper.m_TreeTypes_Birch;
+        public InputAction @MouseLeftClick => m_Wrapper.m_TreeTypes_MouseLeftClick;
         public InputActionMap Get() { return m_Wrapper.m_TreeTypes; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -625,6 +619,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Birch.started += instance.OnBirch;
             @Birch.performed += instance.OnBirch;
             @Birch.canceled += instance.OnBirch;
+            @MouseLeftClick.started += instance.OnMouseLeftClick;
+            @MouseLeftClick.performed += instance.OnMouseLeftClick;
+            @MouseLeftClick.canceled += instance.OnMouseLeftClick;
         }
 
         private void UnregisterCallbacks(ITreeTypesActions instance)
@@ -638,6 +635,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Birch.started -= instance.OnBirch;
             @Birch.performed -= instance.OnBirch;
             @Birch.canceled -= instance.OnBirch;
+            @MouseLeftClick.started -= instance.OnMouseLeftClick;
+            @MouseLeftClick.performed -= instance.OnMouseLeftClick;
+            @MouseLeftClick.canceled -= instance.OnMouseLeftClick;
         }
 
         public void RemoveCallbacks(ITreeTypesActions instance)
@@ -766,13 +766,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnTree(InputAction.CallbackContext context);
         void OnHouse(InputAction.CallbackContext context);
         void OnFactory(InputAction.CallbackContext context);
-        void OnMouseLeftClick(InputAction.CallbackContext context);
     }
     public interface ITreeTypesActions
     {
         void OnPine(InputAction.CallbackContext context);
         void OnOak(InputAction.CallbackContext context);
         void OnBirch(InputAction.CallbackContext context);
+        void OnMouseLeftClick(InputAction.CallbackContext context);
     }
     public interface IInteractionActions
     {

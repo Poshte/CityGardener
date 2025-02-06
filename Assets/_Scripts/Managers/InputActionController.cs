@@ -46,7 +46,7 @@ public class InputActionController : MonoBehaviour
 			uiController.OnBirchTreeClicked();
 			ResetInputContext();
 		}
-		else if (input.MainActionBar.MouseLeftClick.WasPerformedThisFrame())
+		else if (input.TreeTypes.MouseLeftClick.WasPerformedThisFrame())
 		{
 			ResetInputContext();
 			uiController.ClearUp();
@@ -62,6 +62,7 @@ public class InputActionController : MonoBehaviour
 	private void OnEnable()
 	{
 		input.MainActionBar.Enable();
+		input.TreeTypes.Disable();
 	}
 
 	private void OnDisable()

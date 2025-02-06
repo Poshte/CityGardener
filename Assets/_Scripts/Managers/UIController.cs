@@ -30,16 +30,15 @@ public class UIController : MonoBehaviour
 			btnBucket.image.color = Color.yellow;
 			GameManager.ActiveTree.WaterTree();
 		}
+
+		buildingManager.SetActiveBuildingType(null);
 	}
 
 	public void OnTreeClicked()
 	{
-		if (GameManager.ActiveGarden != null)
-		{
-			btnTree.image.color = Color.red;
-
-			TreeTypesUI.SetActive(true);
-		}
+		btnTree.image.color = Color.red;
+		TreeTypesUI.SetActive(true);
+		buildingManager.SetActiveBuildingType(null);
 	}
 
 	public void OnPineTreeClicked()
@@ -59,6 +58,12 @@ public class UIController : MonoBehaviour
 
 	private void PlantTree(TreeType treeType)
 	{
+		if (GameManager.ActiveGarden == null)
+		{
+			ClearUp();
+			return;
+		}
+
 		GameManager.ActiveGarden.PlantTree(treeType);
 		btnTree.image.color = Color.yellow;
 		TreeTypesUI.SetActive(false);
@@ -76,8 +81,8 @@ public class UIController : MonoBehaviour
 
 	public void ClearUp()
 	{
-		//TODO
-		//When mouse is clicked anywhere other than UI
-		//When player moves away from garden
+		btnTree.image.color = Color.yellow;
+		TreeTypesUI.SetActive(false);
+		buildingManager.SetActiveBuildingType(null);
 	}
 }
