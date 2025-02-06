@@ -4,8 +4,10 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 {
 	public abstract TreeType Type { get; }
 	public abstract float Cost { get; }
+	public abstract int PollutionAbsorption { get; }
 	public abstract float GrowthRate { get; }
 	public abstract float WateringInterval { get; }
+	public abstract float AbsorptionInterval { get; }
 	public abstract SpriteRenderer InteractSprite { get; }
 
 	[SerializeField] private GrowthStage stage;
@@ -13,11 +15,22 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	private float waterTimer;
 	private float growthTimer;
+	private float absorptionTimer;
+
+	private PollutionManager pollutionManager;
+
+	private void Awake()
+	{
+		pollutionManager = GameObject.FindGameObjectWithTag(Constants.Tags.PollutionManager).GetComponent<PollutionManager>();
+	}
 
 	private void Update()
 	{
 		if (stage == GrowthStage.Mature)
+		{
+			AbsorbPollution();
 			return;
+		}
 
 		if (NeedsWater)
 		{
@@ -70,5 +83,16 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 		waterTimer = 0f;
 
 		Debug.Log("Pouring water...");
+	}
+
+	private void AbsorbPollution()
+	{
+		absorptionTimer += Time.deltaTime;
+
+		if (absorptionTimer > AbsorptionInterval)
+		{
+			pollutionManager.ReducePollution(PollutionAbsorption);
+			absorptionTimer = 0f;
+		}
 	}
 }

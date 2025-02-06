@@ -18,9 +18,13 @@ public class PollutionManager : MonoBehaviour
 		UpdatePollutionUI();
 	}
 
-	public void DecreasePollution(int amount)
+	public void ReducePollution(int amount)
 	{
 		pollution -= amount;
+
+		if (pollution <= 0)
+			pollution = 0;
+
 		UpdatePollutionUI();
 	}
 
