@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -10,7 +11,7 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private RectTransform treeGoalsParent;
 	[SerializeField] private Goal treeGoalPrefab;
 
-	private Dictionary<Goal, string> treeGoalsCount = new();
+	private readonly Dictionary<Goal, string> treeGoalsCount = new();
 
 	private void Start()
 	{
@@ -30,14 +31,36 @@ public class LevelManager : MonoBehaviour
 		var goal = pair.Key;
 		var countTextElements = pair.Value.Split('/');
 
+		if (goal.FulfilledUI.isOn)
+			return;
+
 		int.TryParse(countTextElements[0], out int count);
 		int.TryParse(countTextElements[1], out int total);
 
-		var countText = $"{count + 1}/{total}";
+		var countText = $"{++count}/{total}";
 		goal.CountUI.text = countText;
+
+		if (count == total)
+		{
+			goal.FulfilledUI.isOn = true;
+			CheckWinCondition();
+		}
 
 		treeGoalsCount.Remove(goal);
 		treeGoalsCount.Add(goal, countText);
+	}
+
+	private void CheckWinCondition()
+	{
+		if (treeGoalsCount.All(g => g.Key.FulfilledUI.isOn))
+			WinLevel();
+	}
+
+	private void WinLevel()
+	{
+		Debug.Log("YOU WON!!!!");
+		//TODO
+		//show win panel in UI
 	}
 
 	private void InitializeLevelGoals()
