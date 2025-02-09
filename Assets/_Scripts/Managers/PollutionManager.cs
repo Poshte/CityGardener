@@ -7,9 +7,22 @@ public class PollutionManager : MonoBehaviour
 
 	[SerializeField] private TextMeshProUGUI pollutionAmount;
 
+	private const float passivePollutionRate = 5f;
+	private float passivePollutionTimer;
+
 	private void Start()
 	{
 		UpdatePollutionUI();
+	}
+
+	private void Update()
+	{
+		passivePollutionTimer += Time.deltaTime;
+		if (passivePollutionTimer > passivePollutionRate)
+		{
+			IncreasePollution(1);
+			passivePollutionTimer = 0f;
+		}
 	}
 
 	public void IncreasePollution(int amount)
