@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,19 @@ public class Factory : MonoBehaviour
 	[SerializeField] private float wealthAmount = 100f;
 	[SerializeField] private int pollutionAmount = 10;
 
-	private const float productionRate = 3f;
-	private float productionTimer;
+	private const float wealthRate = 3.2f;
+	private float wealthTimer;
 
-    public List<Citizen> Workers = new();
+	private const float pollutionRate = 1.7f;
+	private float pollutionTimer;
+
+	//TODO
+	//maybe should set these once from CityManager
+	//for performance
+	private const float wealthFactor = 2f;
+	private const float pollutionFactor = 1.5f;
+
+	public List<Citizen> Workers = new();
 	public bool IsOperational;
 	public bool MaxedOut;
 
@@ -36,15 +46,26 @@ public class Factory : MonoBehaviour
 			return;
 		}
 
-		productionTimer += Time.deltaTime;
-		if (productionTimer > productionRate)
-			Produce();
+		wealthTimer += Time.deltaTime;
+		if (wealthTimer > wealthRate)
+			ProduceWealth();
+
+		pollutionTimer += Time.deltaTime;
+		if (pollutionTimer > pollutionRate)
+			IncreasePollution();
 	}
 
-	private void Produce()
+	private void ProduceWealth()
 	{
-		pollutionManager.IncreasePollution(pollutionAmount);
-		wealthManager.AddWealth(wealthAmount);
-		productionTimer = 0f;
+		var wealth = MaxedOut ? wealthAmount * wealthFactor : wealthAmount;
+		wealthManager.AddWealth(wealth);
+		wealthTimer = 0f;
+	}
+
+	private void IncreasePollution()
+	{
+		var pollution = MaxedOut ? pollutionAmount * pollutionFactor : pollutionAmount;
+		pollutionManager.IncreasePollution((int)pollution);
+		pollutionTimer = 0f;
 	}
 }
