@@ -24,6 +24,9 @@ public class GameEvents
 	{
 	}
 
+	public event Action OnBeforeSceneDestroyed;
+	public void BeforeSceneDestroyed() => OnBeforeSceneDestroyed?.Invoke();
+
 	public event Action<House> OnHouseCreated;
 	public void HouseCreated(House house) => OnHouseCreated?.Invoke(house);
 
