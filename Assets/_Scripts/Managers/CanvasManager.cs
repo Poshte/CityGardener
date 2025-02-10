@@ -3,17 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
-	//private IScreenFadeService screenFade;
 	private CanvasGroup canvasGroup;
+	private float startAlpha = 1f;
+	private float targetAlpha = 0f;
+	[SerializeField] private bool reverse;
+	[SerializeField] private float fadeDuration;
 
 	private void Awake()
 	{
-		//screenFade = ServiceLocator.Instance.Get<IScreenFadeService>();
 		canvasGroup = gameObject.GetComponent<CanvasGroup>();
 	}
 
 	private void OnEnable()
 	{
+		if (reverse)
+			(startAlpha, targetAlpha) = (targetAlpha, startAlpha);
+
 		SceneManager.sceneLoaded += OnSceneLoaded;
 	}
 
@@ -24,12 +29,12 @@ public class CanvasManager : MonoBehaviour
 
 	private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
 	{
-		StartCoroutine(ScreenFadeService.Fade(canvasGroup, 1f, 0f, SceneManager.GetActiveScene().buildIndex));
+		StartCoroutine(ScreenFadeService.Fade(canvasGroup, startAlpha, targetAlpha, fadeDuration));
 	}
 
 	private void BeforeSceneDestroyed()
 	{
-		StartCoroutine(ScreenFadeService.Fade(canvasGroup, 0f, 1f, SceneManager.GetActiveScene().buildIndex));
+		StartCoroutine(ScreenFadeService.Fade(canvasGroup, targetAlpha, startAlpha, fadeDuration));
 	}
 
 	private void OnDestroy()

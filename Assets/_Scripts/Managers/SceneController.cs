@@ -32,9 +32,8 @@ public class SceneController : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	private readonly float waitTime = 0.5f;
+	private readonly float waitTime = 1f;
 
-	//Forest is the default scene when starting a new game
 	private const int defaultSceneIndex = 1;
 
 	private void LoadNextScene()

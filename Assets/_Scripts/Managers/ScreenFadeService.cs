@@ -3,22 +3,8 @@ using UnityEngine;
 
 public static class ScreenFadeService
 {
-	private static readonly float menuFade = 1f;
-	private static readonly float gameFade = 2f;
-	private static float fadeDuration;
-
-	public static IEnumerator Fade(CanvasGroup canvasGroup, float startAlpha, float targetAlpha, int buildIndex)
+	public static IEnumerator Fade(CanvasGroup canvasGroup, float startAlpha, float targetAlpha, float fadeDuration)
 	{
-		if (buildIndex == 0)
-		{
-			(targetAlpha, startAlpha) = (startAlpha, targetAlpha);
-			fadeDuration = menuFade;
-		}
-		else
-		{
-			fadeDuration = gameFade;
-		}
-
 		canvasGroup.alpha = startAlpha;
 
 		var elapsedTime = 0f;
