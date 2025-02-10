@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -13,10 +12,34 @@ public class LevelManager : MonoBehaviour
 
 	private readonly Dictionary<Goal, string> treeGoalsCount = new();
 
+	private bool treeGoalsFulfilled;
+	private PollutionManager pollutionManager;
+
+	private void Awake()
+	{
+		pollutionManager = GameObject.FindGameObjectWithTag(Constants.Tags.PollutionManager).GetComponent<PollutionManager>();
+	}
+
 	private void Start()
 	{
 		GameEvents.Instance.OnTreePlanted += OnTreePlanted;
 		InitializeLevelGoals();
+	}
+
+	private void Update()
+	{
+		if (treeGoalsFulfilled)
+		{
+			if (PollutionGoalWinConditionFulfilled())
+			{
+				WinLevel();
+			}
+		}
+	}
+
+	private bool PollutionGoalWinConditionFulfilled()
+	{
+		return levelGoals.PollutionGoal > pollutionManager.GetCurrentPollutionIndex();
 	}
 
 	private void OnTreePlanted(TreeType tree)
@@ -43,17 +66,17 @@ public class LevelManager : MonoBehaviour
 		if (count == total)
 		{
 			goal.FulfilledUI.isOn = true;
-			CheckWinCondition();
+			CheckTreeGoalsWinCondition();
 		}
 
 		treeGoalsCount.Remove(goal);
 		treeGoalsCount.Add(goal, countText);
 	}
 
-	private void CheckWinCondition()
+	private void CheckTreeGoalsWinCondition()
 	{
 		if (treeGoalsCount.All(g => g.Key.FulfilledUI.isOn))
-			WinLevel();
+			treeGoalsFulfilled = true;
 	}
 
 	private void WinLevel()

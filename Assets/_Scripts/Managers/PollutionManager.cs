@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PollutionManager : MonoBehaviour
 {
-	private int pollution = 195;
+	private int pollution = 100;
 	private const int maxPollution = 200;
 
 	[SerializeField] private TextMeshProUGUI pollutionAmount;
@@ -24,8 +24,6 @@ public class PollutionManager : MonoBehaviour
 			IncreasePollution(1);
 			passivePollutionTimer = 0f;
 		}
-
-
 	}
 
 	public void IncreasePollution(int amount)
@@ -89,5 +87,10 @@ public class PollutionManager : MonoBehaviour
 		Debug.Log("YOU LOST...");
 		//TODO
 		//show lose panel in UI
+	}
+
+	public int GetCurrentPollutionIndex()
+	{
+		return pollution;
 	}
 }
