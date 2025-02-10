@@ -316,6 +316,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "ac366870-7c21-4ccb-866c-764879e83d99",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -329,6 +338,17 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0a34188-b847-4287-9550-79522f27baa3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "Hold(duration=2)",
+                    "processors": "",
+                    "groups": "New control scheme",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -339,7 +359,7 @@
                 {
                     "name": "MouseLeftClick",
                     "type": "Button",
-                    "id": "1bf3fafe-10d4-4cfe-be56-3252f0c6126b",
+                    "id": "84ca5d47-3acf-44b1-af02-830882adc108",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -349,7 +369,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "1b75f540-1882-44be-809b-6185faa22107",
+                    "id": "a0e27145-8d9c-4c40-a7b6-a9fcdf8cab3c",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",

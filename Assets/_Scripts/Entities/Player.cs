@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,17 @@ public class Player : MonoBehaviour
 	{
 		rigidBody2D = GetComponent<Rigidbody2D>();
 		input = new PlayerInput();
+	}
+	private void Update()
+	{
+		if (input.Interaction.Reset.WasPerformedThisFrame())
+		{
+			Debug.Log("Resetting...");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			//TODO
+			//reset to a clean state
+			//activeBuildingPF = null , etc
+		}
 	}
 
 	private void FixedUpdate()
@@ -46,11 +58,13 @@ public class Player : MonoBehaviour
 	private void OnEnable()
 	{
 		input.Movement.Enable();
+		input.Interaction.Enable();
 	}
 
 	private void OnDisable()
 	{
 		input.Movement.Disable();
+		input.Interaction.Disable();
 	}
 
 	public bool StandingNear(Vector2 targetPos, float interactDistance)
