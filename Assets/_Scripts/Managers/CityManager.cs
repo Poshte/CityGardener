@@ -49,7 +49,7 @@ public class CityManager : MonoBehaviour
 					citizen.Employed = true;
 
 					if (factory.Workers.Count >= minFactoryOperators)
-						factory.IsOperational = true;
+						factory.BeginOperation();
 
 					if (factory.Workers.Count >= maxFactoryOperators)
 						factory.MaxedOut = true;

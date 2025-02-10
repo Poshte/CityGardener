@@ -23,8 +23,10 @@ public class Factory : MonoBehaviour
 	private const float pollutionFactor = 1.5f;
 
 	public List<Citizen> Workers = new();
-	public bool IsOperational;
+	public bool IsOperational { get; private set; }
 	public bool MaxedOut;
+
+	[SerializeField] private SpriteRenderer nonOperationalSprite;
 
 	private void Awake()
 	{
@@ -40,11 +42,7 @@ public class Factory : MonoBehaviour
 	private void Update()
 	{
 		if (!IsOperational)
-		{
-			//TODO
-			//show the factory is not operational in UI
 			return;
-		}
 
 		wealthTimer += Time.deltaTime;
 		if (wealthTimer > wealthRate)
@@ -67,5 +65,11 @@ public class Factory : MonoBehaviour
 		var pollution = MaxedOut ? pollutionAmount * pollutionFactor : pollutionAmount;
 		pollutionManager.IncreasePollution((int)pollution);
 		pollutionTimer = 0f;
+	}
+
+	public void BeginOperation()
+	{
+		IsOperational = true;
+		nonOperationalSprite.enabled = false;
 	}
 }

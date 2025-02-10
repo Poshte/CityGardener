@@ -9,6 +9,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	public abstract float WateringInterval { get; }
 	public abstract float AbsorptionInterval { get; }
 	public abstract SpriteRenderer InteractSprite { get; }
+	public abstract SpriteRenderer NeedWaterSprite { get; }
 
 	[SerializeField] private GrowthStage stage;
 	[SerializeField] private bool NeedsWater = true;
@@ -44,7 +45,13 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 		waterTimer += Time.deltaTime;
 		if (waterTimer > WateringInterval)
-			NeedsWater = true;
+			ShowPlantNeedsWater();
+	}
+
+	private void ShowPlantNeedsWater()
+	{
+		NeedsWater = true;
+		NeedWaterSprite.enabled = true;
 	}
 
 	public void Grow()
@@ -81,6 +88,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	{
 		NeedsWater = false;
 		waterTimer = 0f;
+		NeedWaterSprite.enabled = false;
 
 		Debug.Log("Pouring water...");
 	}
