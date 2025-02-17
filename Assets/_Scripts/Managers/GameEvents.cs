@@ -35,4 +35,10 @@ public class GameEvents
 
 	public event Action<TreeType> OnTreePlanted;
 	public void TreePlanted(TreeType tree) => OnTreePlanted?.Invoke(tree);
+
+	public event Action OnWinningLevel;
+	public void WinLevel() => OnWinningLevel?.Invoke();
+
+	public event Action OnLosingLevel;
+	public void LoseLevel() => OnLosingLevel?.Invoke();
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PollutionManager : MonoBehaviour
 {
-	private int pollution = 100;
+	private int pollution = 195;
 	private const int maxPollution = 200;
 
 	[SerializeField] private TextMeshProUGUI pollutionAmount;
@@ -79,14 +79,9 @@ public class PollutionManager : MonoBehaviour
 	private void CheckLoseCondition()
 	{
 		if (pollution >= maxPollution)
-			LoseLevel();
-	}
-
-	private void LoseLevel()
-	{
-		Debug.Log("YOU LOST...");
-		//TODO
-		//show lose panel in UI
+		{
+			GameEvents.Instance.LoseLevel();
+		}
 	}
 
 	public int GetCurrentPollutionIndex()

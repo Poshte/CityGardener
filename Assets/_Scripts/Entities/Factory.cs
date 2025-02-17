@@ -7,8 +7,8 @@ public class Factory : MonoBehaviour
 	private WealthManager wealthManager;
 	private PollutionManager pollutionManager;
 
-	[SerializeField] private float wealthAmount = 100f;
-	[SerializeField] private int pollutionAmount = 10;
+	[SerializeField] private float wealthAmount = 10f;
+	[SerializeField] private int pollutionAmount = 15;
 
 	private const float wealthRate = 3.2f;
 	private float wealthTimer;

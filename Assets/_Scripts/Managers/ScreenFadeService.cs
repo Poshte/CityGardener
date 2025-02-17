@@ -11,7 +11,7 @@ public static class ScreenFadeService
 		while (elapsedTime < fadeDuration)
 		{
 			canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
-			elapsedTime += Time.deltaTime;
+			elapsedTime += Time.unscaledDeltaTime;
 			yield return null;
 		}
 

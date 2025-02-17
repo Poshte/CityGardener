@@ -3,7 +3,11 @@ guid: 1db80e4fa90b1cf4a956df85249c0303
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - levelGoals: {fileID: 11400000, guid: 13634942d840e7a4c8ad9d5387ba59a2, type: 2}
+  - pollutionGoalsUI: {instanceID: 0}
+  - treeGoalsParent: {instanceID: 0}
+  - treeGoalPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

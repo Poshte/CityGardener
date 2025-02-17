@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
 		{
 			if (PollutionGoalWinConditionFulfilled())
 			{
-				WinLevel();
+				GameEvents.Instance.WinLevel();
 			}
 		}
 	}
@@ -77,13 +77,6 @@ public class LevelManager : MonoBehaviour
 	{
 		if (treeGoalsCount.All(g => g.Key.FulfilledUI.isOn))
 			treeGoalsFulfilled = true;
-	}
-
-	private void WinLevel()
-	{
-		Debug.Log("YOU WON!!!!");
-		//TODO
-		//show win panel in UI
 	}
 
 	private void InitializeLevelGoals()
