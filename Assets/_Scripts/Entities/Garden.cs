@@ -17,20 +17,20 @@ public class Garden : MonoBehaviour, IInteractable
 
 	public void EnableSprite()
 	{
-		if (gardenPlantedTree == null)
+		if (gardenPlantedTree == null && !GameManager.NearbyGardens.Contains(this))
 		{
 			interactSprite.enabled = true;
-			GameManager.ActiveGarden = this;
+			GameManager.NearbyGardens.Add(this);
 		}
 	}
 
 	public void DisableSprite()
 	{
 		interactSprite.enabled = false;
-		GameManager.ActiveGarden = null;
+		GameManager.NearbyGardens.Remove(this);
 	}
 
-	public void PlantTree(TreeType treeType)
+	public void PlantTree(TreeTypes treeType)
 	{
 		if (gardenPlantedTree == null)
 		{
@@ -39,9 +39,7 @@ public class Garden : MonoBehaviour, IInteractable
 			if (!PayTreeCost(tree.Cost))
 				return;
 
-			var pos = this.transform.position;
-			pos.y += 0.75f;
-			gardenPlantedTree = Instantiate(tree, pos, Quaternion.identity);
+			gardenPlantedTree = Instantiate(tree, this.transform.position, Quaternion.identity);
 
 			GameEvents.Instance.TreePlanted(gardenPlantedTree.Type);
 

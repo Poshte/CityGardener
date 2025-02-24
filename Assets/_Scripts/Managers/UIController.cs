@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,13 +59,13 @@ public class UIController : MonoBehaviour
 
 	private void PlantTree(TreeType treeType)
 	{
-		if (GameManager.ActiveGarden == null)
+		if (!GameManager.NearbyGardens.Any())
 		{
 			ClearUp();
 			return;
 		}
 
-		GameManager.ActiveGarden.PlantTree(treeType);
+		GameManager.NearbyGardens.FirstOrDefault().PlantTree(treeType);
 		btnTree.image.color = Color.yellow;
 		TreeTypesUI.SetActive(false);
 	}
