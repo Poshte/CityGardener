@@ -9,11 +9,15 @@ public class Player : MonoBehaviour
 	private Vector2 playerMovement;
 	[SerializeField] private float speed;
 
+	private Animator animator;
+
 	private void Awake()
 	{
 		rigidBody2D = GetComponent<Rigidbody2D>();
 		input = new PlayerInput();
+		animator = GetComponent<Animator>();
 	}
+
 	private void Update()
 	{
 		if (input.Interaction.Reset.WasPerformedThisFrame())
@@ -35,6 +39,10 @@ public class Player : MonoBehaviour
 	{
 		playerMovement = input.Movement.PlayerMovements.ReadValue<Vector2>();
 		rigidBody2D.velocity = playerMovement * speed;
+
+		animator.SetFloat("Horizontal", playerMovement.x);
+		animator.SetFloat("Vertical", playerMovement.y);
+		animator.SetBool("IsWalking", playerMovement.sqrMagnitude > 0);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

@@ -237,6 +237,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6107165167896202694, guid: e87f0462992ecb745a614848bdc8dce1, type: 3}
+      propertyPath: levelGoals
+      value: 
+      objectReference: {fileID: 11400000, guid: 13634942d840e7a4c8ad9d5387ba59a2, type: 2}
+    - target: {fileID: 6107165167896202694, guid: e87f0462992ecb745a614848bdc8dce1, type: 3}
       propertyPath: treeGoalPrefab
       value: 
       objectReference: {fileID: 5276758896471137974, guid: 437230993905ade4580b8dba10ebb9e1, type: 3}
@@ -710,12 +714,16 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8846576158308840447, guid: 3609db83192f2bc409f08b76305d7686, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846576158308840447, guid: 3609db83192f2bc409f08b76305d7686, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.428282
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 8846576158308840447, guid: 3609db83192f2bc409f08b76305d7686, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.023613
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8846576158308840447, guid: 3609db83192f2bc409f08b76305d7686, type: 3}
       propertyPath: m_LocalPosition.z
