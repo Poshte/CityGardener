@@ -4,6 +4,6 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class LevelSO : ScriptableObject
 {
-	public List<TreeType> TreesToPlant = new();
+	public List<TreeTypes> TreesToPlant = new();
 	public int PollutionGoal;
 }

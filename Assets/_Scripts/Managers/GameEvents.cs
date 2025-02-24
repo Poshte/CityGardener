@@ -33,8 +33,8 @@ public class GameEvents
 	public event Action<Factory> OnFactoryCreated;
 	public void FactoryCreated(Factory factory) => OnFactoryCreated?.Invoke(factory);
 
-	public event Action<TreeType> OnTreePlanted;
-	public void TreePlanted(TreeType tree) => OnTreePlanted?.Invoke(tree);
+	public event Action<TreeTypes> OnTreePlanted;
+	public void TreePlanted(TreeTypes tree) => OnTreePlanted?.Invoke(tree);
 
 	public event Action OnWinningLevel;
 	public void WinLevel() => OnWinningLevel?.Invoke();

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PollutionManager : MonoBehaviour
 {
-	private int pollution = 195;
+	private int pollution = 19;
 	private const int maxPollution = 200;
 
 	[SerializeField] private TextMeshProUGUI pollutionAmount;

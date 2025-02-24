@@ -42,12 +42,12 @@ public class LevelManager : MonoBehaviour
 		return levelGoals.PollutionGoal > pollutionManager.GetCurrentPollutionIndex();
 	}
 
-	private void OnTreePlanted(TreeType tree)
+	private void OnTreePlanted(TreeTypes tree)
 	{
 		UpdateTreeGoalCount(tree);
 	}
 
-	private void UpdateTreeGoalCount(TreeType tree)
+	private void UpdateTreeGoalCount(TreeTypes tree)
 	{
 		var pair = treeGoalsCount.FirstOrDefault(g => g.Key.Id == tree);
 

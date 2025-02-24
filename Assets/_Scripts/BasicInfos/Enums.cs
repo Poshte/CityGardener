@@ -1,4 +1,4 @@
-public enum GrowthStage
+public enum GrowthStages
 {
 	Seed,
 	Sprout,
@@ -7,9 +7,14 @@ public enum GrowthStage
 	Mature
 }
 
-public enum TreeType
+public enum TreeTypes
 {
 	Pine,
 	Oak,
 	Birch
+}
+
+public enum Scenes
+{ 
+	Default
 }

@@ -44,20 +44,20 @@ public class UIController : MonoBehaviour
 
 	public void OnPineTreeClicked()
 	{
-		PlantTree(TreeType.Pine);
+		PlantTree(TreeTypes.Pine);
 	}
 
 	public void OnOakTreeClicked()
 	{
-		PlantTree(TreeType.Oak);
+		PlantTree(TreeTypes.Oak);
 	}
 
 	public void OnBirchTreeClicked()
 	{
-		PlantTree(TreeType.Birch);
+		PlantTree(TreeTypes.Birch);
 	}
 
-	private void PlantTree(TreeType treeType)
+	private void PlantTree(TreeTypes treeType)
 	{
 		if (!GameManager.NearbyGardens.Any())
 		{

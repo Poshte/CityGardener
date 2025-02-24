@@ -2,16 +2,15 @@ using UnityEngine;
 
 public abstract class TreeEntity : MonoBehaviour, IInteractable
 {
-	public abstract TreeType Type { get; }
+	public abstract TreeTypes Type { get; }
 	public abstract float Cost { get; }
 	public abstract int PollutionAbsorption { get; }
 	public abstract float GrowthRate { get; }
 	public abstract float WateringInterval { get; }
 	public abstract float AbsorptionInterval { get; }
-	public abstract SpriteRenderer InteractSprite { get; }
 	public abstract SpriteRenderer NeedWaterSprite { get; }
 
-	[SerializeField] private GrowthStage stage;
+	[SerializeField] private GrowthStages stage;
 	[SerializeField] private bool NeedsWater = true;
 
 	private float waterTimer;
@@ -27,7 +26,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	private void Update()
 	{
-		if (stage == GrowthStage.Mature)
+		if (stage == GrowthStages.Mature)
 		{
 			AbsorbPollution();
 			return;
@@ -65,13 +64,11 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	public void EnableSprite()
 	{
-		InteractSprite.enabled = true;
 		GameManager.ActiveTree = this;
 	}
 
 	public void DisableSprite()
 	{
-		InteractSprite.enabled = false;
 		GameManager.ActiveTree = null;
 	}
 
