@@ -18,6 +18,12 @@ public class Player : MonoBehaviour
 		animator = GetComponent<Animator>();
 	}
 
+	private void Start()
+	{
+		input.Movement.PlayerMovements.canceled += PlayerMovements_canceled;
+	}
+
+
 	private void Update()
 	{
 		if (input.Interaction.Reset.WasPerformedThisFrame())
@@ -43,6 +49,12 @@ public class Player : MonoBehaviour
 		animator.SetFloat("Horizontal", playerMovement.x);
 		animator.SetFloat("Vertical", playerMovement.y);
 		animator.SetBool("IsWalking", playerMovement.sqrMagnitude > 0);
+	}
+
+	private void PlayerMovements_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+	{
+		animator.SetFloat("HorizontalDirection", playerMovement.x);
+		animator.SetFloat("VerticalDirection", playerMovement.y);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
