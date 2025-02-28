@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6561311293308251760}
-  - component: {fileID: 4845420774264185079}
+  - component: {fileID: 3828376322559884131}
   - component: {fileID: 3090119123806574892}
   m_Layer: 0
   m_Name: UIController
@@ -26,14 +26,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6114798283890925068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 198.46103, y: 675.21265, z: -1.7313368}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4845420774264185079
+--- !u!114 &3828376322559884131
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,13 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBucket: {fileID: 0}
-  btnTree: {fileID: 0}
   btnHouse: {fileID: 0}
   btnFactory: {fileID: 0}
+  btnTree: {fileID: 0}
   TreeTypesUI: {fileID: 0}
-  btnPineTree: {fileID: 0}
-  btnOakTree: {fileID: 0}
-  btnBirchTree: {fileID: 0}
   houseSO: {fileID: 11400000, guid: 83e19e690692fe84e8f86e46d65a9454, type: 2}
   factorySO: {fileID: 11400000, guid: df931165845f5a4439953bf359e2c365, type: 2}
   buildingManager: {fileID: 0}
@@ -68,4 +65,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b833259907048045abde9c3afc511d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiController: {fileID: 0}

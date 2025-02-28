@@ -268,15 +268,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MouseLeftClick",
-                    "type": "Button",
-                    "id": "eb7e5e7e-b81a-4c95-9e06-0279460061a3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "MouseRightClick",
                     "type": "Button",
                     "id": "da3d0dba-1aa7-4b83-8b95-eb279d79ee12",
@@ -328,17 +319,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseRightClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "621dfc9d-e867-41a8-8219-77ccecc28dab",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "MouseLeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

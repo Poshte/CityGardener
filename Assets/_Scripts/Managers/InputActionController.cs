@@ -46,12 +46,8 @@ public class InputActionController : MonoBehaviour
 			uiController.OnBirchTreeClicked();
 			ResetInputContext();
 		}
-		else if (input.TreeTypes.MouseRightClick.WasPerformedThisFrame())
-		{
-			ResetInputContext();
-			uiController.ClearUp();
-		}
-		else if (input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
+		else if (input.TreeTypes.MouseRightClick.WasPerformedThisFrame() ||
+				 input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
 		{
 			ResetInputContext();
 			uiController.ClearUp();

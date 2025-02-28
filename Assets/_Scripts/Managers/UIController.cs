@@ -5,14 +5,10 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
 	[SerializeField] private Button btnBucket;
-	[SerializeField] private Button btnTree;
 	[SerializeField] private Button btnHouse;
 	[SerializeField] private Button btnFactory;
-
+	[SerializeField] private Button btnTree;
 	[SerializeField] private GameObject TreeTypesUI;
-	//[SerializeField] private Button btnFirTree;
-	//[SerializeField] private Button btnOakTree;
-	//[SerializeField] private Button btnBirchTree;
 
 	[SerializeField] private BuildingTypeSO houseSO;
 	[SerializeField] private BuildingTypeSO factorySO;
