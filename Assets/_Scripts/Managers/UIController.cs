@@ -10,9 +10,9 @@ public class UIController : MonoBehaviour
 	[SerializeField] private Button btnFactory;
 
 	[SerializeField] private GameObject TreeTypesUI;
-	[SerializeField] private Button btnPineTree;
-	[SerializeField] private Button btnOakTree;
-	[SerializeField] private Button btnBirchTree;
+	//[SerializeField] private Button btnFirTree;
+	//[SerializeField] private Button btnOakTree;
+	//[SerializeField] private Button btnBirchTree;
 
 	[SerializeField] private BuildingTypeSO houseSO;
 	[SerializeField] private BuildingTypeSO factorySO;
@@ -42,9 +42,9 @@ public class UIController : MonoBehaviour
 		buildingManager.SetActiveBuildingType(null);
 	}
 
-	public void OnPineTreeClicked()
+	public void OnFirTreeClicked()
 	{
-		PlantTree(TreeTypes.Pine);
+		PlantTree(TreeTypes.Fir);
 	}
 
 	public void OnOakTreeClicked()

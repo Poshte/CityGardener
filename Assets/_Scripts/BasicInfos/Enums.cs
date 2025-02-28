@@ -9,7 +9,7 @@ public enum GrowthStages
 
 public enum TreeTypes
 {
-	Pine,
+	Fir,
 	Oak,
 	Birch
 }

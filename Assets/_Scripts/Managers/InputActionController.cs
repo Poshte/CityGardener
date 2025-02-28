@@ -31,9 +31,9 @@ public class InputActionController : MonoBehaviour
 		{
 			uiController.OnFactoryClicked();
 		}
-		else if (input.TreeTypes.Pine.WasPerformedThisFrame())
+		else if (input.TreeTypes.Fir.WasPerformedThisFrame())
 		{
-			uiController.OnPineTreeClicked();
+			uiController.OnFirTreeClicked();
 			ResetInputContext();
 		}
 		else if (input.TreeTypes.Oak.WasPerformedThisFrame())
@@ -46,7 +46,12 @@ public class InputActionController : MonoBehaviour
 			uiController.OnBirchTreeClicked();
 			ResetInputContext();
 		}
-		else if (input.TreeTypes.MouseLeftClick.WasPerformedThisFrame())
+		else if (input.TreeTypes.MouseRightClick.WasPerformedThisFrame())
+		{
+			ResetInputContext();
+			uiController.ClearUp();
+		}
+		else if (input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
 		{
 			ResetInputContext();
 			uiController.ClearUp();

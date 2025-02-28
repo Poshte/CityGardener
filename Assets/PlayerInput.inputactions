@@ -167,6 +167,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MouseRightClick",
+                    "type": "Button",
+                    "id": "e2cfc9a2-17e5-4674-a43c-0833fde78c61",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -213,6 +222,17 @@
                     "action": "Factory",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69f4881c-740b-4bd2-8862-7832f624cdad",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseRightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -221,7 +241,7 @@
             "id": "30d6b118-7f40-4adc-beb7-28be34d55ecb",
             "actions": [
                 {
-                    "name": "Pine",
+                    "name": "Fir",
                     "type": "Button",
                     "id": "1aa8bbdf-40eb-4187-a59f-002572137195",
                     "expectedControlType": "Button",
@@ -255,6 +275,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MouseRightClick",
+                    "type": "Button",
+                    "id": "da3d0dba-1aa7-4b83-8b95-eb279d79ee12",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -265,7 +294,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "New control scheme",
-                    "action": "Pine",
+                    "action": "Fir",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -288,6 +317,17 @@
                     "processors": "",
                     "groups": "New control scheme",
                     "action": "Birch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cadc8b9-1fa6-4ffd-bb16-2705f4be203a",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseRightClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
