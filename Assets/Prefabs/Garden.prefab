@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 7289777584919117066}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2747793937967685464
 SpriteRenderer:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e144c9441afe749bdbef46fede884a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePrefabs: []
+  treeSO: {fileID: 11400000, guid: 844b5b733cf3d1046b63bfde3ac77afc, type: 2}
   interactSprite: {fileID: 1167439351801060810}
 --- !u!1 &1388255722331881454
 GameObject:

@@ -4,15 +4,14 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 {
 	public abstract TreeTypes Type { get; }
 	public abstract float Cost { get; }
+	public abstract GrowthStages Stage{ get; set; }
 	public abstract int PollutionAbsorption { get; }
 	public abstract float GrowthRate { get; }
 	public abstract float WateringInterval { get; }
 	public abstract float AbsorptionInterval { get; }
 	public abstract SpriteRenderer NeedWaterSprite { get; }
 
-	[SerializeField] private GrowthStages stage;
-	[SerializeField] private bool NeedsWater = true;
-
+	private bool NeedsWater = true;
 	private float waterTimer;
 	private float growthTimer;
 	private float absorptionTimer;
@@ -26,7 +25,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	private void Update()
 	{
-		if (stage == GrowthStages.Mature)
+		if (Stage == GrowthStages.Mature)
 		{
 			AbsorbPollution();
 			return;
@@ -35,7 +34,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 		if (NeedsWater)
 		{
 			//Debug.Log("NEED WATER!!!");
-			return;
+			//return;
 		}
 
 		growthTimer += Time.deltaTime;
@@ -50,14 +49,12 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	private void ShowPlantNeedsWater()
 	{
 		NeedsWater = true;
-		NeedWaterSprite.enabled = true;
+		//NeedWaterSprite.enabled = true;
 	}
 
-	public void Grow()
+	public virtual void Grow()
 	{
-		stage += 1;
-		Debug.Log(stage);
-
+		Stage++;
 		waterTimer = 0f;
 		growthTimer = 0f;
 	}
@@ -85,7 +82,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	{
 		NeedsWater = false;
 		waterTimer = 0f;
-		NeedWaterSprite.enabled = false;
+		//NeedWaterSprite.enabled = false;
 
 		Debug.Log("Pouring water...");
 	}

@@ -1,11 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Garden : MonoBehaviour, IInteractable
 {
-	private TreeEntity gardenPlantedTree;
-
-	[SerializeField] private List<TreeEntity> treePrefabs = new();
+	private Transform gardenPlantedTree;
+	[SerializeField] private TreeSO treeSO;
 
 	[SerializeField] private SpriteRenderer interactSprite;
 	private WealthManager wealthManager;
@@ -30,21 +28,30 @@ public class Garden : MonoBehaviour, IInteractable
 		GameManager.NearbyGardens.Remove(this);
 	}
 
-	public void PlantTree(TreeTypes treeType)
+	public void PlantTree(TreeTypes type)
 	{
 		if (gardenPlantedTree == null)
 		{
-			var tree = treePrefabs.Find(p => p.Type == treeType);
-
+			var tree = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == GrowthStages.Seed);
 			if (!PayTreeCost(tree.Cost))
 				return;
 
-			gardenPlantedTree = Instantiate(tree, this.transform.position, Quaternion.identity);
+			gardenPlantedTree = Instantiate(tree.transform, transform.position, Quaternion.identity);
+			gardenPlantedTree.SetParent(transform);
 
-			GameEvents.Instance.TreePlanted(gardenPlantedTree.Type);
-
+			GameEvents.Instance.TreePlanted(type);
 			DisableSprite();
 		}
+	}
+
+	public void GrowTree(TreeTypes type, GrowthStages stage)
+	{
+		var prefab = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == stage);
+		var tree = Instantiate(prefab.transform, transform.position, Quaternion.identity);
+		tree.SetParent(transform);
+
+		Destroy(gardenPlantedTree.gameObject);
+		gardenPlantedTree = tree;
 	}
 
 	private bool PayTreeCost(float treeCost)
