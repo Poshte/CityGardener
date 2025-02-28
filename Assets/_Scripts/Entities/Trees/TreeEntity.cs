@@ -4,7 +4,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 {
 	public abstract TreeTypes Type { get; }
 	public abstract float Cost { get; }
-	public abstract GrowthStages Stage{ get; set; }
+	public abstract GrowthStages Stage { get; set; }
 	public abstract int PollutionAbsorption { get; }
 	public abstract float GrowthRate { get; }
 	public abstract float WateringInterval { get; }
@@ -32,10 +32,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 		}
 
 		if (NeedsWater)
-		{
-			//Debug.Log("NEED WATER!!!");
-			//return;
-		}
+			return;
 
 		growthTimer += Time.deltaTime;
 		if (growthTimer > GrowthRate)
@@ -43,13 +40,13 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 		waterTimer += Time.deltaTime;
 		if (waterTimer > WateringInterval)
-			ShowPlantNeedsWater();
+			PlantNeedsWater();
 	}
 
-	private void ShowPlantNeedsWater()
+	private void PlantNeedsWater()
 	{
 		NeedsWater = true;
-		//NeedWaterSprite.enabled = true;
+		NeedWaterSprite.enabled = true;
 	}
 
 	public virtual void Grow()
@@ -59,12 +56,14 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 		growthTimer = 0f;
 	}
 
-	public void EnableSprite()
+	public void EnableInteraction()
 	{
+		//TODO
+		//shouldnt this be a list of active trees?
 		GameManager.ActiveTree = this;
 	}
 
-	public void DisableSprite()
+	public void DisableInteraction()
 	{
 		GameManager.ActiveTree = null;
 	}
@@ -82,7 +81,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	{
 		NeedsWater = false;
 		waterTimer = 0f;
-		//NeedWaterSprite.enabled = false;
+		NeedWaterSprite.enabled = false;
 
 		Debug.Log("Pouring water...");
 	}

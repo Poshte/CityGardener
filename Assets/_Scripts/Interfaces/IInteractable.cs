@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-
-public interface IInteractable
+﻿public interface IInteractable
 {
-	void EnableSprite();
-	void DisableSprite();
+	void EnableInteraction();
+	void DisableInteraction();
 }

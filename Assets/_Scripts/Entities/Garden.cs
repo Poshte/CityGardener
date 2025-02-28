@@ -13,7 +13,7 @@ public class Garden : MonoBehaviour, IInteractable
 		wealthManager = GameObject.FindGameObjectWithTag(Constants.Tags.WealthManager).GetComponent<WealthManager>();
 	}
 
-	public void EnableSprite()
+	public void EnableInteraction()
 	{
 		if (gardenPlantedTree == null && !GameManager.NearbyGardens.Contains(this))
 		{
@@ -22,7 +22,7 @@ public class Garden : MonoBehaviour, IInteractable
 		}
 	}
 
-	public void DisableSprite()
+	public void DisableInteraction()
 	{
 		interactSprite.enabled = false;
 		GameManager.NearbyGardens.Remove(this);
@@ -40,7 +40,7 @@ public class Garden : MonoBehaviour, IInteractable
 			gardenPlantedTree.SetParent(transform);
 
 			GameEvents.Instance.TreePlanted(type);
-			DisableSprite();
+			DisableInteraction();
 		}
 	}
 
