@@ -11,7 +11,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	public abstract float AbsorptionInterval { get; }
 	public abstract SpriteRenderer NeedWaterSprite { get; }
 
-	private bool NeedsWater = true;
+	private bool needsWater = true;
 	private float waterTimer;
 	private float growthTimer;
 	private float absorptionTimer;
@@ -31,7 +31,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 			return;
 		}
 
-		if (NeedsWater)
+		if (needsWater)
 			return;
 
 		growthTimer += Time.deltaTime;
@@ -45,7 +45,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	private void PlantNeedsWater()
 	{
-		NeedsWater = true;
+		needsWater = true;
 		NeedWaterSprite.enabled = true;
 	}
 
@@ -79,7 +79,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	private void PourWater()
 	{
-		NeedsWater = false;
+		needsWater = false;
 		waterTimer = 0f;
 		NeedWaterSprite.enabled = false;
 

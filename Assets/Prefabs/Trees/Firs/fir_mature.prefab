@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2085141307342282950}
   - component: {fileID: 2383285867571607453}
   - component: {fileID: 4009882350590730256}
-  - component: {fileID: -2441116863131641028}
   - component: {fileID: 9638639503237160}
   m_Layer: 0
   m_Name: fir_mature
@@ -101,22 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stage: 4
   _needWaterSprite: {fileID: 0}
---- !u!114 &-2441116863131641028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73750577274360057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentShaderType: 0
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!61 &9638639503237160
 BoxCollider2D:
   m_ObjectHideFlags: 0

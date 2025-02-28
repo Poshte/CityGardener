@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7114538132220980993}
   - component: {fileID: 3660742854052001725}
   - component: {fileID: 3497644180087931484}
-  - component: {fileID: -7204202393464317317}
   - component: {fileID: -4446727969323394907}
   m_Layer: 0
   m_Name: fir_seedling
@@ -35,7 +34,7 @@ Transform:
   - {fileID: 9022583267291741976}
   - {fileID: 7862467816003832160}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3660742854052001725
 SpriteRenderer:
@@ -103,22 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stage: 2
   _needWaterSprite: {fileID: 6500723030997913708}
---- !u!114 &-7204202393464317317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3578149973208450660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentShaderType: 0
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!61 &-4446727969323394907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -252,6 +235,14 @@ PrefabInstance:
     - target: {fileID: 4226561578653735652, guid: 9b4c0be09ddb0764d8fac8f09703e55d, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226561578653735652, guid: 9b4c0be09ddb0764d8fac8f09703e55d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226561578653735652, guid: 9b4c0be09ddb0764d8fac8f09703e55d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4226561578653735652, guid: 9b4c0be09ddb0764d8fac8f09703e55d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 6698937364686424628}
   - component: {fileID: 1753619206668392507}
   - component: {fileID: 5655779664544930503}
-  - component: {fileID: 6248165663190061778}
   - component: {fileID: -1627331268537475448}
   m_Layer: 0
   m_Name: fir_sprout
@@ -112,7 +111,7 @@ Transform:
   - {fileID: 8520502797385285151}
   - {fileID: 3558714210402158286}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1753619206668392507
 SpriteRenderer:
@@ -180,22 +179,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stage: 1
   _needWaterSprite: {fileID: 5854532922430017899}
---- !u!114 &6248165663190061778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9014687468902960394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentShaderType: 0
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!61 &-1627331268537475448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -252,6 +235,14 @@ PrefabInstance:
     - target: {fileID: 4226561578653735652, guid: 9b4c0be09ddb0764d8fac8f09703e55d, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226561578653735652, guid: 9b4c0be09ddb0764d8fac8f09703e55d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226561578653735652, guid: 9b4c0be09ddb0764d8fac8f09703e55d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4226561578653735652, guid: 9b4c0be09ddb0764d8fac8f09703e55d, type: 3}
       propertyPath: m_LocalPosition.x
