@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -74,6 +75,11 @@ public class UIController : MonoBehaviour
 	public void OnFactoryClicked()
 	{
 		buildingManager.SetActiveBuildingType(factorySO);
+	}
+
+	public void OnNextLevelClicked()
+	{
+		SceneController.Instance.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
 	public void ClearUp()
