@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WealthManager : MonoBehaviour
 {
-	private float wealth = 1500f;
+	private int wealth = 450;
 	[SerializeField] private TextMeshProUGUI wealthAmount;
 
 	private void Start()
@@ -11,13 +11,13 @@ public class WealthManager : MonoBehaviour
 		UpdateWealthUI();
 	}
 
-	public void AddWealth(float amount)
+	public void AddWealth(int amount)
 	{
 		wealth += amount;
 		UpdateWealthUI();
 	}
 
-	public bool SpendWealth(float amount)
+	public bool SpendWealth(int amount)
 	{
 		if (wealth < amount)
 		{

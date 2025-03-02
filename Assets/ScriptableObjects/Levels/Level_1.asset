@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   TreesToPlant: 0000000001000000000000000200000000000000000000000100000001000000
-  PollutionGoal: 50
+  PollutionGoal: 100

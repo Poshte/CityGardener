@@ -39,7 +39,6 @@ public class Garden : MonoBehaviour, IInteractable
 			gardenPlantedTree = Instantiate(tree.transform, transform.position, Quaternion.identity);
 			gardenPlantedTree.SetParent(transform);
 
-			GameEvents.Instance.TreePlanted(type);
 			DisableInteraction();
 		}
 	}
@@ -54,7 +53,7 @@ public class Garden : MonoBehaviour, IInteractable
 		gardenPlantedTree = tree;
 	}
 
-	private bool PayTreeCost(float treeCost)
+	private bool PayTreeCost(int treeCost)
 	{
 		return wealthManager.SpendWealth(treeCost);
 	}

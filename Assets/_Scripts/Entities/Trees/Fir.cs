@@ -3,11 +3,11 @@ using UnityEngine;
 public class Fir : TreeEntity
 {
 	public override TreeTypes Type { get => TreeTypes.Fir; }
-	public override float Cost { get => 100f; }
-	public override int PollutionAbsorption { get => 5; }
-	public override float GrowthRate { get => 3f; }
-	public override float WateringInterval { get => 5f; }
-	public override float AbsorptionInterval { get => 10f; }
+	public override int Cost { get => 250; }
+	public override int PollutionAbsorption { get => 1; }
+	public override float AbsorptionBaseInterval { get => 6f;}
+	public override float WateringInterval { get => 30f; }
+	public override float GrowthRate { get => 50f; }
 	public override GrowthStages Stage { get => _stage; set => _stage = value; }
 	[SerializeField] private GrowthStages _stage;
 	public override SpriteRenderer NeedWaterSprite { get => _needWaterSprite; }
@@ -15,8 +15,9 @@ public class Fir : TreeEntity
 
 	private Garden garden;
 
-	private void Start()
+	public override void Start()
 	{
+		base.Start();
 		garden = gameObject.GetComponentInParent<Garden>();
 	}
 

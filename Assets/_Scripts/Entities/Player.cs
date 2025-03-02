@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 		{
 			Debug.Log("Resetting...");
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
 			//TODO
 			//reset to a clean state
 			//activeBuildingPF = null , etc

@@ -22,9 +22,10 @@ public class LevelManager : MonoBehaviour
 
 	private void Start()
 	{
-		GameEvents.Instance.OnTreePlanted += OnTreePlanted;
+		GameEvents.Instance.OnMatureTreePlanted += OnMatureTreePlanted;
 		InitializeLevelGoals();
 	}
+
 
 	private void Update()
 	{
@@ -42,14 +43,19 @@ public class LevelManager : MonoBehaviour
 		return levelGoals.PollutionGoal > pollutionManager.GetCurrentPollutionIndex();
 	}
 
-	private void OnTreePlanted(TreeTypes tree)
+	//private void OnTreePlanted(TreeTypes tree)
+	//{
+	//	UpdateTreeGoalCount(tree);
+	//}
+
+	private void OnMatureTreePlanted(TreeTypes tree)
 	{
 		UpdateTreeGoalCount(tree);
 	}
 
 	private void UpdateTreeGoalCount(TreeTypes tree)
 	{
-		var pair = treeGoalsCount.FirstOrDefault(g => g.Key.Id == tree);
+		var pair = treeGoalsCount.FirstOrDefault(g => g.Key.TypeId == tree);
 
 		var goal = pair.Key;
 		var countTextElements = pair.Value.Split('/');
@@ -98,7 +104,7 @@ public class LevelManager : MonoBehaviour
 			pos.y -= 30;
 			treeGoal.transform.position = pos;
 
-			treeGoal.Id = tree.Type;
+			treeGoal.TypeId = tree.Type;
 
 			var uiText = $"  {tree.Count} {tree.Type} " + (tree.Count == 1 ? "Tree" : "Trees");
 			treeGoal.DescriptionUI.text = uiText;
@@ -117,6 +123,6 @@ public class LevelManager : MonoBehaviour
 
 	private void OnDisable()
 	{
-		GameEvents.Instance.OnTreePlanted -= OnTreePlanted;
+		GameEvents.Instance.OnMatureTreePlanted -= OnMatureTreePlanted;
 	}
 }
