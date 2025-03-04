@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,12 @@ public class UIController : MonoBehaviour
 
 	[SerializeField] private BuildingManager buildingManager;
 
+	private Player player;
+	private void Awake()
+	{
+		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
+	}
+
 	public void OnBucketClicked()
 	{
 		if (GameManager.NearWater)
@@ -26,10 +33,10 @@ public class UIController : MonoBehaviour
 			GameManager.BucketFilledWithWater = true;
 			btnBucket.image.color = Color.blue;
 		}
-		else if (GameManager.ActiveTree != null)
+		else if (GameManager.ActiveTrees.Any())
 		{
 			btnBucket.image.color = Color.yellow;
-			GameManager.ActiveTree.WaterTree();
+			FindNearest(GameManager.ActiveTrees).WaterTree();
 		}
 
 		buildingManager.SetActiveBuildingType(null);
@@ -66,7 +73,7 @@ public class UIController : MonoBehaviour
 			return;
 		}
 
-		GameManager.NearbyGardens.FirstOrDefault().PlantTree(treeType);
+		FindNearest(GameManager.NearbyGardens).PlantTree(treeType);
 		btnTree.image.color = Color.yellow;
 		TreeTypesUI.SetActive(false);
 	}
@@ -99,5 +106,25 @@ public class UIController : MonoBehaviour
 		housePrice.SetActive(false);
 		factoryPrice.SetActive(false);
 		buildingManager.SetActiveBuildingType(null);
+	}
+
+
+	private T FindNearest<T>(List<T> items) where T : MonoBehaviour
+	{
+		float nearestDistance = Mathf.Infinity;
+		T nearestObj = default;
+
+		foreach (var item in items)
+		{
+			var distance = Vector2.Distance(player.transform.position, item.transform.position);
+
+			if (distance < nearestDistance)
+			{
+				nearestDistance = distance;
+				nearestObj = item;
+			}
+		}
+
+		return nearestObj;
 	}
 }

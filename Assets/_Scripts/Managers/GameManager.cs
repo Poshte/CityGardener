@@ -6,5 +6,5 @@ public static class GameManager
 	public static bool BucketFilledWithWater;
 
 	public static List<Garden> NearbyGardens = new();
-	public static TreeEntity ActiveTree;
+	public static List<TreeEntity> ActiveTrees = new();
 }
