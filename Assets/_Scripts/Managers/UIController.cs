@@ -21,13 +21,25 @@ public class UIController : MonoBehaviour
 	[SerializeField] private BuildingManager buildingManager;
 
 	private Player player;
+
+	private Color selectedColor;
+
 	private void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
 	}
 
+	private void Start()
+	{
+		var temp = Color.yellow;
+		temp.a = 0.4f;
+		selectedColor = temp;
+	}
+
 	public void OnBucketClicked()
 	{
+		ClearUp();
+
 		if (GameManager.NearWater)
 		{
 			GameManager.BucketFilledWithWater = true;
@@ -38,6 +50,10 @@ public class UIController : MonoBehaviour
 			btnBucket.image.color = Color.yellow;
 			FindNearest(GameManager.ActiveTrees).WaterTree();
 		}
+		else if (!GameManager.BucketFilledWithWater)
+		{
+			StartCoroutine(ColorUtility.ChangeColor(btnBucket.image, selectedColor, 0.5f));
+		}
 
 		buildingManager.SetActiveBuildingType(null);
 	}
@@ -45,7 +61,7 @@ public class UIController : MonoBehaviour
 	public void OnTreeClicked()
 	{
 		ClearUp();
-		btnTree.image.color = Color.red;
+		btnTree.image.color = selectedColor;
 		TreeTypesUI.SetActive(true);
 		buildingManager.SetActiveBuildingType(null);
 	}
@@ -81,7 +97,7 @@ public class UIController : MonoBehaviour
 	public void OnHouseClicked()
 	{
 		ClearUp();
-		btnHouse.image.color = Color.red;
+		btnHouse.image.color = selectedColor;
 		housePrice.SetActive(true);
 		buildingManager.SetActiveBuildingType(houseSO);
 	}
@@ -89,7 +105,7 @@ public class UIController : MonoBehaviour
 	public void OnFactoryClicked()
 	{
 		ClearUp();
-		btnFactory.image.color = Color.red;
+		btnFactory.image.color = selectedColor;
 		factoryPrice.SetActive(true);
 		buildingManager.SetActiveBuildingType(factorySO);
 	}

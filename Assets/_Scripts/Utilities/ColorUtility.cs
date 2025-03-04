@@ -1,19 +1,18 @@
 using System.Collections;
 using TMPro;
-using Unity.Collections;
-using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class ColorUtility
 {
-	public static IEnumerator ChangeColor(TextMeshProUGUI text, Color color, float speed)
+	public static IEnumerator ChangeColor(TextMeshProUGUI text, Color target, float speed)
 	{
 		var original = text.color;
 
 		var elapsedTime = 0f;
 		while (elapsedTime < speed)
 		{
-			text.color = Color.Lerp(color, original, elapsedTime / speed);
+			text.color = Color.Lerp(target, original, elapsedTime / speed);
 			elapsedTime += Time.unscaledDeltaTime;
 			yield return null;
 		}
@@ -21,14 +20,14 @@ public static class ColorUtility
 		text.color = original;
 	}
 
-	public static IEnumerator Blink(TextMeshProUGUI text, Color color, float duration, int count)
+	public static IEnumerator Blink(TextMeshProUGUI text, Color target, float duration, int count)
 	{
 		var original = text.color;
 		var blinkDuration = duration / (count * 2);
 
 		for (int i = 0; i < count; i++)
 		{
-			text.color = color;
+			text.color = target;
 			yield return new WaitForSeconds(blinkDuration);
 
 			text.color = original;
@@ -36,5 +35,20 @@ public static class ColorUtility
 		}
 
 		text.color = original;
+	}
+
+	public static IEnumerator ChangeColor(Image image, Color target, float speed)
+	{
+		var original = image.color;
+
+		var elapsedTime = 0f;
+		while (elapsedTime < speed)
+		{
+			image.color = Color.Lerp(target, original, elapsedTime / speed);
+			elapsedTime += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
+		image.color = original;
 	}
 }

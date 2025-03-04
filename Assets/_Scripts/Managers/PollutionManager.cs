@@ -12,6 +12,8 @@ public class PollutionManager : MonoBehaviour
 	private const float passivePollutionRate = 20f;
 	private float passivePollutionTimer;
 
+	private Color orange = new(1f, 0.7f, 0f);
+
 	private void Start()
 	{
 		UpdatePollutionUI();
@@ -54,22 +56,22 @@ public class PollutionManager : MonoBehaviour
 		switch (pollution)
 		{
 			case < 50:
-				color = new Color(0f, 1f, 0f);
+				color = Color.green;
 				passivePollutionFactor = 1;
 				break;
 
 			case int i when i >= 50 && i < 100:
-				color = new Color(1f, 0.95f, 0f);
+				color = Color.yellow;
 				passivePollutionFactor = 2;
 				break;
 
 			case int i when i >= 100 && i < 150:
-				color = new Color(1f, 0.7f, 0f);
+				color = orange;
 				passivePollutionFactor = 3;
 				break;
 
 			case > 150:
-				color = new Color(1f, 0.09f, 0f);
+				color = Color.red;
 				passivePollutionFactor = 4;
 				break;
 

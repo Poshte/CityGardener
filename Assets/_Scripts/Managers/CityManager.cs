@@ -62,6 +62,7 @@ public class CityManager : MonoBehaviour
 
 	private void UpdatePopulationUI()
 	{
+		StartCoroutine(ColorUtility.ChangeColor(populationText, Color.green, 0.75f));
 		populationText.text = citizens.Count(c => c.Employed).ToString() + "/" + citizens.Count.ToString();
 	}
 
