@@ -28,11 +28,6 @@ public class SceneController : MonoBehaviour
 		{
 			_instance = this;
 		}
-
-		//TODO
-		//might disrupt between scene transitions
-		//remove it when made sure its not needed
-		//DontDestroyOnLoad(gameObject);
 	}
 
 	private readonly float waitTime = 1f;

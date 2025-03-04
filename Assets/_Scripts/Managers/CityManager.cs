@@ -52,7 +52,7 @@ public class CityManager : MonoBehaviour
 						factory.BeginOperation();
 
 					if (factory.Workers.Count >= maxFactoryOperators)
-						factory.MaxedOut = true;
+						factory.MaxOut();
 
 					break;
 				}

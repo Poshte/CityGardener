@@ -22,12 +22,10 @@ public class PlayerInteractionController : MonoBehaviour
 	{
 		if (input.Interaction.Reset.WasPerformedThisFrame())
 		{
+			//TODO
+			//add visual for resetting
 			Debug.Log("Resetting...");
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-			//TODO
-			//reset to a clean state
-			//activeBuildingPF = null , etc
 		}
 		else if (input.Interaction.Pause.WasPerformedThisFrame())
 		{

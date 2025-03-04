@@ -6,24 +6,20 @@ public class Factory : MonoBehaviour
 	private WealthManager wealthManager;
 	private PollutionManager pollutionManager;
 
-	private const int wealthAmount = 35;
-	private const float wealthRate = 10f;
-	private float wealthTimer;
+	private int wealthProduction = 35;
+	private const int productionFactor = 2;
+	private const float productionRate = 10f;
+	private float productionTimer;
 
 	private const int pollutionAmount = 1;
 	private const float pollutionRate = 10f;
 	private float pollutionTimer;
 
-	//TODO
-	//maybe should set these once from CityManager
-	//for performance
-	private const int wealthFactor = 2;
-
-	public List<Citizen> Workers = new();
-	public bool IsOperational { get; private set; }
-	public bool MaxedOut;
-
 	[SerializeField] private SpriteRenderer nonOperationalSprite;
+
+	public bool IsOperational { get; private set; }
+	public bool MaxedOut { get; private set; }
+	public List<Citizen> Workers { get; private set; } = new();
 
 	private void Awake()
 	{
@@ -41,8 +37,8 @@ public class Factory : MonoBehaviour
 		if (!IsOperational)
 			return;
 
-		wealthTimer += Time.deltaTime;
-		if (wealthTimer > wealthRate)
+		productionTimer += Time.deltaTime;
+		if (productionTimer > productionRate)
 			ProduceWealth();
 
 		pollutionTimer += Time.deltaTime;
@@ -52,9 +48,8 @@ public class Factory : MonoBehaviour
 
 	private void ProduceWealth()
 	{
-		var wealth = MaxedOut ? wealthAmount * wealthFactor : wealthAmount;
-		wealthManager.AddWealth(wealth);
-		wealthTimer = 0f;
+		wealthManager.AddWealth(wealthProduction);
+		productionTimer = 0f;
 	}
 
 	private void IncreasePollution()
@@ -67,5 +62,11 @@ public class Factory : MonoBehaviour
 	{
 		IsOperational = true;
 		nonOperationalSprite.enabled = false;
+	}
+
+	public void MaxOut()
+	{
+		MaxedOut = true;
+		wealthProduction *= productionFactor;
 	}
 }

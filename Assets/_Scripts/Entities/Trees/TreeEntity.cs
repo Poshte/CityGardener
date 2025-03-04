@@ -67,15 +67,11 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	public void EnableInteraction()
 	{
-		//TODO
-		//shouldnt this be a list of active trees?
-		//GameManager.ActiveTree = this;
 		GameManager.ActiveTrees.Add(this);
 	}
 
 	public void DisableInteraction()
 	{
-		//GameManager.ActiveTree = null;
 		if (GameManager.ActiveTrees.Contains(this))
 			GameManager.ActiveTrees.Remove(this);
 	}
