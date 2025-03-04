@@ -21,11 +21,12 @@ public class WealthManager : MonoBehaviour
 	{
 		if (wealth < amount)
 		{
-			Debug.Log("Not enough money");
+			StartCoroutine(ColorUtility.Blink(wealthAmount, Color.red, 0.75f, 5));
 			return false;
 		}
 
 		wealth -= amount;
+		StartCoroutine(ColorUtility.ChangeColor(wealthAmount, Color.red, 0.5f));
 		UpdateWealthUI();
 		return true;
 	}
