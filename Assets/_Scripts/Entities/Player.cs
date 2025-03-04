@@ -23,20 +23,6 @@ public class Player : MonoBehaviour
 		input.Movement.PlayerMovements.canceled += PlayerMovements_canceled;
 	}
 
-
-	private void Update()
-	{
-		if (input.Interaction.Reset.WasPerformedThisFrame())
-		{
-			Debug.Log("Resetting...");
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-			//TODO
-			//reset to a clean state
-			//activeBuildingPF = null , etc
-		}
-	}
-
 	private void FixedUpdate()
 	{
 		Move();
@@ -79,13 +65,11 @@ public class Player : MonoBehaviour
 	private void OnEnable()
 	{
 		input.Movement.Enable();
-		input.Interaction.Enable();
 	}
 
 	private void OnDisable()
 	{
 		input.Movement.Disable();
-		input.Interaction.Disable();
 	}
 
 	public bool StandingNear(Vector2 targetPos, float interactDistance)

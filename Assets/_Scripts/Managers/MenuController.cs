@@ -8,6 +8,10 @@ public class MenuController : MonoBehaviour
 
 	[SerializeField]
 	private Button quitBtn;
+	private void Start()
+	{
+		Time.timeScale = 1f;
+	}
 
 	public void OnStartClicked()
 	{
@@ -16,6 +20,12 @@ public class MenuController : MonoBehaviour
 
 	public void OnQuitClicked()
 	{
-		SceneController.Instance.LoadScene();
+#if UNITY_STANDALONE
+		Application.Quit();
+#endif
+
+#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+#endif
 	}
 }

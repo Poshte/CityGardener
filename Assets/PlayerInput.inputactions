@@ -241,6 +241,15 @@
             "id": "30d6b118-7f40-4adc-beb7-28be34d55ecb",
             "actions": [
                 {
+                    "name": "Birch",
+                    "type": "Button",
+                    "id": "bec303db-690f-4ef3-b317-c1ef56ee0887",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Fir",
                     "type": "Button",
                     "id": "1aa8bbdf-40eb-4187-a59f-002572137195",
@@ -253,15 +262,6 @@
                     "name": "Oak",
                     "type": "Button",
                     "id": "246489dc-7679-4586-a690-d6ca0e9ada5a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Birch",
-                    "type": "Button",
-                    "id": "bec303db-690f-4ef3-b317-c1ef56ee0887",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -281,7 +281,7 @@
                 {
                     "name": "",
                     "id": "c15cb859-0460-4ecb-84c3-8bc075d0cf94",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "New control scheme",
@@ -292,22 +292,11 @@
                 {
                     "name": "",
                     "id": "fb1c6d85-bba8-4d64-9ef3-720816a881d3",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "Oak",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5f469b41-e7d1-4c34-a4d9-be306dea674e",
                     "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "New control scheme",
-                    "action": "Birch",
+                    "action": "Oak",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -319,6 +308,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseRightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f469b41-e7d1-4c34-a4d9-be306dea674e",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme",
+                    "action": "Birch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -345,6 +345,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "4ae35c79-08f2-4813-bde7-f70ad385111b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -367,6 +376,17 @@
                     "processors": "",
                     "groups": "New control scheme",
                     "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e61ecc78-b21a-49c6-a42a-48dce97659c3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

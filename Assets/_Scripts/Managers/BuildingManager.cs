@@ -6,11 +6,13 @@ public class BuildingManager : MonoBehaviour
 {
 	private BuildingTypeSO activeBuildingType;
 	private PlayerInput input;
-	[SerializeField] private WealthManager wealthManager;
+	private WealthManager wealthManager;
+	[SerializeField] private UIController uiController;
 
 	private void Awake()
 	{
 		input = new PlayerInput();
+		wealthManager = GameObject.FindGameObjectWithTag(Constants.Tags.WealthManager).GetComponent<WealthManager>();
 	}
 
 	private void Update()
@@ -41,6 +43,7 @@ public class BuildingManager : MonoBehaviour
 	{
 		Instantiate(activeBuildingType.Prefab, spawnPos, Quaternion.identity);
 		activeBuildingType = null;
+		uiController.ClearUp();
 	}
 
 	public void SetActiveBuildingType(BuildingTypeSO buildingType)

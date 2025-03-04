@@ -263,6 +263,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""30d6b118-7f40-4adc-beb7-28be34d55ecb"",
             ""actions"": [
                 {
+                    ""name"": ""Birch"",
+                    ""type"": ""Button"",
+                    ""id"": ""bec303db-690f-4ef3-b317-c1ef56ee0887"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Fir"",
                     ""type"": ""Button"",
                     ""id"": ""1aa8bbdf-40eb-4187-a59f-002572137195"",
@@ -275,15 +284,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Oak"",
                     ""type"": ""Button"",
                     ""id"": ""246489dc-7679-4586-a690-d6ca0e9ada5a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Birch"",
-                    ""type"": ""Button"",
-                    ""id"": ""bec303db-690f-4ef3-b317-c1ef56ee0887"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -303,7 +303,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c15cb859-0460-4ecb-84c3-8bc075d0cf94"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
@@ -314,22 +314,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""fb1c6d85-bba8-4d64-9ef3-720816a881d3"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""New control scheme"",
-                    ""action"": ""Oak"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5f469b41-e7d1-4c34-a4d9-be306dea674e"",
                     ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
-                    ""action"": ""Birch"",
+                    ""action"": ""Oak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -341,6 +330,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseRightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f469b41-e7d1-4c34-a4d9-be306dea674e"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""Birch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -367,6 +367,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ae35c79-08f2-4813-bde7-f70ad385111b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -389,6 +398,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
                     ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e61ecc78-b21a-49c6-a42a-48dce97659c3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -443,14 +463,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_MainActionBar_MouseRightClick = m_MainActionBar.FindAction("MouseRightClick", throwIfNotFound: true);
         // TreeTypes
         m_TreeTypes = asset.FindActionMap("TreeTypes", throwIfNotFound: true);
+        m_TreeTypes_Birch = m_TreeTypes.FindAction("Birch", throwIfNotFound: true);
         m_TreeTypes_Fir = m_TreeTypes.FindAction("Fir", throwIfNotFound: true);
         m_TreeTypes_Oak = m_TreeTypes.FindAction("Oak", throwIfNotFound: true);
-        m_TreeTypes_Birch = m_TreeTypes.FindAction("Birch", throwIfNotFound: true);
         m_TreeTypes_MouseRightClick = m_TreeTypes.FindAction("MouseRightClick", throwIfNotFound: true);
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
         m_Interaction_Interact = m_Interaction.FindAction("Interact", throwIfNotFound: true);
         m_Interaction_Reset = m_Interaction.FindAction("Reset", throwIfNotFound: true);
+        m_Interaction_Pause = m_Interaction.FindAction("Pause", throwIfNotFound: true);
         // Construction
         m_Construction = asset.FindActionMap("Construction", throwIfNotFound: true);
         m_Construction_MouseLeftClick = m_Construction.FindAction("MouseLeftClick", throwIfNotFound: true);
@@ -639,17 +660,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // TreeTypes
     private readonly InputActionMap m_TreeTypes;
     private List<ITreeTypesActions> m_TreeTypesActionsCallbackInterfaces = new List<ITreeTypesActions>();
+    private readonly InputAction m_TreeTypes_Birch;
     private readonly InputAction m_TreeTypes_Fir;
     private readonly InputAction m_TreeTypes_Oak;
-    private readonly InputAction m_TreeTypes_Birch;
     private readonly InputAction m_TreeTypes_MouseRightClick;
     public struct TreeTypesActions
     {
         private @PlayerInput m_Wrapper;
         public TreeTypesActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Birch => m_Wrapper.m_TreeTypes_Birch;
         public InputAction @Fir => m_Wrapper.m_TreeTypes_Fir;
         public InputAction @Oak => m_Wrapper.m_TreeTypes_Oak;
-        public InputAction @Birch => m_Wrapper.m_TreeTypes_Birch;
         public InputAction @MouseRightClick => m_Wrapper.m_TreeTypes_MouseRightClick;
         public InputActionMap Get() { return m_Wrapper.m_TreeTypes; }
         public void Enable() { Get().Enable(); }
@@ -660,15 +681,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_TreeTypesActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_TreeTypesActionsCallbackInterfaces.Add(instance);
+            @Birch.started += instance.OnBirch;
+            @Birch.performed += instance.OnBirch;
+            @Birch.canceled += instance.OnBirch;
             @Fir.started += instance.OnFir;
             @Fir.performed += instance.OnFir;
             @Fir.canceled += instance.OnFir;
             @Oak.started += instance.OnOak;
             @Oak.performed += instance.OnOak;
             @Oak.canceled += instance.OnOak;
-            @Birch.started += instance.OnBirch;
-            @Birch.performed += instance.OnBirch;
-            @Birch.canceled += instance.OnBirch;
             @MouseRightClick.started += instance.OnMouseRightClick;
             @MouseRightClick.performed += instance.OnMouseRightClick;
             @MouseRightClick.canceled += instance.OnMouseRightClick;
@@ -676,15 +697,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(ITreeTypesActions instance)
         {
+            @Birch.started -= instance.OnBirch;
+            @Birch.performed -= instance.OnBirch;
+            @Birch.canceled -= instance.OnBirch;
             @Fir.started -= instance.OnFir;
             @Fir.performed -= instance.OnFir;
             @Fir.canceled -= instance.OnFir;
             @Oak.started -= instance.OnOak;
             @Oak.performed -= instance.OnOak;
             @Oak.canceled -= instance.OnOak;
-            @Birch.started -= instance.OnBirch;
-            @Birch.performed -= instance.OnBirch;
-            @Birch.canceled -= instance.OnBirch;
             @MouseRightClick.started -= instance.OnMouseRightClick;
             @MouseRightClick.performed -= instance.OnMouseRightClick;
             @MouseRightClick.canceled -= instance.OnMouseRightClick;
@@ -711,12 +732,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IInteractionActions> m_InteractionActionsCallbackInterfaces = new List<IInteractionActions>();
     private readonly InputAction m_Interaction_Interact;
     private readonly InputAction m_Interaction_Reset;
+    private readonly InputAction m_Interaction_Pause;
     public struct InteractionActions
     {
         private @PlayerInput m_Wrapper;
         public InteractionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Interaction_Interact;
         public InputAction @Reset => m_Wrapper.m_Interaction_Reset;
+        public InputAction @Pause => m_Wrapper.m_Interaction_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -732,6 +755,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Reset.started += instance.OnReset;
             @Reset.performed += instance.OnReset;
             @Reset.canceled += instance.OnReset;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IInteractionActions instance)
@@ -742,6 +768,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Reset.started -= instance.OnReset;
             @Reset.performed -= instance.OnReset;
             @Reset.canceled -= instance.OnReset;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IInteractionActions instance)
@@ -828,15 +857,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public interface ITreeTypesActions
     {
+        void OnBirch(InputAction.CallbackContext context);
         void OnFir(InputAction.CallbackContext context);
         void OnOak(InputAction.CallbackContext context);
-        void OnBirch(InputAction.CallbackContext context);
         void OnMouseRightClick(InputAction.CallbackContext context);
     }
     public interface IInteractionActions
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnReset(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IConstructionActions
     {
