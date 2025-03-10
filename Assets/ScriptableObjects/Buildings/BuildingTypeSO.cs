@@ -4,5 +4,6 @@ using UnityEngine;
 public class BuildingTypeSO : ScriptableObject
 {
 	public Transform Prefab;
+	public BuildingType Type;
 	public int Cost;
 }

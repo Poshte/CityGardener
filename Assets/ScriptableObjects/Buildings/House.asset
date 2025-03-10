@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: House
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1252519314823193889, guid: ae686e555fc3a8d4c894f2088c7f38c5, type: 3}
+  Type: 0
   Cost: 75
