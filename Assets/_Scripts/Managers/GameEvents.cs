@@ -36,6 +36,9 @@ public class GameEvents
 	public event Action<TreeType> OnMatureTreePlanted;
 	public void MatureTreePlanted(TreeType tree) => OnMatureTreePlanted?.Invoke(tree);
 
+	public event Action OnTreeWatered;
+	public void TreeWatered() => OnTreeWatered?.Invoke();
+
 	public event Action OnWinningLevel;
 	public void WinLevel() => OnWinningLevel?.Invoke();
 

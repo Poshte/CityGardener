@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
 	[SerializeField] private Button btnBucket;
+	[SerializeField] private RectTransform bucketHandle;
+	private const int WaterLevelFactor = 27;
+
 	[SerializeField] private Button btnHouse;
 	[SerializeField] private Button btnFactory;
 	[SerializeField] private Button btnTree;
@@ -29,6 +32,11 @@ public class UIController : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
 	}
 
+	private void OnEnable()
+	{
+		GameEvents.Instance.OnTreeWatered += OnTreeWatered;
+	}
+
 	private void Start()
 	{
 		var temp = Color.yellow;
@@ -42,15 +50,15 @@ public class UIController : MonoBehaviour
 
 		if (GameManager.NearWater)
 		{
-			GameManager.BucketFilledWithWater = true;
-			btnBucket.image.color = Color.blue;
+			GameManager.WaterCanLevel = 5;
+			var waterLevel = GameManager.WaterCanLevel * WaterLevelFactor;
+			UpdateBucketHandleSize(waterLevel);
 		}
 		else if (GameManager.ActiveTrees.Any())
 		{
-			btnBucket.image.color = Color.yellow;
 			FindNearest(GameManager.ActiveTrees).WaterTree();
 		}
-		else if (!GameManager.BucketFilledWithWater)
+		else if (GameManager.WaterCanLevel == 0)
 		{
 			StartCoroutine(ColorUtility.ChangeColor(btnBucket.image, selectedColor, 0.5f));
 		}
@@ -124,7 +132,6 @@ public class UIController : MonoBehaviour
 		buildingManager.SetActiveBuildingType(null);
 	}
 
-
 	private T FindNearest<T>(List<T> items) where T : MonoBehaviour
 	{
 		float nearestDistance = Mathf.Infinity;
@@ -142,5 +149,23 @@ public class UIController : MonoBehaviour
 		}
 
 		return nearestObj;
+	}
+
+	private void OnTreeWatered()
+	{
+		var waterLevel = GameManager.WaterCanLevel * WaterLevelFactor;
+		UpdateBucketHandleSize(waterLevel);
+	}
+
+	private void UpdateBucketHandleSize(int waterLevel)
+	{
+		var temp = bucketHandle.sizeDelta;
+		temp.x = waterLevel;
+		bucketHandle.sizeDelta = temp;
+	}
+
+	private void OnDisable()
+	{
+		GameEvents.Instance.OnTreeWatered -= OnTreeWatered;
 	}
 }

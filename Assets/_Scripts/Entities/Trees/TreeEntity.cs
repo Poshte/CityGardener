@@ -78,10 +78,12 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 
 	public void WaterTree()
 	{
-		if (GameManager.BucketFilledWithWater)
+		if (GameManager.WaterCanLevel != 0)
 		{
 			PourWater();
-			GameManager.BucketFilledWithWater = false;
+
+			GameManager.WaterCanLevel -= 1;
+			GameEvents.Instance.TreeWatered();
 		}
 	}
 
@@ -91,6 +93,8 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 		waterTimer = 0f;
 		NeedWaterSprite.enabled = false;
 
+		//TODO
+		//replace this with proper animation
 		Debug.Log("Pouring water...");
 	}
 
