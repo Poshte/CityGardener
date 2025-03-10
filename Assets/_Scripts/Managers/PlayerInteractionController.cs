@@ -44,8 +44,6 @@ public class PlayerInteractionController : MonoBehaviour
 		pauseCanvas.SetActive(false);
 		isGamePaused = false;
 		Time.timeScale = 1f;
-
-		//PerformPausingFunction();
 	}
 
 	private void PerformPausingFunction()

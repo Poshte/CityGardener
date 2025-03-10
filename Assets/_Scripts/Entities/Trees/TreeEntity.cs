@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class TreeEntity : MonoBehaviour, IInteractable
 {
-	public abstract TreeTypes Type { get; }
+	public abstract TreeType Type { get; }
 	public abstract int Cost { get; }
-	public abstract GrowthStages Stage { get; set; }
+	public abstract GrowthStage Stage { get; set; }
 	public abstract int PollutionAbsorption { get; }
 	public abstract float GrowthRate { get; }
 	public abstract float WateringInterval { get; }
@@ -37,7 +37,7 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	{
 		AbsorbPollution();
 
-		if (Stage == GrowthStages.Mature)
+		if (Stage == GrowthStage.Mature)
 			return;
 
 		if (needsWater)
@@ -109,23 +109,23 @@ public abstract class TreeEntity : MonoBehaviour, IInteractable
 	{
 		switch (Stage)
 		{
-			case GrowthStages.Seed:
+			case GrowthStage.Seed:
 				absorptionFactor = 2.5f;
 				break;
 
-			case GrowthStages.Sprout:
+			case GrowthStage.Sprout:
 				absorptionFactor = 2.25f;
 				break;
 
-			case GrowthStages.Seedling:
+			case GrowthStage.Seedling:
 				absorptionFactor = 2f;
 				break;
 
-			case GrowthStages.Sapling:
+			case GrowthStage.Sapling:
 				absorptionFactor = 1.75f;
 				break;
 
-			case GrowthStages.Mature:
+			case GrowthStage.Mature:
 				absorptionFactor = 1f;
 				GameEvents.Instance.MatureTreePlanted(Type);
 				break;

@@ -68,20 +68,20 @@ public class UIController : MonoBehaviour
 
 	public void OnFirTreeClicked()
 	{
-		PlantTree(TreeTypes.Fir);
+		PlantTree(TreeType.Fir);
 	}
 
 	public void OnOakTreeClicked()
 	{
-		PlantTree(TreeTypes.Oak);
+		PlantTree(TreeType.Oak);
 	}
 
 	public void OnBirchTreeClicked()
 	{
-		PlantTree(TreeTypes.Birch);
+		PlantTree(TreeType.Birch);
 	}
 
-	private void PlantTree(TreeTypes treeType)
+	private void PlantTree(TreeType treeType)
 	{
 		if (!GameManager.NearbyGardens.Any())
 		{

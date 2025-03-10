@@ -1,4 +1,4 @@
-public enum GrowthStages
+public enum GrowthStage
 {
 	Seed,
 	Sprout,
@@ -7,14 +7,20 @@ public enum GrowthStages
 	Mature
 }
 
-public enum TreeTypes
+public enum TreeType
 {
 	Fir,
 	Oak,
 	Birch
 }
 
-public enum Scenes
+public enum BuildingType
+{
+	House,
+	Factory
+}
+
+public enum GameScene
 { 
 	Default
 }

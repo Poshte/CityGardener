@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Goal : MonoBehaviour
 {
-	public TreeTypes TypeId;
+	public TreeType TypeId;
 	public TextMeshProUGUI DescriptionUI;
 	public TextMeshProUGUI CountUI;
 	public Toggle FulfilledUI;
