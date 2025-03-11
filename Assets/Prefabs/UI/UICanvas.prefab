@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3009774714689664135}
   - component: {fileID: 3455019911943924402}
   - component: {fileID: 7907950631160379770}
+  - component: {fileID: 626838414335844928}
   m_Layer: 5
   m_Name: btnHouse
   m_TagString: Untagged
@@ -270,6 +271,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &626838414335844928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551126952339859986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfb8253e0bf01c40a3f9f836441835c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoObject: {fileID: 7152787471969389703}
 --- !u!1 &1369476880200352755
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +606,7 @@ GameObject:
   - component: {fileID: 8863376362153281728}
   - component: {fileID: 8748522449543006898}
   - component: {fileID: 6972303542701191126}
+  - component: {fileID: 3383583365817238983}
   m_Layer: 5
   m_Name: btnFactory
   m_TagString: Untagged
@@ -715,6 +730,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3383583365817238983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930849278953227066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdfb8253e0bf01c40a3f9f836441835c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoObject: {fileID: 6856955541165513354}
 --- !u!1 &1968027356764157198
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +918,7 @@ RectTransform:
   - {fileID: 3651152889984517298}
   - {fileID: 2095133246416723020}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

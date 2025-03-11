@@ -15,9 +15,7 @@ public class UIController : MonoBehaviour
 	[SerializeField] private Button btnTree;
 
 	[SerializeField] private GameObject TreeTypesUI;
-	[SerializeField] private GameObject housePrice;
-	[SerializeField] private GameObject factoryPrice;
-
+	
 	[SerializeField] private BuildingTypeSO houseSO;
 	[SerializeField] private BuildingTypeSO factorySO;
 
@@ -106,7 +104,6 @@ public class UIController : MonoBehaviour
 	{
 		ClearUp();
 		btnHouse.image.color = selectedColor;
-		housePrice.SetActive(true);
 		buildingManager.SetActiveBuildingType(houseSO);
 	}
 
@@ -114,7 +111,6 @@ public class UIController : MonoBehaviour
 	{
 		ClearUp();
 		btnFactory.image.color = selectedColor;
-		factoryPrice.SetActive(true);
 		buildingManager.SetActiveBuildingType(factorySO);
 	}
 
@@ -127,8 +123,6 @@ public class UIController : MonoBehaviour
 	{
 		btnTree.image.color = btnHouse.image.color = btnFactory.image.color = Color.yellow;
 		TreeTypesUI.SetActive(false);
-		housePrice.SetActive(false);
-		factoryPrice.SetActive(false);
 		buildingManager.SetActiveBuildingType(null);
 	}
 
