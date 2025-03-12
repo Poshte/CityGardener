@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +9,8 @@ public class Player : MonoBehaviour
 	[SerializeField] private float speed;
 
 	private Animator animator;
+
+	public bool IsWalking;
 
 	private void Awake()
 	{
@@ -33,9 +34,11 @@ public class Player : MonoBehaviour
 		playerMovement = input.Movement.PlayerMovements.ReadValue<Vector2>();
 		rigidBody2D.velocity = playerMovement * speed;
 
+		IsWalking = playerMovement.sqrMagnitude != 0;
+
 		animator.SetFloat("Horizontal", playerMovement.x);
 		animator.SetFloat("Vertical", playerMovement.y);
-		animator.SetBool("IsWalking", playerMovement.sqrMagnitude > 0);
+		animator.SetBool("IsWalking", IsWalking);
 	}
 
 	private void PlayerMovements_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)

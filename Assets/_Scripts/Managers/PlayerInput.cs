@@ -351,7 +351,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""81a2b714-daec-4d39-ae0e-d73f8ab03414"",
             ""actions"": [
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Till"",
                     ""type"": ""Button"",
                     ""id"": ""bc9d001f-5866-4ab1-8759-96c081fe90d5"",
                     ""expectedControlType"": ""Button"",
@@ -383,10 +383,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""e9491f69-2c9b-4e19-a6fe-deeaad4715cf"",
                     ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=3)"",
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Till"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -469,7 +469,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_TreeTypes_MouseRightClick = m_TreeTypes.FindAction("MouseRightClick", throwIfNotFound: true);
         // Interaction
         m_Interaction = asset.FindActionMap("Interaction", throwIfNotFound: true);
-        m_Interaction_Interact = m_Interaction.FindAction("Interact", throwIfNotFound: true);
+        m_Interaction_Till = m_Interaction.FindAction("Till", throwIfNotFound: true);
         m_Interaction_Reset = m_Interaction.FindAction("Reset", throwIfNotFound: true);
         m_Interaction_Pause = m_Interaction.FindAction("Pause", throwIfNotFound: true);
         // Construction
@@ -730,14 +730,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // Interaction
     private readonly InputActionMap m_Interaction;
     private List<IInteractionActions> m_InteractionActionsCallbackInterfaces = new List<IInteractionActions>();
-    private readonly InputAction m_Interaction_Interact;
+    private readonly InputAction m_Interaction_Till;
     private readonly InputAction m_Interaction_Reset;
     private readonly InputAction m_Interaction_Pause;
     public struct InteractionActions
     {
         private @PlayerInput m_Wrapper;
         public InteractionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Interact => m_Wrapper.m_Interaction_Interact;
+        public InputAction @Till => m_Wrapper.m_Interaction_Till;
         public InputAction @Reset => m_Wrapper.m_Interaction_Reset;
         public InputAction @Pause => m_Wrapper.m_Interaction_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
@@ -749,9 +749,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_InteractionActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_InteractionActionsCallbackInterfaces.Add(instance);
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
+            @Till.started += instance.OnTill;
+            @Till.performed += instance.OnTill;
+            @Till.canceled += instance.OnTill;
             @Reset.started += instance.OnReset;
             @Reset.performed += instance.OnReset;
             @Reset.canceled += instance.OnReset;
@@ -762,9 +762,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IInteractionActions instance)
         {
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
+            @Till.started -= instance.OnTill;
+            @Till.performed -= instance.OnTill;
+            @Till.canceled -= instance.OnTill;
             @Reset.started -= instance.OnReset;
             @Reset.performed -= instance.OnReset;
             @Reset.canceled -= instance.OnReset;
@@ -864,7 +864,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public interface IInteractionActions
     {
-        void OnInteract(InputAction.CallbackContext context);
+        void OnTill(InputAction.CallbackContext context);
         void OnReset(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }

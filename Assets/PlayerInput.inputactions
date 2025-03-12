@@ -329,7 +329,7 @@
             "id": "81a2b714-daec-4d39-ae0e-d73f8ab03414",
             "actions": [
                 {
-                    "name": "Interact",
+                    "name": "Till",
                     "type": "Button",
                     "id": "bc9d001f-5866-4ab1-8759-96c081fe90d5",
                     "expectedControlType": "Button",
@@ -361,10 +361,10 @@
                     "name": "",
                     "id": "e9491f69-2c9b-4e19-a6fe-deeaad4715cf",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Hold(duration=3)",
                     "processors": "",
                     "groups": "New control scheme",
-                    "action": "Interact",
+                    "action": "Till",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
