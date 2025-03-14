@@ -10,23 +10,27 @@ public class UIController : MonoBehaviour
 	[SerializeField] private RectTransform bucketHandle;
 	private const int WaterLevelFactor = 27;
 
+	[SerializeField] private Button btnTree;
 	[SerializeField] private Button btnHouse;
 	[SerializeField] private Button btnFactory;
-	[SerializeField] private Button btnTree;
+	[SerializeField] private Button btnPipe;
 
 	[SerializeField] private GameObject TreeTypesUI;
-	
+
 	[SerializeField] private BuildingTypeSO houseSO;
 	[SerializeField] private BuildingTypeSO factorySO;
+	[SerializeField] private PipeSO dripPipeSO;
 
-	[SerializeField] private BuildingManager buildingManager;
-
+	private BuildingManager buildingManager;
+	private PipeBuilder pipeBuilder;
 	private Player player;
 
 	private Color selectedColor;
 
 	private void Awake()
 	{
+		buildingManager = GameObject.FindGameObjectWithTag(Constants.Tags.BuildingManager).GetComponent<BuildingManager>();
+		pipeBuilder = GameObject.FindGameObjectWithTag(Constants.Tags.PipeBuilder).GetComponent<PipeBuilder>();
 		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
 	}
 
@@ -114,6 +118,13 @@ public class UIController : MonoBehaviour
 		buildingManager.SetActiveBuildingType(factorySO);
 	}
 
+	public void OnPipeClicked()
+	{
+		ClearUp();
+		btnPipe.image.color = selectedColor;
+		pipeBuilder.SetActivePipe(dripPipeSO);
+	}
+
 	public void OnNextLevelClicked()
 	{
 		SceneController.Instance.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -121,9 +132,10 @@ public class UIController : MonoBehaviour
 
 	public void ClearUp()
 	{
-		btnTree.image.color = btnHouse.image.color = btnFactory.image.color = Color.yellow;
+		btnTree.image.color = btnHouse.image.color = btnFactory.image.color = btnPipe.image.color = Color.yellow;
 		TreeTypesUI.SetActive(false);
 		buildingManager.SetActiveBuildingType(null);
+		pipeBuilder.SetActivePipe(null);
 	}
 
 	private T FindNearest<T>(List<T> items) where T : MonoBehaviour

@@ -31,6 +31,10 @@ public class InputActionController : MonoBehaviour
 		{
 			uiController.OnFactoryClicked();
 		}
+		else if (input.MainActionBar.Pipe.WasPerformedThisFrame())
+		{
+			uiController.OnPipeClicked();
+		}
 		else if (input.TreeTypes.Fir.WasPerformedThisFrame())
 		{
 			uiController.OnFirTreeClicked();
@@ -56,8 +60,8 @@ public class InputActionController : MonoBehaviour
 
 	private void ResetInputContext()
 	{
-		input.TreeTypes.Disable();
 		input.MainActionBar.Enable();
+		input.TreeTypes.Disable();
 	}
 
 	private void OnEnable()

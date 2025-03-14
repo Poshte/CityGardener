@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -33,9 +32,9 @@ public class BuildingManager : MonoBehaviour
 		if (activeBuildingType == null)
 			return;
 
-		var mousePos = GetMouseWorldPosition();
+		var mousePos = Helper.GetMouseWorldPosition();
 		canSpawn = CanSpawnBuilding(mousePos);
-		PreviewSilhouette(mousePos, selectedSilhouette);
+		PreviewSilhouette(mousePos);
 
 		if (input.Construction.MouseLeftClick.WasPerformedThisFrame())
 		{
@@ -65,11 +64,10 @@ public class BuildingManager : MonoBehaviour
 		}
 	}
 
-	private void PreviewSilhouette(Vector2 mousePos, SpriteRenderer silhouette)
+	private void PreviewSilhouette(Vector2 mousePos)
 	{
-		silhouette.transform.position = mousePos;
-		silhouette.color = canSpawn ? Constants.Colors.ValidBuildingSilhouette : Constants.Colors.InvalidBuildingSilhouette;
-		silhouette.gameObject.SetActive(true);
+		selectedSilhouette.transform.position = mousePos;
+		selectedSilhouette.color = canSpawn ? Constants.Colors.ValidBuildingSilhouette : Constants.Colors.InvalidBuildingSilhouette;
 	}
 
 	private bool PayBuildingCost()
@@ -96,13 +94,6 @@ public class BuildingManager : MonoBehaviour
 		{
 			EnableSilhouette();
 		}
-	}
-
-	private Vector2 GetMouseWorldPosition()
-	{
-		var worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
-		worldPos.z = 0f;
-		return worldPos;
 	}
 
 	private bool CanSpawnBuilding(Vector2 pos)

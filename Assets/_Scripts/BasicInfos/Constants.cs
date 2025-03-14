@@ -7,6 +7,10 @@ public static class Constants
 		public const string Player = "Player";
 		public const string PollutionManager = "PollutionManager";
 		public const string WealthManager = "WealthManager";
+		public const string BuildingManager = "BuildingManager";
+		public const string WaterResource = "WaterResource";
+		public const string Pipe = "Pipe";
+		public const string PipeBuilder = "PipeBuilder";
 	}
 
 	public static class LayerMasks

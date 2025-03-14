@@ -191,6 +191,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Pipe"",
+                    ""type"": ""Button"",
+                    ""id"": ""cde9e3fa-42bf-40cc-8a2c-2fd10a2cd3fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""MouseRightClick"",
                     ""type"": ""Button"",
                     ""id"": ""e2cfc9a2-17e5-4674-a43c-0833fde78c61"",
@@ -253,6 +262,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseRightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c4ee0fa-cea3-4885-b583-2c658db3f6f7"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""Pipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -426,6 +446,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseRightClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""31860c0e-673d-47f4-8cd2-b25f893a8641"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -437,6 +466,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
                     ""action"": ""MouseLeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""984ac6e0-a775-442f-b4e8-d0070f60af06"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseRightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -460,6 +500,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_MainActionBar_Tree = m_MainActionBar.FindAction("Tree", throwIfNotFound: true);
         m_MainActionBar_House = m_MainActionBar.FindAction("House", throwIfNotFound: true);
         m_MainActionBar_Factory = m_MainActionBar.FindAction("Factory", throwIfNotFound: true);
+        m_MainActionBar_Pipe = m_MainActionBar.FindAction("Pipe", throwIfNotFound: true);
         m_MainActionBar_MouseRightClick = m_MainActionBar.FindAction("MouseRightClick", throwIfNotFound: true);
         // TreeTypes
         m_TreeTypes = asset.FindActionMap("TreeTypes", throwIfNotFound: true);
@@ -475,6 +516,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Construction
         m_Construction = asset.FindActionMap("Construction", throwIfNotFound: true);
         m_Construction_MouseLeftClick = m_Construction.FindAction("MouseLeftClick", throwIfNotFound: true);
+        m_Construction_MouseRightClick = m_Construction.FindAction("MouseRightClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -586,6 +628,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_MainActionBar_Tree;
     private readonly InputAction m_MainActionBar_House;
     private readonly InputAction m_MainActionBar_Factory;
+    private readonly InputAction m_MainActionBar_Pipe;
     private readonly InputAction m_MainActionBar_MouseRightClick;
     public struct MainActionBarActions
     {
@@ -595,6 +638,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Tree => m_Wrapper.m_MainActionBar_Tree;
         public InputAction @House => m_Wrapper.m_MainActionBar_House;
         public InputAction @Factory => m_Wrapper.m_MainActionBar_Factory;
+        public InputAction @Pipe => m_Wrapper.m_MainActionBar_Pipe;
         public InputAction @MouseRightClick => m_Wrapper.m_MainActionBar_MouseRightClick;
         public InputActionMap Get() { return m_Wrapper.m_MainActionBar; }
         public void Enable() { Get().Enable(); }
@@ -617,6 +661,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Factory.started += instance.OnFactory;
             @Factory.performed += instance.OnFactory;
             @Factory.canceled += instance.OnFactory;
+            @Pipe.started += instance.OnPipe;
+            @Pipe.performed += instance.OnPipe;
+            @Pipe.canceled += instance.OnPipe;
             @MouseRightClick.started += instance.OnMouseRightClick;
             @MouseRightClick.performed += instance.OnMouseRightClick;
             @MouseRightClick.canceled += instance.OnMouseRightClick;
@@ -636,6 +683,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Factory.started -= instance.OnFactory;
             @Factory.performed -= instance.OnFactory;
             @Factory.canceled -= instance.OnFactory;
+            @Pipe.started -= instance.OnPipe;
+            @Pipe.performed -= instance.OnPipe;
+            @Pipe.canceled -= instance.OnPipe;
             @MouseRightClick.started -= instance.OnMouseRightClick;
             @MouseRightClick.performed -= instance.OnMouseRightClick;
             @MouseRightClick.canceled -= instance.OnMouseRightClick;
@@ -793,11 +843,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Construction;
     private List<IConstructionActions> m_ConstructionActionsCallbackInterfaces = new List<IConstructionActions>();
     private readonly InputAction m_Construction_MouseLeftClick;
+    private readonly InputAction m_Construction_MouseRightClick;
     public struct ConstructionActions
     {
         private @PlayerInput m_Wrapper;
         public ConstructionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @MouseLeftClick => m_Wrapper.m_Construction_MouseLeftClick;
+        public InputAction @MouseRightClick => m_Wrapper.m_Construction_MouseRightClick;
         public InputActionMap Get() { return m_Wrapper.m_Construction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -810,6 +862,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @MouseLeftClick.started += instance.OnMouseLeftClick;
             @MouseLeftClick.performed += instance.OnMouseLeftClick;
             @MouseLeftClick.canceled += instance.OnMouseLeftClick;
+            @MouseRightClick.started += instance.OnMouseRightClick;
+            @MouseRightClick.performed += instance.OnMouseRightClick;
+            @MouseRightClick.canceled += instance.OnMouseRightClick;
         }
 
         private void UnregisterCallbacks(IConstructionActions instance)
@@ -817,6 +872,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @MouseLeftClick.started -= instance.OnMouseLeftClick;
             @MouseLeftClick.performed -= instance.OnMouseLeftClick;
             @MouseLeftClick.canceled -= instance.OnMouseLeftClick;
+            @MouseRightClick.started -= instance.OnMouseRightClick;
+            @MouseRightClick.performed -= instance.OnMouseRightClick;
+            @MouseRightClick.canceled -= instance.OnMouseRightClick;
         }
 
         public void RemoveCallbacks(IConstructionActions instance)
@@ -853,6 +911,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnTree(InputAction.CallbackContext context);
         void OnHouse(InputAction.CallbackContext context);
         void OnFactory(InputAction.CallbackContext context);
+        void OnPipe(InputAction.CallbackContext context);
         void OnMouseRightClick(InputAction.CallbackContext context);
     }
     public interface ITreeTypesActions
@@ -871,5 +930,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IConstructionActions
     {
         void OnMouseLeftClick(InputAction.CallbackContext context);
+        void OnMouseRightClick(InputAction.CallbackContext context);
     }
 }

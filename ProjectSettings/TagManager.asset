@@ -6,6 +6,10 @@ TagManager:
   tags:
   - PollutionManager
   - WealthManager
+  - BuildingManager
+  - WaterResource
+  - Pipe
+  - PipeBuilder
   layers:
   - Default
   - TransparentFX

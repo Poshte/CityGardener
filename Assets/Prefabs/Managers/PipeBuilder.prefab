@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4838418835393228474
+--- !u!1 &859262663332731551
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3069496430475360013}
-  - component: {fileID: 1653400773780202803}
+  - component: {fileID: 1046208382050181380}
+  - component: {fileID: 1737738916489327788}
   m_Layer: 0
-  m_Name: BuildingManager
-  m_TagString: BuildingManager
+  m_Name: PipeBuilder
+  m_TagString: PipeBuilder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3069496430475360013
+--- !u!4 &1046208382050181380
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838418835393228474}
+  m_GameObject: {fileID: 859262663332731551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.032708, y: -3.136069, z: -0.118702516}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1653400773780202803
+--- !u!114 &1737738916489327788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838418835393228474}
+  m_GameObject: {fileID: 859262663332731551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7f96a112f0ee94da690fe2a2847ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 60c221d620665e346b88734ac49da160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiController: {fileID: 0}
-  houseSilhouettes: {fileID: 0}
-  factorySilhouettes: {fileID: 0}
+  prefab: {fileID: 632532155552870863, guid: f753cdff58ff62d40b5aef70a81202aa, type: 3}
+  selectedSilhouette: {fileID: 0}
