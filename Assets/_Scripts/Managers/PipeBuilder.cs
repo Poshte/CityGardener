@@ -15,7 +15,8 @@ public class PipeBuilder : MonoBehaviour
 	[SerializeField] private Transform prefab;
 	[SerializeField] private SpriteRenderer selectedSilhouette;
 	private float prefabWidth;
-	private const float spacing = 0.1f;
+	private const float Pipes_Spacing = 0.1f;
+	private const float Pipe_SearchRadius = 0.5f;
 	private int numberOfInstances;
 	private readonly List<Transform> previewObjects = new();
 
@@ -89,7 +90,7 @@ public class PipeBuilder : MonoBehaviour
 		if (EventSystem.current.IsPointerOverGameObject())
 			return false;
 
-		var hitColliders = Physics2D.OverlapCircleAll(position, 0.5f);
+		var hitColliders = Physics2D.OverlapCircleAll(position, Pipe_SearchRadius);
 		return hitColliders.Any(c => c.CompareTag(Constants.Tags.WaterResource) || c.CompareTag(Constants.Tags.Pipe));
 	}
 
@@ -117,11 +118,11 @@ public class PipeBuilder : MonoBehaviour
 		var direction = (endingPosition - startingPosition).normalized;
 		var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 		var distance = Vector2.Distance(startingPosition, endingPosition);
-		numberOfInstances = Mathf.FloorToInt(distance / prefabWidth + spacing);
+		numberOfInstances = Mathf.FloorToInt(distance / prefabWidth + Pipes_Spacing);
 
 		for (int i = 0; i < numberOfInstances; i++)
 		{
-			var pos = startingPosition + direction * (i * (prefabWidth + spacing));
+			var pos = startingPosition + direction * (i * (prefabWidth + Pipes_Spacing));
 			previewObjects.Add(Instantiate(prefab, pos, Quaternion.Euler(0, 0, angle)));
 		}
 	}

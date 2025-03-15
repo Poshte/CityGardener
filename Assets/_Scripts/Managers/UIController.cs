@@ -62,7 +62,7 @@ public class UIController : MonoBehaviour
 		}
 		else if (GameManager.WaterCanLevel == 0)
 		{
-			StartCoroutine(ColorUtility.ChangeColor(btnBucket.image, selectedColor, 0.5f));
+			StartCoroutine(ColorUtility.RevertColor(btnBucket.image, selectedColor, 0.5f));
 		}
 
 		buildingManager.SetActiveBuildingType(null);

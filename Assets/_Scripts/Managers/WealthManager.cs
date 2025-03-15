@@ -26,7 +26,7 @@ public class WealthManager : MonoBehaviour
 		}
 
 		wealth -= amount;
-		StartCoroutine(ColorUtility.ChangeColor(wealthAmount, Color.red, 0.5f));
+		StartCoroutine(ColorUtility.RevertColor(wealthAmount, Color.red, 0.5f));
 		UpdateWealthUI();
 		return true;
 	}

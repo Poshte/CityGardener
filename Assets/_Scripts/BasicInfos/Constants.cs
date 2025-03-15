@@ -22,5 +22,8 @@ public static class Constants
 	{
 		public static Color ValidBuildingSilhouette = new(0.2f, 0.9f, 0.4f, 0.2f);
 		public static Color InvalidBuildingSilhouette = new(1f, 0f, 0f, 0.2f);
+
+		public static Color WetSoil = new(0.3f, 0.17f, 0.02f, 1f);
+		public static Color DrySoil = new(0.3f, 0.17f, 0.02f, 0.5f);
 	}
 }

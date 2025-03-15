@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Garden : MonoBehaviour, IInteractable
 {
-	private Transform gardenPlantedTree;
+	private TreeEntity gardenPlantedTree;
 	[SerializeField] private TreeSO treeSO;
 
 	[SerializeField] private SpriteRenderer interactSprite;
 	private WealthManager wealthManager;
 
+	private SpriteRenderer spriteRenderer;
+	private Coroutine colorChangerCoroutine;
+
 	private void Awake()
 	{
 		wealthManager = GameObject.FindGameObjectWithTag(Constants.Tags.WealthManager).GetComponent<WealthManager>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	public void EnableInteraction()
@@ -32,29 +36,52 @@ public class Garden : MonoBehaviour, IInteractable
 	{
 		if (gardenPlantedTree == null)
 		{
-			var tree = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == GrowthStage.Seed);
-			if (!PayTreeCost(tree.Cost))
+			var prefab = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == GrowthStage.Seed);
+			if (!PayTreeCost(prefab.Cost))
 				return;
 
-			gardenPlantedTree = Instantiate(tree.transform, transform.position, Quaternion.identity);
-			gardenPlantedTree.SetParent(transform);
-
+			SpawnTree(prefab);
 			DisableInteraction();
 		}
 	}
 
 	public void GrowTree(TreeType type, GrowthStage stage)
 	{
-		var prefab = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == stage);
-		var tree = Instantiate(prefab.transform, transform.position, Quaternion.identity);
-		tree.SetParent(transform);
-
 		Destroy(gardenPlantedTree.gameObject);
-		gardenPlantedTree = tree;
+
+		var prefab = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == stage);
+		SpawnTree(prefab);
 	}
 
 	private bool PayTreeCost(int treeCost)
 	{
 		return wealthManager.SpendWealth(treeCost);
+	}
+
+	private void SpawnTree(TreeEntity prefab)
+	{
+		gardenPlantedTree = Instantiate(prefab, transform.position, Quaternion.identity);
+		gardenPlantedTree.transform.SetParent(transform);
+		gardenPlantedTree.Garden = this;
+	}
+
+	public void DrySoil()
+	{
+		if (colorChangerCoroutine != null)
+		{
+			StopCoroutine(colorChangerCoroutine);
+		}
+
+		colorChangerCoroutine = StartCoroutine(ColorUtility.ChangeColor(spriteRenderer, Constants.Colors.DrySoil, 4f));
+	}
+
+	public void WaterSoil()
+	{
+		if (colorChangerCoroutine != null)
+		{
+			StopCoroutine(colorChangerCoroutine);
+		}
+
+		colorChangerCoroutine = StartCoroutine(ColorUtility.ChangeColor(spriteRenderer, Constants.Colors.WetSoil, 1f));
 	}
 }

@@ -5,21 +5,6 @@ using UnityEngine.UI;
 
 public static class ColorUtility
 {
-	public static IEnumerator ChangeColor(TextMeshProUGUI text, Color target, float speed)
-	{
-		var original = text.color;
-
-		var elapsedTime = 0f;
-		while (elapsedTime < speed)
-		{
-			text.color = Color.Lerp(target, original, elapsedTime / speed);
-			elapsedTime += Time.unscaledDeltaTime;
-			yield return null;
-		}
-
-		text.color = original;
-	}
-
 	public static IEnumerator Blink(TextMeshProUGUI text, Color target, float duration, int count)
 	{
 		var original = text.color;
@@ -37,7 +22,7 @@ public static class ColorUtility
 		text.color = original;
 	}
 
-	public static IEnumerator ChangeColor(Image image, Color target, float speed)
+	public static IEnumerator RevertColor(Image image, Color target, float speed)
 	{
 		var original = image.color;
 
@@ -50,5 +35,35 @@ public static class ColorUtility
 		}
 
 		image.color = original;
+	}
+
+	public static IEnumerator RevertColor(TextMeshProUGUI text, Color target, float speed)
+	{
+		var original = text.color;
+
+		var elapsedTime = 0f;
+		while (elapsedTime < speed)
+		{
+			text.color = Color.Lerp(target, original, elapsedTime / speed);
+			elapsedTime += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
+		text.color = original;
+	}
+
+	public static IEnumerator ChangeColor(SpriteRenderer spriteRenderer, Color target, float speed)
+	{
+		var original = spriteRenderer.color;
+
+		var elapsedTime = 0f;
+		while (elapsedTime < speed)
+		{
+			spriteRenderer.color = Color.Lerp(original, target, elapsedTime / speed);
+			elapsedTime += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
+		spriteRenderer.color = target;
 	}
 }
