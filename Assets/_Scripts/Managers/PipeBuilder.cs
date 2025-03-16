@@ -142,6 +142,7 @@ public class PipeBuilder : MonoBehaviour
 		foreach (var obj in previewObjects)
 		{
 			obj.tag = Constants.Tags.Pipe;
+			obj.GetComponent<SpriteRenderer>().color = Color.black;
 		}
 
 		previewObjects.Clear();
