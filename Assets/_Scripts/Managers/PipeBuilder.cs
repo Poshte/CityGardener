@@ -14,7 +14,9 @@ public class PipeBuilder : MonoBehaviour
 
 	[SerializeField] private Transform prefab;
 	[SerializeField] private SpriteRenderer selectedSilhouette;
+
 	private float prefabWidth;
+	private Vector2 direction;
 	private const float Pipes_Spacing = 0.1f;
 	private const float Pipe_SearchRadius = 0.5f;
 	private int numberOfInstances;
@@ -115,7 +117,7 @@ public class PipeBuilder : MonoBehaviour
 		RemovePreviewObjects();
 
 		endingPosition = mousePos;
-		var direction = (endingPosition - startingPosition).normalized;
+		direction = (endingPosition - startingPosition).normalized;
 		var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 		var distance = Vector2.Distance(startingPosition, endingPosition);
 		numberOfInstances = Mathf.FloorToInt(distance / prefabWidth + Pipes_Spacing);
@@ -145,10 +147,11 @@ public class PipeBuilder : MonoBehaviour
 			obj.GetComponent<SpriteRenderer>().color = Color.black;
 		}
 
-		previewObjects.Clear();
+		//this will allow player continue building pipes in a new direction
+		var lastPipePos = (Vector2)previewObjects.Last().position;
+		startingPosition = lastPipePos + direction * ((prefabWidth + Pipes_Spacing) * 0.5f);
 
-		ClearUp();
-		uiController.ClearUp();
+		previewObjects.Clear();
 	}
 
 	private void ClearUp()
