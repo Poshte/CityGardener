@@ -10,6 +10,7 @@ TagManager:
   - WaterResource
   - Pipe
   - PipeBuilder
+  - SeedsManager
   layers:
   - Default
   - TransparentFX

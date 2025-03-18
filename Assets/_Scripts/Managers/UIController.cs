@@ -73,7 +73,6 @@ public class UIController : MonoBehaviour
 		ClearUp();
 		btnTree.image.color = selectedColor;
 		TreeTypesUI.SetActive(true);
-		buildingManager.SetActiveBuildingType(null);
 	}
 
 	public void OnFirTreeClicked()
