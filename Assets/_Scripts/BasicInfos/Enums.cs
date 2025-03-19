@@ -9,6 +9,7 @@ public enum GrowthStage
 
 public enum TreeType
 {
+	None,
 	Fir,
 	Oak,
 	Birch
@@ -20,7 +21,15 @@ public enum BuildingType
 	Factory
 }
 
+public enum InventoryItemType
+{
+	Bucket,
+	Shovel,
+	Pipe,
+	Seed
+}
+
 public enum GameScene
-{ 
+{
 	Default
 }

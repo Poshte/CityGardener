@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WealthManager : MonoBehaviour
 {
-	private int wealth = 450;
+	private int wealth = 4500;
 	[SerializeField] private TextMeshProUGUI wealthAmount;
 
 	private void Start()
@@ -17,13 +17,21 @@ public class WealthManager : MonoBehaviour
 		UpdateWealthUI();
 	}
 
-	public bool SpendWealth(int amount)
+	public bool CanAfford(int amount)
 	{
 		if (wealth < amount)
 		{
 			StartCoroutine(ColorUtility.Blink(wealthAmount, Color.red, 0.75f, 5));
 			return false;
 		}
+
+		return true;
+	}
+
+	public bool SpendWealth(int amount)
+	{
+		if (!CanAfford(amount))
+			return false;
 
 		wealth -= amount;
 		StartCoroutine(ColorUtility.RevertColor(wealthAmount, Color.red, 0.5f));

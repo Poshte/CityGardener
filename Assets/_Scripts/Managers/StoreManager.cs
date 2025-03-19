@@ -16,16 +16,21 @@ public class StoreManager : MonoBehaviour
 
 	public void OnBirchSeedClicked()
 	{
-		seedsManager.AddSeed(TreeType.Birch);
+		BuySeed(TreeType.Birch);
 	}
 
 	public void OnFirSeedClicked()
 	{
-		seedsManager.AddSeed(TreeType.Fir);
+		BuySeed(TreeType.Fir);
 	}
 
 	public void OnOakSeedClicked()
 	{
-		seedsManager.AddSeed(TreeType.Oak);
+		BuySeed(TreeType.Oak);
+	}
+
+	private void BuySeed(TreeType treeType)
+	{
+		seedsManager.AddSeed(treeType);
 	}
 }

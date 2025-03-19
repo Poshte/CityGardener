@@ -11,6 +11,7 @@ public static class Constants
 		public const string WaterResource = "WaterResource";
 		public const string Pipe = "Pipe";
 		public const string PipeBuilder = "PipeBuilder";
+		public const string InventoryManager = "InventoryManager";
 		public const string SeedsManager = "SeedsManager";
 	}
 

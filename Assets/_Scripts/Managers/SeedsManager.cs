@@ -1,28 +1,31 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SeedsManager : MonoBehaviour
 {
-	private List<TreeType> seeds = new();
 	[SerializeField] private TreeSO treeSO;
 
 	private WealthManager wealthManager;
+	private InventoryManager inventoryManager;
 
 	private void Awake()
 	{
 		wealthManager = GameObject.FindGameObjectWithTag(Constants.Tags.WealthManager).GetComponent<WealthManager>();
+		inventoryManager = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
 	}
 
 	public void AddSeed(TreeType type)
 	{
 		var prefab = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == GrowthStage.Seed);
 
-		if (PaySeedCost(prefab.Cost))
-			seeds.Add(type);
-	}
-
-	private bool PaySeedCost(int cost)
-	{
-		return wealthManager.SpendWealth(cost);
+		//this is a weird solution
+		//to prevent spending wealth when inventory is full
+		//or adding item to inventory when wealth is not enough
+		if (wealthManager.CanAfford(prefab.Cost))
+		{
+			if (inventoryManager.AddItem(type))
+			{
+				wealthManager.SpendWealth(prefab.Cost);
+			}
+		}
 	}
 }
