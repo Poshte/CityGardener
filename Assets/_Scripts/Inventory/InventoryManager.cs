@@ -5,11 +5,10 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
 	private readonly List<InventorySlot> slots = new();
-
 	[SerializeField] private int slotsCount;
+
 	[SerializeField] private InventorySlot slotPrefab;
 	[SerializeField] private InventoryItem itemPrefab;
-
 	[SerializeField] private ItemSO[] itemSOCollection;
 
 	private void Start()
@@ -35,7 +34,7 @@ public class InventoryManager : MonoBehaviour
 			foreach (var slot in slots)
 			{
 				//had to avoid using null propagation (?)
-				//cause Unity's life cycle is different from C#
+				//cause Unity's life cycle is different from C#'s
 				if (slot.Item == null)
 					continue;
 
@@ -72,7 +71,7 @@ public class InventoryManager : MonoBehaviour
 		{
 			var slot = slots[i];
 
-			if (slot.Item == null)
+			if (slot.transform.childCount == 0)
 				return slot;
 		}
 
@@ -82,7 +81,7 @@ public class InventoryManager : MonoBehaviour
 	private void SpawnItemToSlot(ItemSO itemSO, InventorySlot slot)
 	{
 		slot.Item = Instantiate(itemPrefab, slot.transform);
-		slot.Item.InitializeItem(itemSO);
+		slot.Item.InitializeItem(itemSO, slot);
 	}
 
 	private void AddItemToSlot(InventorySlot slot)

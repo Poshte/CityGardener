@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-	public ItemSO ActiveItem { get; set; }
+	public ItemSO ActiveItem { get => _ativeItem; set => _ativeItem = value; }
+	private ItemSO _ativeItem;
 
 	private Image image;
 	private InventorySlot parentSlot;
@@ -24,16 +25,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 	public void OnBeginDrag(PointerEventData eventData)
 	{
 		//preventing the dragged item being registered as RayCastTarget
-		//to find empty slots
+		//to be able to find empty slots
 		image.raycastTarget = false;
-
-		//unlock from the slot parent
-		//to be able to drag freely
-		parentSlot = transform.parent.GetComponent<InventorySlot>();
-		parentSlot.Item = null;
 
 		//temporary set Inventory as the parent
 		//change back to a slot whenever the item is dropped
+		parentSlot.Item = null;
 		transform.SetParent(inventory);
 	}
 
@@ -53,10 +50,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 		parentSlot = newParent;
 	}
 
-	public void InitializeItem(ItemSO newItem)
+	public void InitializeItem(ItemSO newItem, InventorySlot newParent)
 	{
-		ActiveItem = newItem;
+		_ativeItem = newItem;
 		image.sprite = newItem.Sprite;
+		parentSlot = newParent;
 	}
 
 	public void UpdateItemCount(int number)
