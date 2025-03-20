@@ -4,22 +4,34 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+
+public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-	public ItemSO ActiveItem { get => _ativeItem; set => _ativeItem = value; }
-	private ItemSO _ativeItem;
+	//public abstract Sprite Sprite { get; }
+	public abstract InventoryItemType Type { get; }
+	public abstract TreeType SeedType { get; }
+	public abstract bool Stackable { get; }
+
+	//public ItemSO ActiveItem { get => _ativeItem; set => _ativeItem = value; }
+	//private ItemSO _ativeItem;
 
 	private Image image;
 	private InventorySlot parentSlot;
 	private Transform inventory;
 
-	private int itemCount = 1;
-	[SerializeField] private TextMeshProUGUI countText;
+	private int itemCount = 0;
+	private TextMeshProUGUI countText;
 
-	private void Awake()
+	public virtual void Awake()
 	{
 		inventory = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).transform;
 		image = GetComponent<Image>();
+		countText = GetComponentInChildren<TextMeshProUGUI>();
+	}
+
+	private void Start()
+	{
+		UpdateItemCount(1);
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
@@ -50,17 +62,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 		parentSlot = newParent;
 	}
 
-	public void InitializeItem(ItemSO newItem, InventorySlot newParent)
-	{
-		_ativeItem = newItem;
-		image.sprite = newItem.Sprite;
-		parentSlot = newParent;
-	}
-
 	public void UpdateItemCount(int number)
 	{
 		itemCount += number;
-		if (itemCount == 0)
+		if (itemCount == 0 || !Stackable)
 		{
 			countText.enabled = false;
 			return;
@@ -69,4 +74,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 		countText.enabled = true;
 		countText.text = itemCount.ToString();
 	}
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		GameEvents.Instance.ItemSelected(parentSlot);
+	}
+
+	public abstract void PerformAction();
 }

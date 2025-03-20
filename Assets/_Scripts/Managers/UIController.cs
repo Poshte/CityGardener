@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-	[SerializeField] private Button btnBucket;
-	[SerializeField] private RectTransform bucketHandle;
+	[SerializeField] private Button btnWateringCan;
+	[SerializeField] private RectTransform WateringCanHandle;
 	private const int WaterLevelFactor = 27;
 
 	[SerializeField] private Button btnTree;
@@ -46,7 +46,7 @@ public class UIController : MonoBehaviour
 		selectedColor = temp;
 	}
 
-	public void OnBucketClicked()
+	public void OnWateringCanClicked()
 	{
 		ClearUp();
 
@@ -54,7 +54,7 @@ public class UIController : MonoBehaviour
 		{
 			GameManager.WaterCanLevel = 5;
 			var waterLevel = GameManager.WaterCanLevel * WaterLevelFactor;
-			UpdateBucketHandleSize(waterLevel);
+			UpdateWateringCanHandleSize(waterLevel);
 		}
 		else if (GameManager.ActiveTrees.Any())
 		{
@@ -62,10 +62,8 @@ public class UIController : MonoBehaviour
 		}
 		else if (GameManager.WaterCanLevel == 0)
 		{
-			StartCoroutine(ColorUtility.RevertColor(btnBucket.image, selectedColor, 0.5f));
+			StartCoroutine(ColorUtility.RevertColor(btnWateringCan.image, selectedColor, 0.5f));
 		}
-
-		buildingManager.SetActiveBuildingType(null);
 	}
 
 	public void OnTreeClicked()
@@ -159,14 +157,14 @@ public class UIController : MonoBehaviour
 	private void OnTreeWatered()
 	{
 		var waterLevel = GameManager.WaterCanLevel * WaterLevelFactor;
-		UpdateBucketHandleSize(waterLevel);
+		UpdateWateringCanHandleSize(waterLevel);
 	}
 
-	private void UpdateBucketHandleSize(int waterLevel)
+	private void UpdateWateringCanHandleSize(int waterLevel)
 	{
-		var temp = bucketHandle.sizeDelta;
+		var temp = WateringCanHandle.sizeDelta;
 		temp.x = waterLevel;
-		bucketHandle.sizeDelta = temp;
+		WateringCanHandle.sizeDelta = temp;
 	}
 
 	private void OnDisable()

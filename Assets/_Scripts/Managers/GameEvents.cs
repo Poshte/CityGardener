@@ -44,4 +44,7 @@ public class GameEvents
 
 	public event Action OnLosingLevel;
 	public void LoseLevel() => OnLosingLevel?.Invoke();
+
+	public event Action<InventorySlot> OnItemSelected;
+	public void ItemSelected(InventorySlot slot) => OnItemSelected?.Invoke(slot);
 }

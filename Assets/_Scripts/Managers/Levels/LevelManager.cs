@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class LevelManager : MonoBehaviour
 	private bool treeGoalsFulfilled;
 	private PollutionManager pollutionManager;
 
+	private List<ILevelInitializer> levelInitializers = new();
+
 	private void Awake()
 	{
 		pollutionManager = GameObject.FindGameObjectWithTag(Constants.Tags.PollutionManager).GetComponent<PollutionManager>();
@@ -23,9 +26,20 @@ public class LevelManager : MonoBehaviour
 	private void Start()
 	{
 		GameEvents.Instance.OnMatureTreePlanted += OnMatureTreePlanted;
-		InitializeLevelGoals();
+		InitializeGoals();
+
+		//TODO
+		//this is for testing, must be modified
+		var level_1 = new Level_1();
+		levelInitializers.Add(level_1);
+		InitializeLevel((GameScene)SceneManager.GetActiveScene().buildIndex);
 	}
 
+	private void InitializeLevel(GameScene gameScene)
+	{
+		var level = levelInitializers.FirstOrDefault(l => l.GameScene == gameScene);
+		level?.Initialize();
+	}
 
 	private void Update()
 	{
@@ -80,7 +94,7 @@ public class LevelManager : MonoBehaviour
 			treeGoalsFulfilled = true;
 	}
 
-	private void InitializeLevelGoals()
+	private void InitializeGoals()
 	{
 		GetPollutionGoal();
 		GetTreeGoals();

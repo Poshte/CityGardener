@@ -13,9 +13,9 @@ public class InputActionController : MonoBehaviour
 
 	private void Update()
 	{
-		if (input.MainActionBar.Bucket.WasPerformedThisFrame())
+		if (input.MainActionBar.WateringCan.WasPerformedThisFrame())
 		{
-			uiController.OnBucketClicked();
+			uiController.OnWateringCanClicked();
 		}
 		else if (input.MainActionBar.Tree.WasPerformedThisFrame())
 		{

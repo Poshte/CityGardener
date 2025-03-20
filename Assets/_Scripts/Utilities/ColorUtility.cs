@@ -66,4 +66,19 @@ public static class ColorUtility
 
 		spriteRenderer.color = target;
 	}
+
+	public static IEnumerator ChangeColor(Image image, Color target, float speed)
+	{
+		var original = image.color;
+
+		var elapsedTime = 0f;
+		while (elapsedTime < speed)
+		{
+			image.color = Color.Lerp(original, target, elapsedTime / speed);
+			elapsedTime += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
+		image.color = target;
+	}
 }

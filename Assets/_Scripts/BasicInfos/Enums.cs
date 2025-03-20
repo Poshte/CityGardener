@@ -23,7 +23,7 @@ public enum BuildingType
 
 public enum InventoryItemType
 {
-	Bucket,
+	WateringCan,
 	Shovel,
 	Pipe,
 	Seed
@@ -31,5 +31,6 @@ public enum InventoryItemType
 
 public enum GameScene
 {
-	Default
+	Default,
+	Sample
 }

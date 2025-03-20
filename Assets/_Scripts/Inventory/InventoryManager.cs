@@ -8,28 +8,50 @@ public class InventoryManager : MonoBehaviour
 	[SerializeField] private int slotsCount;
 
 	[SerializeField] private InventorySlot slotPrefab;
-	[SerializeField] private InventoryItem itemPrefab;
-	[SerializeField] private ItemSO[] itemSOCollection;
+	[SerializeField] private InventoryItem[] itemPrefabs;
+
+	private InventoryItem selectedItem;
+
+	private void Awake()
+	{
+		for (int i = 0; i < slotsCount; i++)
+			slots.Add(Instantiate(slotPrefab, transform));
+	}
 
 	private void Start()
 	{
-		for (int i = 0; i < slotsCount; i++)
+		GameEvents.Instance.OnItemSelected += OnItemSelected;
+	}
+
+	private void OnItemSelected(InventorySlot selectedSlot)
+	{
+		//reset the color of all other slots
+		foreach (var image in slots.Select(s => s.Image))
 		{
-			slots.Add(Instantiate(slotPrefab, transform));
+			image.color = Color.white;
 		}
+
+		selectedSlot.Image.color = Color.red;
+		selectedItem = selectedSlot.Item;
 	}
 
 	public bool AddItem(TreeType treeType)
 	{
-		var itemSO = itemSOCollection.FirstOrDefault(i => i.TreeType == treeType);
+		var itemSO = itemPrefabs.FirstOrDefault(i => i.SeedType == treeType);
 		return AddItem(itemSO);
 	}
 
-	public bool AddItem(ItemSO itemSO)
+	public bool AddItem(InventoryItemType itemType)
+	{
+		var itemSO = itemPrefabs.FirstOrDefault(i => i.Type == itemType);
+		return AddItem(itemSO);
+	}
+
+	public bool AddItem(InventoryItem item)
 	{
 		//if there is any stackable slot of the same item
 		//add to the count
-		if (itemSO.Stackable)
+		if (item.Stackable)
 		{
 			foreach (var slot in slots)
 			{
@@ -38,10 +60,7 @@ public class InventoryManager : MonoBehaviour
 				if (slot.Item == null)
 					continue;
 
-				if (slot.Item.ActiveItem == null)
-					continue;
-
-				if (slot.Item.ActiveItem.TreeType == itemSO.TreeType)
+				if (slot.Item.SeedType == item.SeedType)
 				{
 					AddItemToSlot(slot);
 					return true;
@@ -54,7 +73,7 @@ public class InventoryManager : MonoBehaviour
 		var emptySlot = FindEmptySlot();
 		if (emptySlot != null)
 		{
-			SpawnItemToSlot(itemSO, emptySlot);
+			SpawnItemToSlot(item, emptySlot);
 			return true;
 		}
 
@@ -78,14 +97,24 @@ public class InventoryManager : MonoBehaviour
 		return default;
 	}
 
-	private void SpawnItemToSlot(ItemSO itemSO, InventorySlot slot)
+	private void SpawnItemToSlot(InventoryItem prefab, InventorySlot slot)
 	{
-		slot.Item = Instantiate(itemPrefab, slot.transform);
-		slot.Item.InitializeItem(itemSO, slot);
+		slot.Item = Instantiate(prefab, slot.transform);
+		slot.Item.SetParentSlot(slot);
 	}
 
 	private void AddItemToSlot(InventorySlot slot)
 	{
 		slot.Item.UpdateItemCount(1);
+	}
+
+	public InventoryItem GetSelectedItem()
+	{
+		return selectedItem;
+	}
+
+	private void OnDestroy()
+	{
+		GameEvents.Instance.OnItemSelected -= OnItemSelected;
 	}
 }

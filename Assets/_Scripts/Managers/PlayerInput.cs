@@ -155,7 +155,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""4848c470-52e9-411f-815c-b4d29a75406a"",
             ""actions"": [
                 {
-                    ""name"": ""Bucket"",
+                    ""name"": ""WateringCan"",
                     ""type"": ""Button"",
                     ""id"": ""d75c50af-0452-4a87-a517-360da7f8d4a4"",
                     ""expectedControlType"": ""Button"",
@@ -217,7 +217,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
-                    ""action"": ""Bucket"",
+                    ""action"": ""WateringCan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -405,6 +405,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftMouseClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ca41859-60e0-4201-903b-bdbe70c28d6f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -449,6 +458,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a21ca7ba-083e-4324-bd60-3aa13ab48ffd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftMouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -516,7 +536,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Movement_PlayerMovements = m_Movement.FindAction("PlayerMovements", throwIfNotFound: true);
         // MainActionBar
         m_MainActionBar = asset.FindActionMap("MainActionBar", throwIfNotFound: true);
-        m_MainActionBar_Bucket = m_MainActionBar.FindAction("Bucket", throwIfNotFound: true);
+        m_MainActionBar_WateringCan = m_MainActionBar.FindAction("WateringCan", throwIfNotFound: true);
         m_MainActionBar_Tree = m_MainActionBar.FindAction("Tree", throwIfNotFound: true);
         m_MainActionBar_House = m_MainActionBar.FindAction("House", throwIfNotFound: true);
         m_MainActionBar_Factory = m_MainActionBar.FindAction("Factory", throwIfNotFound: true);
@@ -534,6 +554,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Interaction_Reset = m_Interaction.FindAction("Reset", throwIfNotFound: true);
         m_Interaction_Pause = m_Interaction.FindAction("Pause", throwIfNotFound: true);
         m_Interaction_Interact = m_Interaction.FindAction("Interact", throwIfNotFound: true);
+        m_Interaction_LeftMouseClick = m_Interaction.FindAction("LeftMouseClick", throwIfNotFound: true);
         // Construction
         m_Construction = asset.FindActionMap("Construction", throwIfNotFound: true);
         m_Construction_MouseLeftClick = m_Construction.FindAction("MouseLeftClick", throwIfNotFound: true);
@@ -645,7 +666,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // MainActionBar
     private readonly InputActionMap m_MainActionBar;
     private List<IMainActionBarActions> m_MainActionBarActionsCallbackInterfaces = new List<IMainActionBarActions>();
-    private readonly InputAction m_MainActionBar_Bucket;
+    private readonly InputAction m_MainActionBar_WateringCan;
     private readonly InputAction m_MainActionBar_Tree;
     private readonly InputAction m_MainActionBar_House;
     private readonly InputAction m_MainActionBar_Factory;
@@ -655,7 +676,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         private @PlayerInput m_Wrapper;
         public MainActionBarActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Bucket => m_Wrapper.m_MainActionBar_Bucket;
+        public InputAction @WateringCan => m_Wrapper.m_MainActionBar_WateringCan;
         public InputAction @Tree => m_Wrapper.m_MainActionBar_Tree;
         public InputAction @House => m_Wrapper.m_MainActionBar_House;
         public InputAction @Factory => m_Wrapper.m_MainActionBar_Factory;
@@ -670,9 +691,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MainActionBarActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MainActionBarActionsCallbackInterfaces.Add(instance);
-            @Bucket.started += instance.OnBucket;
-            @Bucket.performed += instance.OnBucket;
-            @Bucket.canceled += instance.OnBucket;
+            @WateringCan.started += instance.OnWateringCan;
+            @WateringCan.performed += instance.OnWateringCan;
+            @WateringCan.canceled += instance.OnWateringCan;
             @Tree.started += instance.OnTree;
             @Tree.performed += instance.OnTree;
             @Tree.canceled += instance.OnTree;
@@ -692,9 +713,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IMainActionBarActions instance)
         {
-            @Bucket.started -= instance.OnBucket;
-            @Bucket.performed -= instance.OnBucket;
-            @Bucket.canceled -= instance.OnBucket;
+            @WateringCan.started -= instance.OnWateringCan;
+            @WateringCan.performed -= instance.OnWateringCan;
+            @WateringCan.canceled -= instance.OnWateringCan;
             @Tree.started -= instance.OnTree;
             @Tree.performed -= instance.OnTree;
             @Tree.canceled -= instance.OnTree;
@@ -805,6 +826,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Interaction_Reset;
     private readonly InputAction m_Interaction_Pause;
     private readonly InputAction m_Interaction_Interact;
+    private readonly InputAction m_Interaction_LeftMouseClick;
     public struct InteractionActions
     {
         private @PlayerInput m_Wrapper;
@@ -813,6 +835,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Reset => m_Wrapper.m_Interaction_Reset;
         public InputAction @Pause => m_Wrapper.m_Interaction_Pause;
         public InputAction @Interact => m_Wrapper.m_Interaction_Interact;
+        public InputAction @LeftMouseClick => m_Wrapper.m_Interaction_LeftMouseClick;
         public InputActionMap Get() { return m_Wrapper.m_Interaction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -834,6 +857,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @LeftMouseClick.started += instance.OnLeftMouseClick;
+            @LeftMouseClick.performed += instance.OnLeftMouseClick;
+            @LeftMouseClick.canceled += instance.OnLeftMouseClick;
         }
 
         private void UnregisterCallbacks(IInteractionActions instance)
@@ -850,6 +876,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @LeftMouseClick.started -= instance.OnLeftMouseClick;
+            @LeftMouseClick.performed -= instance.OnLeftMouseClick;
+            @LeftMouseClick.canceled -= instance.OnLeftMouseClick;
         }
 
         public void RemoveCallbacks(IInteractionActions instance)
@@ -936,7 +965,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public interface IMainActionBarActions
     {
-        void OnBucket(InputAction.CallbackContext context);
+        void OnWateringCan(InputAction.CallbackContext context);
         void OnTree(InputAction.CallbackContext context);
         void OnHouse(InputAction.CallbackContext context);
         void OnFactory(InputAction.CallbackContext context);
@@ -956,6 +985,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnReset(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnLeftMouseClick(InputAction.CallbackContext context);
     }
     public interface IConstructionActions
     {
