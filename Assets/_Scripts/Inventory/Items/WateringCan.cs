@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WateringCan : InventoryItem
 {
-	//public override Sprite Sprite { get => _sprite; }
-	//[SerializeField] private Sprite _sprite;
 	public override InventoryItemType Type => InventoryItemType.WateringCan;
 	public override TreeType SeedType => TreeType.None;
 	public override bool Stackable => false;

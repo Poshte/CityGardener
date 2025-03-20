@@ -13,5 +13,6 @@ public class Level_1 : ILevelInitializer
 	public void Initialize()
 	{
 		inventoryManager.AddItem(InventoryItemType.WateringCan);
+		inventoryManager.AddItem(InventoryItemType.Shovel);
 	}
 }
