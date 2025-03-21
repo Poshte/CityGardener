@@ -15,13 +15,13 @@ public class InputActionController : MonoBehaviour
 	{
 		if (input.MainActionBar.WateringCan.WasPerformedThisFrame())
 		{
-			uiController.OnWateringCanClicked();
+			//uiController.OnWateringCanClicked();
 		}
 		else if (input.MainActionBar.Tree.WasPerformedThisFrame())
 		{
-			uiController.OnTreeClicked();
-			input.MainActionBar.Disable();
-			input.TreeTypes.Enable();
+			//uiController.OnTreeClicked();
+			//input.MainActionBar.Disable();
+			//input.TreeTypes.Enable();
 		}
 		else if (input.MainActionBar.House.WasPerformedThisFrame())
 		{
@@ -37,18 +37,18 @@ public class InputActionController : MonoBehaviour
 		}
 		else if (input.TreeTypes.Fir.WasPerformedThisFrame())
 		{
-			uiController.OnFirTreeClicked();
-			ResetInputContext();
+			//uiController.OnFirTreeClicked();
+			//ResetInputContext();
 		}
 		else if (input.TreeTypes.Oak.WasPerformedThisFrame())
 		{
-			uiController.OnOakTreeClicked();
-			ResetInputContext();
+			//uiController.OnOakTreeClicked();
+			//ResetInputContext();
 		}
 		else if (input.TreeTypes.Birch.WasPerformedThisFrame())
 		{
-			uiController.OnBirchTreeClicked();
-			ResetInputContext();
+			//uiController.OnBirchTreeClicked();
+			//ResetInputContext();
 		}
 		else if (input.TreeTypes.MouseRightClick.WasPerformedThisFrame() ||
 				 input.MainActionBar.MouseRightClick.WasPerformedThisFrame())

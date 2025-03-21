@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6667714237602015694}
   - component: {fileID: 5530567074150438996}
   - component: {fileID: 709943478985477479}
-  - component: {fileID: 7518623542369219608}
   - component: {fileID: 3309517646719962337}
   m_Layer: 0
   m_Name: Player
@@ -165,41 +164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   IsWalking: 0
---- !u!70 &7518623542369219608
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2666107754288835201}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.0001, y: 0.0001}
-  m_Direction: 0
 --- !u!95 &3309517646719962337
 Animator:
   serializedVersion: 5

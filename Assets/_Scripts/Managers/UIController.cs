@@ -46,61 +46,6 @@ public class UIController : MonoBehaviour
 		selectedColor = temp;
 	}
 
-	public void OnWateringCanClicked()
-	{
-		ClearUp();
-
-		if (GameManager.NearWater)
-		{
-			GameManager.WaterCanLevel = 5;
-			var waterLevel = GameManager.WaterCanLevel * WaterLevelFactor;
-			UpdateWateringCanHandleSize(waterLevel);
-		}
-		else if (GameManager.ActiveTrees.Any())
-		{
-			FindNearest(GameManager.ActiveTrees).WaterTree();
-		}
-		else if (GameManager.WaterCanLevel == 0)
-		{
-			StartCoroutine(ColorUtility.RevertColor(btnWateringCan.image, selectedColor, 0.5f));
-		}
-	}
-
-	public void OnTreeClicked()
-	{
-		ClearUp();
-		btnTree.image.color = selectedColor;
-		TreeTypesUI.SetActive(true);
-	}
-
-	public void OnFirTreeClicked()
-	{
-		PlantTree(TreeType.Fir);
-	}
-
-	public void OnOakTreeClicked()
-	{
-		PlantTree(TreeType.Oak);
-	}
-
-	public void OnBirchTreeClicked()
-	{
-		PlantTree(TreeType.Birch);
-	}
-
-	private void PlantTree(TreeType treeType)
-	{
-		if (!GameManager.NearbyGardens.Any())
-		{
-			ClearUp();
-			return;
-		}
-
-		FindNearest(GameManager.NearbyGardens).PlantTree(treeType);
-		btnTree.image.color = Color.yellow;
-		TreeTypesUI.SetActive(false);
-	}
-
 	public void OnHouseClicked()
 	{
 		ClearUp();
@@ -133,25 +78,6 @@ public class UIController : MonoBehaviour
 		TreeTypesUI.SetActive(false);
 		buildingManager.SetActiveBuildingType(null);
 		pipeBuilder.SetActivePipe(null);
-	}
-
-	private T FindNearest<T>(List<T> items) where T : MonoBehaviour
-	{
-		float nearestDistance = Mathf.Infinity;
-		T nearestObj = default;
-
-		foreach (var item in items)
-		{
-			var distance = Vector2.Distance(player.transform.position, item.transform.position);
-
-			if (distance < nearestDistance)
-			{
-				nearestDistance = distance;
-				nearestObj = item;
-			}
-		}
-
-		return nearestObj;
 	}
 
 	private void OnTreeWatered()

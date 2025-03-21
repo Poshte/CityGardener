@@ -118,8 +118,11 @@ MonoBehaviour:
   slotsCount: 6
   slotPrefab: {fileID: 7183586332471964665, guid: 0dfe484dafd26f943ae2b539d2858a56, type: 3}
   itemPrefabs:
-  - {fileID: 4636620163007200112, guid: 69450aa9a48e56646a83a5f6ae13ad0b, type: 3}
+  - {fileID: 3504942909138512693, guid: 09839371281bfe74390d1f4c91f16f0c, type: 3}
+  - {fileID: 7912840755131013082, guid: 8a8aa20b0a21c0c4da8695bfbc4a4ed0, type: 3}
+  - {fileID: -9222847189464379959, guid: 16d7ea89835306640a1dc948640f6192, type: 3}
   - {fileID: 8295751068762557807, guid: e38048f73f3236649b6f1b48484bd715, type: 3}
+  - {fileID: 4636620163007200112, guid: 69450aa9a48e56646a83a5f6ae13ad0b, type: 3}
 --- !u!114 &5550325618451940060
 MonoBehaviour:
   m_ObjectHideFlags: 0
