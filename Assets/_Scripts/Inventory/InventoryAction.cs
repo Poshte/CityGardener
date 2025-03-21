@@ -9,6 +9,8 @@ public class InventoryAction : MonoBehaviour
 	private PlayerInput input;
 	private Player player;
 
+	private Vector2 targetPos;
+
 	private void Awake()
 	{
 		input = new PlayerInput();
@@ -33,7 +35,7 @@ public class InventoryAction : MonoBehaviour
 			//move player to target position
 			//then fire an event that lets this script know player is in position
 			//then perform action
-			var targetPos = Helper.GetMouseWorldPosition();
+			targetPos = Helper.GetMouseWorldPosition();
 			player.MoveToTargetPosition(targetPos);
 		}
 	}
@@ -41,7 +43,7 @@ public class InventoryAction : MonoBehaviour
 	private void OnPlayerReachedTargetPosition()
 	{
 		if (selectedItem != null)
-			selectedItem.PerformAction();
+			selectedItem.PerformAction(targetPos);
 	}
 
 	private void OnEnable()

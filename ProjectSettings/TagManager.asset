@@ -12,6 +12,7 @@ TagManager:
   - PipeBuilder
   - SeedsManager
   - InventoryManager
+  - Garden
   layers:
   - Default
   - TransparentFX

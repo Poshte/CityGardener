@@ -17,7 +17,7 @@ public class WateringCan : InventoryItem
 		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
 	}
 
-	public override void PerformAction()
+	public override void PerformAction(Vector2? targetPos)
 	{
 		if (GameManager.NearWater)
 		{

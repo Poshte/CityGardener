@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Shovel : InventoryItem
@@ -29,6 +30,20 @@ public class Shovel : InventoryItem
 			StopTilling();
 	}
 
+	public override void PerformAction(Vector2? targetPos)
+	{
+		if (targetPos == null)
+			return;
+
+		var hits = Physics2D.RaycastAll((Vector2)targetPos, Vector2.zero);
+		var hitGarden = hits.FirstOrDefault(h => h.collider != null && h.collider.CompareTag(Constants.Tags.Garden));
+
+		if (hitGarden)
+			return;
+
+		tilling = true;
+	}
+
 	private void TillSoil()
 	{
 		//TODO
@@ -46,10 +61,5 @@ public class Shovel : InventoryItem
 	{
 		tilling = false;
 		elapsedTime = 0f;
-	}
-
-	public override void PerformAction()
-	{
-		tilling = true;
 	}
 }

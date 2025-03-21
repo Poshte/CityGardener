@@ -16,7 +16,7 @@ public class Seed : InventoryItem
 		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
 	}
 
-	public override void PerformAction()
+	public override void PerformAction(Vector2? targetPos)
 	{
 		//plant in the nearby garden
 		if (GameManager.NearbyGardens.Any())

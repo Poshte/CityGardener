@@ -80,5 +80,5 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 		GameEvents.Instance.ItemSelected(parentSlot);
 	}
 
-	public abstract void PerformAction();
+	public abstract void PerformAction(Vector2? targetPos);
 }
