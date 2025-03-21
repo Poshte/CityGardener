@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 709943478985477479}
   - component: {fileID: 7518623542369219608}
   - component: {fileID: 3309517646719962337}
-  - component: {fileID: 2285100276967224834}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -36,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &682280867829303712
 SpriteRenderer:
@@ -165,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  IsMoving: 0
+  IsWalking: 0
 --- !u!70 &7518623542369219608
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -222,16 +221,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2285100276967224834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2666107754288835201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8c08059bba0334a82170df2e1f1cac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gardenPrefab: {fileID: 8846576158308840447, guid: 3609db83192f2bc409f08b76305d7686, type: 3}

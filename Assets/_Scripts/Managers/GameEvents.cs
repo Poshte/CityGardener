@@ -47,4 +47,7 @@ public class GameEvents
 
 	public event Action<InventorySlot> OnItemSelected;
 	public void ItemSelected(InventorySlot slot) => OnItemSelected?.Invoke(slot);
+
+	public event Action OnPlayerReachedTargetPosition;
+	public void PlayerReachedTargetPosition() => OnPlayerReachedTargetPosition?.Invoke();
 }

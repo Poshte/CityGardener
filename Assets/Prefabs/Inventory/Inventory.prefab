@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1355104605577708676}
   - component: {fileID: 7523489603709928079}
   - component: {fileID: 7675678115888007752}
+  - component: {fileID: 5550325618451940060}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: InventoryManager
@@ -116,9 +117,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsCount: 6
   slotPrefab: {fileID: 7183586332471964665, guid: 0dfe484dafd26f943ae2b539d2858a56, type: 3}
-  itemPrefab: {fileID: 408533922159154627, guid: 240e7030c12642648aa0f70ef206c426, type: 3}
-  itemSOCollection:
-  - {fileID: 11400000, guid: cc10aaa0515e57e48ba4600a89ac0308, type: 2}
-  - {fileID: 11400000, guid: cac8d4a1fb85ecf49b9590057f613a70, type: 2}
-  - {fileID: 11400000, guid: 041af73dacb2fe243b9a5d73b760d8c7, type: 2}
-  - {fileID: 11400000, guid: c9d618ed244a8fb44bb3d110d902725b, type: 2}
+  itemPrefabs:
+  - {fileID: 4636620163007200112, guid: 69450aa9a48e56646a83a5f6ae13ad0b, type: 3}
+  - {fileID: 8295751068762557807, guid: e38048f73f3236649b6f1b48484bd715, type: 3}
+--- !u!114 &5550325618451940060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928568966843706093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940195b2e53a8cc458178481a66ff9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

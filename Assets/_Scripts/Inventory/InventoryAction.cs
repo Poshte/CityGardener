@@ -4,12 +4,21 @@ using UnityEngine.EventSystems;
 public class InventoryAction : MonoBehaviour
 {
 	private InventoryManager inventoryManager;
+	private InventoryItem selectedItem;
+
 	private PlayerInput input;
+	private Player player;
 
 	private void Awake()
 	{
 		input = new PlayerInput();
 		inventoryManager = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
+		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
+	}
+
+	private void Start()
+	{
+		GameEvents.Instance.OnPlayerReachedTargetPosition += OnPlayerReachedTargetPosition;
 	}
 
 	private void Update()
@@ -17,11 +26,22 @@ public class InventoryAction : MonoBehaviour
 		if (input.Interaction.LeftMouseClick.WasPerformedThisFrame() &&
 			!EventSystem.current.IsPointerOverGameObject())
 		{
-			var selectedItem = inventoryManager.GetSelectedItem();
+			selectedItem = inventoryManager.GetSelectedItem();
+			if (selectedItem == null)
+				return;
 
-			if (selectedItem != null)
-				selectedItem.PerformAction();
+			//move player to target position
+			//then fire an event that lets this script know player is in position
+			//then perform action
+			var targetPos = Helper.GetMouseWorldPosition();
+			player.MoveToTargetPosition(targetPos);
 		}
+	}
+
+	private void OnPlayerReachedTargetPosition()
+	{
+		if (selectedItem != null)
+			selectedItem.PerformAction();
 	}
 
 	private void OnEnable()
@@ -32,5 +52,10 @@ public class InventoryAction : MonoBehaviour
 	private void OnDisable()
 	{
 		input.Interaction.Disable();
+	}
+
+	private void OnDestroy()
+	{
+		GameEvents.Instance.OnPlayerReachedTargetPosition -= OnPlayerReachedTargetPosition;
 	}
 }
