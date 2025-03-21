@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Shovel : InventoryItem
@@ -6,15 +5,10 @@ public class Shovel : InventoryItem
 	public override InventoryItemType Type => InventoryItemType.Shovel;
 	public override TreeType SeedType => TreeType.None;
 	public override bool Stackable => false;
-
 	private const float duration = 3f;
 
-	public override void PerformAction()
-	{
-		tillSoilCoroutine = StartCoroutine(TillSoil());
-	}
-
-	private Coroutine tillSoilCoroutine;
+	private bool tilling;
+	private float elapsedTime = 0f;
 	[SerializeField] private Transform gardenPrefab;
 	private Player player;
 
@@ -26,31 +20,36 @@ public class Shovel : InventoryItem
 
 	private void Update()
 	{
-		//stop tilling if player moved
-		if (tillSoilCoroutine != null)
+		if (!tilling)
+			return;
+
+		TillSoil();
+
+		if (player.IsWalking)
+			StopTilling();
+	}
+
+	private void TillSoil()
+	{
+		//TODO
+		//play animation
+
+		elapsedTime += Time.unscaledDeltaTime;
+		if (elapsedTime > duration)
 		{
-			if (player.IsWalking)
-			{
-				StopCoroutine(tillSoilCoroutine);
-				tillSoilCoroutine = null;
-			}
+			Instantiate(gardenPrefab, player.transform.position, Quaternion.identity);
+			StopTilling();
 		}
 	}
 
-	public IEnumerator TillSoil()
+	private void StopTilling()
 	{
-		var elapsedTime = 0f;
-		while (elapsedTime < duration)
-		{
-			//TODO
-			//play animation
-			Debug.Log(elapsedTime);
+		tilling = false;
+		elapsedTime = 0f;
+	}
 
-			elapsedTime += Time.unscaledDeltaTime;
-			yield return null;
-		}
-
-		//spawn garden if coroutine finishes successfuly
-		Instantiate(gardenPrefab, player.transform.position, Quaternion.identity);
+	public override void PerformAction()
+	{
+		tilling = true;
 	}
 }
