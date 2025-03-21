@@ -31,8 +31,11 @@ public class InventoryManager : MonoBehaviour
 			image.color = Color.white;
 		}
 
-		selectedSlot.Image.color = Color.red;
 		selectedItem = selectedSlot.Item;
+		if (selectedItem != null)
+		{
+			selectedSlot.Image.color = Color.red;
+		}
 	}
 
 	public bool AddItem(TreeType treeType)

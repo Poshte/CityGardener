@@ -5,15 +5,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-	//public abstract Sprite Sprite { get; }
 	public abstract InventoryItemType Type { get; }
 	public abstract TreeType SeedType { get; }
 	public abstract bool Stackable { get; }
-
-	//public ItemSO ActiveItem { get => _ativeItem; set => _ativeItem = value; }
-	//private ItemSO _ativeItem;
 
 	private Image image;
 	private InventorySlot parentSlot;
@@ -73,11 +69,6 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 
 		countText.enabled = true;
 		countText.text = itemCount.ToString();
-	}
-
-	public void OnPointerClick(PointerEventData eventData)
-	{
-		GameEvents.Instance.ItemSelected(parentSlot);
 	}
 
 	public abstract void PerformAction(Vector2? targetPos);

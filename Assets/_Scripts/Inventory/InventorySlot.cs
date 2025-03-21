@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
 	public InventoryItem Item { get => _item; set => _item = value; }
 	private InventoryItem _item;
@@ -24,5 +24,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 			_item = eventData.pointerDrag.GetComponent<InventoryItem>();
 			_item.SetParentSlot(this);
 		}
+	}
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		GameEvents.Instance.ItemSelected(this);
 	}
 }
