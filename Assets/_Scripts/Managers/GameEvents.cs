@@ -50,4 +50,7 @@ public class GameEvents
 
 	public event Action OnPlayerReachedTargetPosition;
 	public void PlayerReachedTargetPosition() => OnPlayerReachedTargetPosition?.Invoke();
+
+	public event Action<InventoryItem> OnItemUsed;
+	public void ItemUsed(InventoryItem item) => OnItemUsed?.Invoke(item);
 }

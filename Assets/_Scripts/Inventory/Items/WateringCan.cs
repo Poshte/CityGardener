@@ -27,18 +27,26 @@ public class WateringCan : InventoryItem
 
 	public override void PerformAction(Vector2? targetPos)
 	{
+		//fill WaterCan
 		if (GameManager.NearWater)
 		{
 			GameManager.WaterCanLevel = 5;
 			UpdateWateringCanHandleSize();
+			return;
 		}
-		else if (GameManager.ActiveTrees.Any())
+
+		//if near any tree
+		if (GameManager.ActiveTrees.Any())
 		{
+			//WaterCan is empty
+			if (GameManager.WaterCanLevel == 0)
+			{
+				StartCoroutine(ColorUtility.RevertColor(waterLevelImage, Color.red, 0.5f));
+				return;
+			}
+
+			//pour water
 			FindNearest(GameManager.ActiveTrees).WaterTree();
-		}
-		else if (GameManager.WaterCanLevel == 0)
-		{
-			StartCoroutine(ColorUtility.RevertColor(waterLevelImage, Color.red, 0.5f));
 		}
 	}
 
