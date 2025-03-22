@@ -21,7 +21,12 @@ public class Seed : InventoryItem
 		//plant in the nearby garden
 		if (GameManager.NearbyGardens.Any())
 		{
-			Helper.FindNearest(GameManager.NearbyGardens, player.transform.position).PlantTree(_seedType);
+			var isPlanted = Helper.FindNearest(GameManager.NearbyGardens, player.transform.position).PlantTree(_seedType);
+
+			if (isPlanted)
+			{
+				GameEvents.Instance.ItemUsed(this);
+			}
 		}
 	}
 }

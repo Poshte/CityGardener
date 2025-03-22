@@ -62,7 +62,6 @@ public class Store : MonoBehaviour, IInteractable
 		seedsManager.AddSeed(treeType);
 	}
 
-
 	public void DisableInteraction()
 	{
 		interactSprite.enabled = false;

@@ -11,16 +11,18 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 	public abstract TreeType SeedType { get; }
 	public abstract bool Stackable { get; }
 
+	public InventorySlot ParentSlot { get => _parentSlot; }
+	private InventorySlot _parentSlot;
+
 	private Image image;
-	private InventorySlot parentSlot;
-	private Transform inventory;
+	private InventoryManager inventory;
 
 	private int itemCount = 0;
 	private TextMeshProUGUI countText;
 
 	public virtual void Awake()
 	{
-		inventory = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).transform;
+		inventory = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
 		image = GetComponent<Image>();
 		countText = GetComponentInChildren<TextMeshProUGUI>();
 	}
@@ -30,6 +32,8 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 		UpdateItemCount(1);
 	}
 
+	public abstract void PerformAction(Vector2? targetPos);
+
 	public void OnBeginDrag(PointerEventData eventData)
 	{
 		//preventing the dragged item being registered as RayCastTarget
@@ -38,8 +42,8 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 
 		//temporary set Inventory as the parent
 		//change back to a slot whenever the item is dropped
-		parentSlot.Item = null;
-		transform.SetParent(inventory);
+		_parentSlot.Item = null;
+		transform.SetParent(inventory.transform);
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -50,18 +54,25 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 	public void OnEndDrag(PointerEventData eventData)
 	{
 		image.raycastTarget = true;
-		transform.SetParent(parentSlot.transform);
+		transform.SetParent(_parentSlot.transform);
 	}
 
 	public void SetParentSlot(InventorySlot newParent)
 	{
-		parentSlot = newParent;
+		_parentSlot = newParent;
 	}
 
 	public void UpdateItemCount(int number)
 	{
 		itemCount += number;
-		if (itemCount == 0 || !Stackable)
+
+		if (itemCount == 0)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		if (!Stackable)
 		{
 			countText.enabled = false;
 			return;
@@ -71,5 +82,8 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 		countText.text = itemCount.ToString();
 	}
 
-	public abstract void PerformAction(Vector2? targetPos);
+	private void OnDestroy()
+	{
+		inventory.ResetSlotsColor();
+	}
 }

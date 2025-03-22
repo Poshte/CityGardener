@@ -32,17 +32,18 @@ public class Garden : MonoBehaviour, IInteractable
 		GameManager.NearbyGardens.Remove(this);
 	}
 
-	public void PlantTree(TreeType type)
+	public bool PlantTree(TreeType type)
 	{
-		if (gardenPlantedTree == null)
-		{
-			var prefab = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == GrowthStage.Seed);
-			if (!PayTreeCost(prefab.Cost))
-				return;
+		if (gardenPlantedTree != null)
+			return false;
 
-			SpawnTree(prefab);
-			DisableInteraction();
-		}
+		var prefab = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == GrowthStage.Seed);
+		if (!PayTreeCost(prefab.Cost))
+			return false;
+
+		SpawnTree(prefab);
+		DisableInteraction();
+		return true;
 	}
 
 	public void GrowTree(TreeType type, GrowthStage stage)

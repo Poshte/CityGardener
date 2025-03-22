@@ -21,21 +21,7 @@ public class InventoryManager : MonoBehaviour
 	private void Start()
 	{
 		GameEvents.Instance.OnItemSelected += OnItemSelected;
-	}
-
-	private void OnItemSelected(InventorySlot selectedSlot)
-	{
-		//reset the color of all other slots
-		foreach (var image in slots.Select(s => s.Image))
-		{
-			image.color = Color.white;
-		}
-
-		selectedItem = selectedSlot.Item;
-		if (selectedItem != null)
-		{
-			selectedSlot.Image.color = Color.yellow;
-		}
+		GameEvents.Instance.OnItemUsed += OnItemUsed;
 	}
 
 	public bool AddItem(TreeType treeType)
@@ -65,7 +51,7 @@ public class InventoryManager : MonoBehaviour
 
 				if (slot.Item.SeedType == item.SeedType)
 				{
-					AddItemToSlot(slot);
+					AddItemToSlot(slot, 1);
 					return true;
 				}
 			}
@@ -87,6 +73,29 @@ public class InventoryManager : MonoBehaviour
 		return false;
 	}
 
+	private void OnItemSelected(InventorySlot selectedSlot)
+	{
+		ResetSlotsColor();
+
+		selectedItem = selectedSlot.Item;
+		if (selectedItem != null)
+		{
+			selectedSlot.Image.color = Color.yellow;
+		}
+	}
+
+	private void OnItemUsed(InventoryItem item)
+	{
+		if (!item.Stackable)
+		{
+			Destroy(item.gameObject);
+			return;
+		}
+
+		//subtract item from slot
+		AddItemToSlot(item.ParentSlot, -1);
+	}
+
 	private InventorySlot FindEmptySlot()
 	{
 		for (int i = 0; i < slots.Count; i++)
@@ -106,9 +115,15 @@ public class InventoryManager : MonoBehaviour
 		slot.Item.SetParentSlot(slot);
 	}
 
-	private void AddItemToSlot(InventorySlot slot)
+	private void AddItemToSlot(InventorySlot slot, int value)
 	{
-		slot.Item.UpdateItemCount(1);
+		slot.Item.UpdateItemCount(value);
+	}
+
+	private void OnDestroy()
+	{
+		GameEvents.Instance.OnItemSelected -= OnItemSelected;
+		GameEvents.Instance.OnItemUsed -= OnItemUsed;
 	}
 
 	public InventoryItem GetSelectedItem()
@@ -116,8 +131,11 @@ public class InventoryManager : MonoBehaviour
 		return selectedItem;
 	}
 
-	private void OnDestroy()
+	public void ResetSlotsColor()
 	{
-		GameEvents.Instance.OnItemSelected -= OnItemSelected;
+		foreach (var image in slots.Select(s => s.Image))
+		{
+			image.color = Color.white;
+		}
 	}
 }
