@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8651422623820897812}
   - component: {fileID: 7312555064754211101}
   - component: {fileID: 6781626350670604825}
-  - component: {fileID: 3555588887959548018}
+  - component: {fileID: 2566364251374412323}
   m_Layer: 0
   m_Name: Store
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3656951977576045622}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7312555064754211101
 SpriteRenderer:
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3555588887959548018
+--- !u!114 &2566364251374412323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,12 +141,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5938908296386292581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bb6a268838baee49b6fa9be30c5ff9f, type: 3}
+  m_Script: {fileID: 11500000, guid: c811bcfa34737da48949e25a81fe1be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactSprite: {fileID: 5177441385502637302}
+  btnBirchSeed: {fileID: 0}
+  btnFirSeed: {fileID: 0}
+  btnOakSeed: {fileID: 0}
   storeCanvas: {fileID: 0}
   actionBar: {fileID: 0}
+  interactSprite: {fileID: 5177441385502637302}
 --- !u!1001 &3428803608665538762
 PrefabInstance:
   m_ObjectHideFlags: 0

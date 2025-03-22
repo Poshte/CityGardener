@@ -1,18 +1,25 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Windows;
 
-public class Store : MonoBehaviour, IInteractable
+public class StoreManager : MonoBehaviour, IInteractable
 {
-	[SerializeField]
-	private SpriteRenderer interactSprite;
-
-	private PlayerInput input;
-
+	[SerializeField] private Button btnBirchSeed;
+	[SerializeField] private Button btnFirSeed;
+	[SerializeField] private Button btnOakSeed;
 	[SerializeField] private GameObject storeCanvas;
 	[SerializeField] private GameObject actionBar;
+	[SerializeField] private SpriteRenderer interactSprite;
+
 	private bool isStoreOpen;
+
+	private PlayerInput input;
+	private SeedsManager seedsManager;
 
 	private void Awake()
 	{
+		seedsManager = GameObject.FindGameObjectWithTag(Constants.Tags.SeedsManager).GetComponent<SeedsManager>();
 		input = new PlayerInput();
 	}
 
@@ -36,6 +43,27 @@ public class Store : MonoBehaviour, IInteractable
 			}
 		}
 	}
+
+	public void OnBirchSeedClicked()
+	{
+		BuySeed(TreeType.Birch);
+	}
+
+	public void OnFirSeedClicked()
+	{
+		BuySeed(TreeType.Fir);
+	}
+
+	public void OnOakSeedClicked()
+	{
+		BuySeed(TreeType.Oak);
+	}
+
+	private void BuySeed(TreeType treeType)
+	{
+		seedsManager.AddSeed(treeType);
+	}
+
 
 	public void DisableInteraction()
 	{
