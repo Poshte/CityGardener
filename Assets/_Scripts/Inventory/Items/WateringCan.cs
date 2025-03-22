@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WateringCan : InventoryItem
 {
@@ -9,7 +10,8 @@ public class WateringCan : InventoryItem
 	public override bool Stackable => false;
 
 	private Player player;
-	private const int WaterLevelFactor = 27;
+	[SerializeField] private Scrollbar waterLevelScrollbar;
+	[SerializeField] private Image waterLevelImage;
 
 	public override void Awake()
 	{
@@ -17,13 +19,18 @@ public class WateringCan : InventoryItem
 		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
 	}
 
+	public override void Start()
+	{
+		base.Start();
+		GameEvents.Instance.OnTreeWatered += OnTreeWatered;
+	}
+
 	public override void PerformAction(Vector2? targetPos)
 	{
 		if (GameManager.NearWater)
 		{
 			GameManager.WaterCanLevel = 5;
-			var waterLevel = GameManager.WaterCanLevel * WaterLevelFactor;
-			UpdateWateringCanHandleSize(waterLevel);
+			UpdateWateringCanHandleSize();
 		}
 		else if (GameManager.ActiveTrees.Any())
 		{
@@ -31,15 +38,19 @@ public class WateringCan : InventoryItem
 		}
 		else if (GameManager.WaterCanLevel == 0)
 		{
-			//StartCoroutine(ColorUtility.RevertColor(btnWateringCan.image, selectedColor, 0.5f));
+			StartCoroutine(ColorUtility.RevertColor(waterLevelImage, Color.red, 0.5f));
 		}
 	}
 
-	private void UpdateWateringCanHandleSize(int waterLevel)
+	private void OnTreeWatered()
 	{
-		//var temp = WateringCanHandle.sizeDelta;
-		//temp.x = waterLevel;
-		//WateringCanHandle.sizeDelta = temp;
+		UpdateWateringCanHandleSize();
+	}
+
+	private void UpdateWateringCanHandleSize()
+	{
+		var normalizedValue = Mathf.InverseLerp(0, 5, GameManager.WaterCanLevel);
+		waterLevelScrollbar.size = normalizedValue;
 	}
 
 	private T FindNearest<T>(List<T> items) where T : MonoBehaviour
@@ -60,4 +71,10 @@ public class WateringCan : InventoryItem
 
 		return nearestObj;
 	}
+
+	private void OnDisable()
+	{
+		GameEvents.Instance.OnTreeWatered -= OnTreeWatered;
+	}
+
 }

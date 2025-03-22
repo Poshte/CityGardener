@@ -25,7 +25,7 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 		countText = GetComponentInChildren<TextMeshProUGUI>();
 	}
 
-	private void Start()
+	public virtual void Start()
 	{
 		UpdateItemCount(1);
 	}

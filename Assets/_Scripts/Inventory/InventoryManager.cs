@@ -34,20 +34,20 @@ public class InventoryManager : MonoBehaviour
 		selectedItem = selectedSlot.Item;
 		if (selectedItem != null)
 		{
-			selectedSlot.Image.color = Color.red;
+			selectedSlot.Image.color = Color.yellow;
 		}
 	}
 
 	public bool AddItem(TreeType treeType)
 	{
-		var itemSO = itemPrefabs.FirstOrDefault(i => i.SeedType == treeType);
-		return AddItem(itemSO);
+		var item = itemPrefabs.FirstOrDefault(i => i.SeedType == treeType);
+		return AddItem(item);
 	}
 
 	public bool AddItem(InventoryItemType itemType)
 	{
-		var itemSO = itemPrefabs.FirstOrDefault(i => i.Type == itemType);
-		return AddItem(itemSO);
+		var item = itemPrefabs.FirstOrDefault(i => i.Type == itemType);
+		return AddItem(item);
 	}
 
 	public bool AddItem(InventoryItem item)
@@ -100,9 +100,9 @@ public class InventoryManager : MonoBehaviour
 		return default;
 	}
 
-	private void SpawnItemToSlot(InventoryItem prefab, InventorySlot slot)
+	private void SpawnItemToSlot(InventoryItem item, InventorySlot slot)
 	{
-		slot.Item = Instantiate(prefab, slot.transform);
+		slot.Item = Instantiate(item, slot.transform);
 		slot.Item.SetParentSlot(slot);
 	}
 

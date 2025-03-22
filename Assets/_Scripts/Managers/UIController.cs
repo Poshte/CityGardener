@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,8 +5,6 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
 	[SerializeField] private Button btnWateringCan;
-	[SerializeField] private RectTransform WateringCanHandle;
-	private const int WaterLevelFactor = 27;
 
 	[SerializeField] private Button btnTree;
 	[SerializeField] private Button btnHouse;
@@ -32,11 +28,6 @@ public class UIController : MonoBehaviour
 		buildingManager = GameObject.FindGameObjectWithTag(Constants.Tags.BuildingManager).GetComponent<BuildingManager>();
 		pipeBuilder = GameObject.FindGameObjectWithTag(Constants.Tags.PipeBuilder).GetComponent<PipeBuilder>();
 		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
-	}
-
-	private void OnEnable()
-	{
-		GameEvents.Instance.OnTreeWatered += OnTreeWatered;
 	}
 
 	private void Start()
@@ -78,23 +69,5 @@ public class UIController : MonoBehaviour
 		TreeTypesUI.SetActive(false);
 		buildingManager.SetActiveBuildingType(null);
 		pipeBuilder.SetActivePipe(null);
-	}
-
-	private void OnTreeWatered()
-	{
-		var waterLevel = GameManager.WaterCanLevel * WaterLevelFactor;
-		UpdateWateringCanHandleSize(waterLevel);
-	}
-
-	private void UpdateWateringCanHandleSize(int waterLevel)
-	{
-		var temp = WateringCanHandle.sizeDelta;
-		temp.x = waterLevel;
-		WateringCanHandle.sizeDelta = temp;
-	}
-
-	private void OnDisable()
-	{
-		GameEvents.Instance.OnTreeWatered -= OnTreeWatered;
 	}
 }
