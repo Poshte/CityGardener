@@ -22,13 +22,14 @@ public class PipeBuilder : MonoBehaviour
 	private int numberOfInstances;
 	private readonly List<Transform> previewObjects = new();
 
-	[SerializeField] private UIController uiController;
+	private UIController uiController;
 	private WealthManager wealthManager;
 
 	private void Awake()
 	{
 		input = new PlayerInput();
 		wealthManager = GameObject.FindGameObjectWithTag(Constants.Tags.WealthManager).GetComponent<WealthManager>();
+		uiController = GameObject.FindGameObjectWithTag(Constants.Tags.UIController).GetComponent<UIController>();
 	}
 
 	private void Start()
@@ -54,7 +55,7 @@ public class PipeBuilder : MonoBehaviour
 		canSpawn = CanSpawn(mousePos);
 		PreviewSilhouette(mousePos);
 
-		//show the preview after first click
+		//spawn the preview after first click
 		if (startingPosition != Vector2.zero)
 		{
 			SpawnPreview(mousePos);

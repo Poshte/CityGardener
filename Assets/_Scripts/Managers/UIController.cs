@@ -4,14 +4,12 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-	[SerializeField] private Button btnWateringCan;
-
-	[SerializeField] private Button btnTree;
+	public Button BtnHouse { get => btnHouse; }
 	[SerializeField] private Button btnHouse;
+	public Button BtnFactory { get => btnFactory; }
 	[SerializeField] private Button btnFactory;
+	public Button BtnPipe { get => btnPipe; }
 	[SerializeField] private Button btnPipe;
-
-	[SerializeField] private GameObject TreeTypesUI;
 
 	[SerializeField] private BuildingTypeSO houseSO;
 	[SerializeField] private BuildingTypeSO factorySO;
@@ -19,28 +17,27 @@ public class UIController : MonoBehaviour
 
 	private BuildingManager buildingManager;
 	private PipeBuilder pipeBuilder;
-	private Player player;
 
 	private Color selectedColor;
+
 
 	private void Awake()
 	{
 		buildingManager = GameObject.FindGameObjectWithTag(Constants.Tags.BuildingManager).GetComponent<BuildingManager>();
 		pipeBuilder = GameObject.FindGameObjectWithTag(Constants.Tags.PipeBuilder).GetComponent<PipeBuilder>();
-		player = GameObject.FindGameObjectWithTag(Constants.Tags.Player).GetComponent<Player>();
 	}
 
 	private void Start()
 	{
 		var temp = Color.yellow;
-		temp.a = 0.4f;
+		//temp.a = 0.4f;
 		selectedColor = temp;
 	}
 
 	public void OnHouseClicked()
 	{
 		ClearUp();
-		btnHouse.image.color = selectedColor;
+		BtnHouse.image.color = selectedColor;
 		buildingManager.SetActiveBuildingType(houseSO);
 	}
 
@@ -65,8 +62,7 @@ public class UIController : MonoBehaviour
 
 	public void ClearUp()
 	{
-		btnTree.image.color = btnHouse.image.color = btnFactory.image.color = btnPipe.image.color = Color.yellow;
-		TreeTypesUI.SetActive(false);
+		BtnHouse.image.color = btnFactory.image.color = btnPipe.image.color = Color.yellow;
 		buildingManager.SetActiveBuildingType(null);
 		pipeBuilder.SetActivePipe(null);
 	}

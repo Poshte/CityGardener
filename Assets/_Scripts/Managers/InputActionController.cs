@@ -13,17 +13,7 @@ public class InputActionController : MonoBehaviour
 
 	private void Update()
 	{
-		if (input.MainActionBar.WateringCan.WasPerformedThisFrame())
-		{
-			//uiController.OnWateringCanClicked();
-		}
-		else if (input.MainActionBar.Tree.WasPerformedThisFrame())
-		{
-			//uiController.OnTreeClicked();
-			//input.MainActionBar.Disable();
-			//input.TreeTypes.Enable();
-		}
-		else if (input.MainActionBar.House.WasPerformedThisFrame())
+		if (input.MainActionBar.House.WasPerformedThisFrame())
 		{
 			uiController.OnHouseClicked();
 		}
@@ -31,27 +21,7 @@ public class InputActionController : MonoBehaviour
 		{
 			uiController.OnFactoryClicked();
 		}
-		else if (input.MainActionBar.Pipe.WasPerformedThisFrame())
-		{
-			uiController.OnPipeClicked();
-		}
-		else if (input.TreeTypes.Fir.WasPerformedThisFrame())
-		{
-			//uiController.OnFirTreeClicked();
-			//ResetInputContext();
-		}
-		else if (input.TreeTypes.Oak.WasPerformedThisFrame())
-		{
-			//uiController.OnOakTreeClicked();
-			//ResetInputContext();
-		}
-		else if (input.TreeTypes.Birch.WasPerformedThisFrame())
-		{
-			//uiController.OnBirchTreeClicked();
-			//ResetInputContext();
-		}
-		else if (input.TreeTypes.MouseRightClick.WasPerformedThisFrame() ||
-				 input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
+		else if (input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
 		{
 			ResetInputContext();
 			uiController.ClearUp();
@@ -61,18 +31,15 @@ public class InputActionController : MonoBehaviour
 	private void ResetInputContext()
 	{
 		input.MainActionBar.Enable();
-		input.TreeTypes.Disable();
 	}
 
 	private void OnEnable()
 	{
 		input.MainActionBar.Enable();
-		input.TreeTypes.Disable();
 	}
 
 	private void OnDisable()
 	{
 		input.MainActionBar.Disable();
-		input.TreeTypes.Disable();
 	}
 }

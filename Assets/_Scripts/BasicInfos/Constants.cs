@@ -14,6 +14,7 @@ public static class Constants
 		public const string InventoryManager = "InventoryManager";
 		public const string SeedsManager = "SeedsManager";
 		public const string Garden = "Garden";
+		public const string UIController = "UIController";
 	}
 
 	public static class LayerMasks

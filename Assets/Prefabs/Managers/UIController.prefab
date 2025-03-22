@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3828376322559884131
 MonoBehaviour:
@@ -45,14 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e69e3ab3180db94b8f6f0e14ce4c761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnBucket: {fileID: 0}
   btnHouse: {fileID: 0}
   btnFactory: {fileID: 0}
-  btnTree: {fileID: 0}
-  TreeTypesUI: {fileID: 0}
+  btnPipe: {fileID: 0}
   houseSO: {fileID: 11400000, guid: 83e19e690692fe84e8f86e46d65a9454, type: 2}
   factorySO: {fileID: 11400000, guid: df931165845f5a4439953bf359e2c365, type: 2}
-  buildingManager: {fileID: 0}
+  dripPipeSO: {fileID: 11400000, guid: 1f4adddecbf7f204f9495f3a593c3765, type: 2}
 --- !u!114 &3090119123806574892
 MonoBehaviour:
   m_ObjectHideFlags: 0
