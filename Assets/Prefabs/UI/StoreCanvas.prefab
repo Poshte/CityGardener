@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6357834577149796401}
   - component: {fileID: 9120699921576587780}
   - component: {fileID: 597584392583747166}
-  - component: {fileID: 5980720516068560717}
   m_Layer: 5
   m_Name: StoreCanvas
   m_TagString: Untagged
@@ -39,7 +38,7 @@ RectTransform:
   - {fileID: 3075334797234283471}
   - {fileID: 7709900582634988409}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -147,21 +146,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5980720516068560717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281676533868846875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c811bcfa34737da48949e25a81fe1be8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnBirchSeed: {fileID: 3132342935855731781}
-  btnFirSeed: {fileID: 1006287285988290401}
-  btnOakSeed: {fileID: 4973321712963450205}
 --- !u!1 &1785368725363709915
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +268,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5980720516068560717}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
         m_MethodName: OnFirSeedClicked
         m_Mode: 1
@@ -494,7 +478,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5980720516068560717}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
         m_MethodName: OnOakSeedClicked
         m_Mode: 1
@@ -763,7 +747,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5980720516068560717}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
         m_MethodName: OnBirchSeedClicked
         m_Mode: 1

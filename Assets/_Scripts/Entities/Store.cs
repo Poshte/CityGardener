@@ -1,9 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows;
 
-public class StoreManager : MonoBehaviour, IInteractable
+public class Store : MonoBehaviour, IInteractable
 {
 	[SerializeField] private Button btnBirchSeed;
 	[SerializeField] private Button btnFirSeed;
