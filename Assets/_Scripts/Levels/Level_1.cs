@@ -18,5 +18,6 @@ public class Level_1 : ILevelInitializer
 
 		uiController.BtnHouse.gameObject.SetActive(true);
 		uiController.BtnFactory.gameObject.SetActive(true);
+		uiController.BtnPipe.gameObject.SetActive(true);
 	}
 }

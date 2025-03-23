@@ -23,14 +23,8 @@ public class InputActionController : MonoBehaviour
 		}
 		else if (input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
 		{
-			ResetInputContext();
 			uiController.ClearUp();
 		}
-	}
-
-	private void ResetInputContext()
-	{
-		input.MainActionBar.Enable();
 	}
 
 	private void OnEnable()

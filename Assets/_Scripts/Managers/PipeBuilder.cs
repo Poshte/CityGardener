@@ -22,14 +22,12 @@ public class PipeBuilder : MonoBehaviour
 	private int numberOfInstances;
 	private readonly List<Transform> previewObjects = new();
 
-	private UIController uiController;
 	private WealthManager wealthManager;
 
 	private void Awake()
 	{
 		input = new PlayerInput();
 		wealthManager = GameObject.FindGameObjectWithTag(Constants.Tags.WealthManager).GetComponent<WealthManager>();
-		uiController = GameObject.FindGameObjectWithTag(Constants.Tags.UIController).GetComponent<UIController>();
 	}
 
 	private void Start()
@@ -47,7 +45,6 @@ public class PipeBuilder : MonoBehaviour
 		{
 			RemovePreviewObjects();
 			ClearUp();
-			uiController.ClearUp();
 		}
 
 		//when a pipe is selected

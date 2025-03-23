@@ -7,7 +7,6 @@ public class BuildingManager : MonoBehaviour
 	private BuildingTypeSO activeBuildingType;
 	private PlayerInput input;
 	private WealthManager wealthManager;
-	[SerializeField] private UIController uiController;
 	private bool canSpawn;
 
 	[SerializeField] private SpriteRenderer houseSilhouettes;
@@ -79,7 +78,6 @@ public class BuildingManager : MonoBehaviour
 	{
 		Instantiate(activeBuildingType.Prefab, spawnPos, Quaternion.identity);
 		activeBuildingType = null;
-		uiController.ClearUp();
 	}
 
 	public void SetActiveBuildingType(BuildingTypeSO buildingType)
