@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+	[SerializeField] private GameObject actionBar;
+
 	public Button BtnHouse { get => btnHouse; }
 	[SerializeField] private Button btnHouse;
 	public Button BtnFactory { get => btnFactory; }
@@ -22,6 +24,12 @@ public class UIController : MonoBehaviour
 	{
 		buildingManager = GameObject.FindGameObjectWithTag(Constants.Tags.BuildingManager).GetComponent<BuildingManager>();
 		pipeBuilder = GameObject.FindGameObjectWithTag(Constants.Tags.PipeBuilder).GetComponent<PipeBuilder>();
+	}
+
+	private void Start()
+	{
+		GameEvents.Instance.OnStoreOpened += OnStoreOpened;
+		GameEvents.Instance.OnStoreClosed += OnStoreClosed;
 	}
 
 	public void OnHouseClicked()
@@ -45,6 +53,16 @@ public class UIController : MonoBehaviour
 	public void OnNextLevelClicked()
 	{
 		SceneController.Instance.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
+
+	private void OnStoreOpened()
+	{
+		actionBar.SetActive(false);
+	}
+
+	private void OnStoreClosed()
+	{
+		actionBar.SetActive(true);
 	}
 
 	public void ClearUp()

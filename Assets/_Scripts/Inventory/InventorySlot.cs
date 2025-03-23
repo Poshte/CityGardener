@@ -9,10 +9,28 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 	public Image Image { get => _image; set => _image = value; }
 	private Image _image;
 
+	private bool isStoreOpen;
+
 	private void Awake()
 	{
 		_item = GetComponentInChildren<InventoryItem>();
 		_image = GetComponent<Image>();
+	}
+
+	private void Start()
+	{
+		GameEvents.Instance.OnStoreOpened += OnStoreOpened;
+		GameEvents.Instance.OnStoreClosed += OnStoreClosed;
+	}
+
+	private void OnStoreOpened()
+	{
+		isStoreOpen = true;
+	}
+
+	private void OnStoreClosed()
+	{
+		isStoreOpen = false;
 	}
 
 	public void OnDrop(PointerEventData eventData)
@@ -28,6 +46,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
+		//disables interaction with inventory items when purchasing
+		if (isStoreOpen)
+			return;
+
 		GameEvents.Instance.ItemSelected(this);
 	}
 }

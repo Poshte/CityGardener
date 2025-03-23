@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 	private Vector2 moveToTargetPosition;
 
 	private Animator animator;
+	private bool isStoreOpen;
 
 	private void Awake()
 	{
@@ -22,10 +23,16 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
 		input.Movement.PlayerMovements.canceled += PlayerMovements_canceled;
+		GameEvents.Instance.OnStoreOpened += OnStoreOpened;
+		GameEvents.Instance.OnStoreClosed += OnStoreClosed;
 	}
 
 	private void FixedUpdate()
 	{
+		//disables movement when player is purchasing items
+		if (isStoreOpen)
+			return;
+
 		playerMovement = input.Movement.PlayerMovements.ReadValue<Vector2>();
 
 		if (moveToTargetPosition != Vector2.zero)
@@ -97,6 +104,16 @@ public class Player : MonoBehaviour
 			var interactable = collision.gameObject.GetComponentInParent<IInteractable>();
 			interactable?.DisableInteraction();
 		}
+	}
+
+	private void OnStoreOpened()
+	{
+		isStoreOpen = true;
+	}
+
+	private void OnStoreClosed()
+	{
+		isStoreOpen = false;
 	}
 
 	private void OnEnable()

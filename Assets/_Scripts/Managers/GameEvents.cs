@@ -53,4 +53,10 @@ public class GameEvents
 
 	public event Action<InventoryItem> OnItemUsed;
 	public void ItemUsed(InventoryItem item) => OnItemUsed?.Invoke(item);
+
+	public event Action OnStoreOpened;
+	public void StoreOpened() => OnStoreOpened?.Invoke();
+
+	public event Action OnStoreClosed;
+	public void StoreClosed() => OnStoreClosed?.Invoke();
 }

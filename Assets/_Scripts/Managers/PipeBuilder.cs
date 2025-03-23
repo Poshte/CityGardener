@@ -19,6 +19,7 @@ public class PipeBuilder : MonoBehaviour
 	private Vector2 direction;
 	private const float Pipes_Spacing = 0.1f;
 	private const float Pipe_SearchRadius = 0.5f;
+	private const float Continuous_Building_Offset = 0.5f;
 	private int numberOfInstances;
 	private readonly List<Transform> previewObjects = new();
 
@@ -147,8 +148,9 @@ public class PipeBuilder : MonoBehaviour
 
 		//this will allow player continue building pipes in a new direction
 		var lastPipePos = (Vector2)previewObjects.Last().position;
-		startingPosition = lastPipePos + direction * ((prefabWidth + Pipes_Spacing) * 0.5f);
+		startingPosition = lastPipePos + direction * ((prefabWidth + Pipes_Spacing) * Continuous_Building_Offset);
 
+		DisableSilhouette();
 		previewObjects.Clear();
 	}
 

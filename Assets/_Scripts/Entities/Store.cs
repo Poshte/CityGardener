@@ -3,11 +3,7 @@ using UnityEngine.UI;
 
 public class Store : MonoBehaviour, IInteractable
 {
-	[SerializeField] private Button btnBirchSeed;
-	[SerializeField] private Button btnFirSeed;
-	[SerializeField] private Button btnOakSeed;
 	[SerializeField] private GameObject storeCanvas;
-	[SerializeField] private GameObject actionBar;
 	[SerializeField] private SpriteRenderer interactSprite;
 
 	private bool isStoreOpen;
@@ -28,15 +24,17 @@ public class Store : MonoBehaviour, IInteractable
 			//open store
 			if (!isStoreOpen)
 			{
+				GameEvents.Instance.StoreOpened();
+
 				storeCanvas.SetActive(true);
-				actionBar.SetActive(false);
 				isStoreOpen = true;
 			}
 			//close store
 			else
 			{
+				GameEvents.Instance.StoreClosed();
+
 				storeCanvas.SetActive(false);
-				actionBar.SetActive(true);
 				isStoreOpen = false;
 			}
 		}
