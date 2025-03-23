@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-	[SerializeField] private LevelSO levelGoals;
+	[SerializeField] private LevelGoalsSO levelGoals;
 	[SerializeField] private TextMeshProUGUI pollutionGoalsUI;
 	[SerializeField] private RectTransform treeGoalsParent;
 	[SerializeField] private Goal treeGoalPrefab;
@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 	private bool treeGoalsFulfilled;
 	private PollutionManager pollutionManager;
 
-	private List<ILevelInitializer> levelInitializers = new();
+	private readonly List<ILevelInitializer> levelInitializers = new();
 
 	private void Awake()
 	{
@@ -26,12 +26,13 @@ public class LevelManager : MonoBehaviour
 	private void Start()
 	{
 		GameEvents.Instance.OnMatureTreePlanted += OnMatureTreePlanted;
-		InitializeGoals();
 
-		//TODO
-		//this is for testing, must be modified
-		var level_1 = new Level_1();
-		levelInitializers.Add(level_1);
+		levelInitializers.Add(new Level_1());
+		levelInitializers.Add(new Level_2());
+		levelInitializers.Add(new Level_3());
+		levelInitializers.Add(new Level_4());
+
+		InitializeGoals();
 		InitializeLevel((GameScene)SceneManager.GetActiveScene().buildIndex);
 	}
 
@@ -133,5 +134,10 @@ public class LevelManager : MonoBehaviour
 	private void OnDisable()
 	{
 		GameEvents.Instance.OnMatureTreePlanted -= OnMatureTreePlanted;
+	}
+
+	private void OnDestroy()
+	{
+		GameManager.Reset();
 	}
 }

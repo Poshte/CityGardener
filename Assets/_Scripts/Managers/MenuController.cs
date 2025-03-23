@@ -3,19 +3,29 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-	[SerializeField]
-	private Button startBtn;
+	[SerializeField] private Canvas mainMenuCanvas;
+	[SerializeField] private Canvas levelsCanvas;
 
-	[SerializeField]
-	private Button quitBtn;
 	private void Start()
 	{
 		Time.timeScale = 1f;
 	}
 
+	public void OnLevel_Clicked(int levelIndex)
+	{
+		SceneController.Instance.LoadScene(levelIndex);
+	}
+
+	public void OnBack_Clicked()
+	{
+		mainMenuCanvas.enabled = true;
+		levelsCanvas.enabled = false;
+	}
+
 	public void OnStartClicked()
 	{
-		SceneController.Instance.LoadScene();
+		mainMenuCanvas.enabled = false;
+		levelsCanvas.enabled = true;
 	}
 
 	public void OnQuitClicked()

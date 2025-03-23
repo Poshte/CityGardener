@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class Level_1 : ILevelInitializer
+public class Level_2 : ILevelInitializer
 {
-	public GameScene GameScene => GameScene.Level_1;
+	public GameScene GameScene => GameScene.Level_2;
 	private readonly InventoryManager inventoryManager;
 	private readonly UIController uiController;
-	public Level_1()
+	public Level_2()
 	{
 		inventoryManager = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
 		uiController = GameObject.FindGameObjectWithTag(Constants.Tags.UIController).GetComponent<UIController>();
