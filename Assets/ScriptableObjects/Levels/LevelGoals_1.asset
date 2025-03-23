@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ae70d2090f5154dbfc1c7abe57e95a, type: 3}
-  m_Name: Level_1
+  m_Name: LevelGoals_1
   m_EditorClassIdentifier: 
-  TreesToPlant: 0000000001000000000000000200000000000000000000000100000001000000
+  TreesToPlant: 0300000001000000030000000200000003000000030000000100000001000000
   PollutionGoal: 100

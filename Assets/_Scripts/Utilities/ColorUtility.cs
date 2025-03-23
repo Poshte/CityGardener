@@ -22,6 +22,23 @@ public static class ColorUtility
 		text.color = original;
 	}
 
+	public static IEnumerator Blink(Image image, Color target, float duration, int count)
+	{
+		var original = image.color;
+		var blinkDuration = duration / (count * 2);
+
+		for (int i = 0; i < count; i++)
+		{
+			image.color = target;
+			yield return new WaitForSeconds(blinkDuration);
+
+			image.color = original;
+			yield return new WaitForSeconds(blinkDuration);
+		}
+
+		image.color = original;
+	}
+
 	public static IEnumerator RevertColor(Image image, Color target, float speed)
 	{
 		var original = image.color;

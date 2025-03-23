@@ -41,7 +41,7 @@ public class WateringCan : InventoryItem
 			//WaterCan is empty
 			if (GameManager.WaterCanLevel == 0)
 			{
-				StartCoroutine(ColorUtility.RevertColor(waterLevelImage, Color.red, 0.5f));
+				StartCoroutine(ColorUtility.Blink(waterLevelImage, Color.red, 0.75f, 5));
 				return;
 			}
 

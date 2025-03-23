@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InputActionController : MonoBehaviour
+public class UIInput : MonoBehaviour
 {
 	private PlayerInput input;
 	private UIController uiController;
@@ -27,7 +27,9 @@ public class InputActionController : MonoBehaviour
 		}
 		else if (input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
 		{
-			uiController.ClearUp();
+			uiController.OnNextLevelClicked();
+
+			//uiController.ClearUp();
 		}
 	}
 
