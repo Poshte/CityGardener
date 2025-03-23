@@ -6,10 +6,14 @@ public class Shovel : InventoryItem
 	public override InventoryItemType Type => InventoryItemType.Shovel;
 	public override TreeType SeedType => TreeType.None;
 	public override bool Stackable => false;
+
 	private const float duration = 3f;
+	private const float Garden_Search_Radius = 0.5f;
 
 	private bool tilling;
+	private Vector2 tillingPos;
 	private float elapsedTime = 0f;
+
 	[SerializeField] private Transform gardenPrefab;
 	private Player player;
 
@@ -35,11 +39,16 @@ public class Shovel : InventoryItem
 		if (targetPos == null)
 			return;
 
-		var hits = Physics2D.RaycastAll((Vector2)targetPos, Vector2.zero);
+		tillingPos = (Vector2)targetPos;
+
+		var hits = Physics2D.CircleCastAll(tillingPos, Garden_Search_Radius, Vector2.zero);
 		var hitGarden = hits.FirstOrDefault(h => h.collider != null && h.collider.CompareTag(Constants.Tags.Garden));
 
 		if (hitGarden)
+		{
+			Debug.Log("The soil here is already tilled");
 			return;
+		}
 
 		tilling = true;
 	}
@@ -52,7 +61,7 @@ public class Shovel : InventoryItem
 		elapsedTime += Time.unscaledDeltaTime;
 		if (elapsedTime > duration)
 		{
-			Instantiate(gardenPrefab, player.transform.position, Quaternion.identity);
+			Instantiate(gardenPrefab, tillingPos, Quaternion.identity);
 			StopTilling();
 		}
 	}
@@ -61,5 +70,6 @@ public class Shovel : InventoryItem
 	{
 		tilling = false;
 		elapsedTime = 0f;
+		tillingPos = Vector2.zero;
 	}
 }
