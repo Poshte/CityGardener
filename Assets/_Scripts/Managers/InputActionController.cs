@@ -21,6 +21,10 @@ public class InputActionController : MonoBehaviour
 		{
 			uiController.OnFactoryClicked();
 		}
+		else if (input.MainActionBar.Pipe.WasPerformedThisFrame())
+		{
+			uiController.OnPipeClicked();
+		}
 		else if (input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
 		{
 			uiController.ClearUp();

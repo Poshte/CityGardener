@@ -886,6 +886,11 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 1460281968002197390, guid: 4700c56e17a52674296c7645e85db16f, type: 3}
   m_PrefabInstance: {fileID: 767100416744986837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &770764981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8238257666697955382, guid: 4700c56e17a52674296c7645e85db16f, type: 3}
+  m_PrefabInstance: {fileID: 767100416744986837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &806775248 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6903768962630414868, guid: 4700c56e17a52674296c7645e85db16f, type: 3}
@@ -27820,7 +27825,7 @@ PrefabInstance:
     - target: {fileID: 2566364251374412323, guid: f720b641785c7044b9bbb0ff11a586f1, type: 3}
       propertyPath: actionBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 770764981}
     - target: {fileID: 2566364251374412323, guid: f720b641785c7044b9bbb0ff11a586f1, type: 3}
       propertyPath: btnFirSeed
       value: 

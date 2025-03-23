@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
-	public InventoryItem Item { get => _item; set => _item = value; }
+    public int Id { get; set; }
+
+    public InventoryItem Item { get => _item; set => _item = value; }
 	private InventoryItem _item;
 	public Image Image { get => _image; set => _image = value; }
 	private Image _image;

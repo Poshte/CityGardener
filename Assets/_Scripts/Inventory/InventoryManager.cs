@@ -15,7 +15,11 @@ public class InventoryManager : MonoBehaviour
 	private void Awake()
 	{
 		for (int i = 0; i < slotsCount; i++)
-			slots.Add(Instantiate(slotPrefab, transform));
+		{
+			var slot = Instantiate(slotPrefab, transform);
+			slot.Id = i;
+			slots.Add(slot);
+		}
 	}
 
 	private void Start()
@@ -75,7 +79,12 @@ public class InventoryManager : MonoBehaviour
 
 	private void OnItemSelected(InventorySlot selectedSlot)
 	{
-		ResetSlotsColor();
+		UpdateSelectedItem(selectedSlot);
+	}
+
+	private void UpdateSelectedItem(InventorySlot selectedSlot)
+	{
+		ClearSelectedItem();
 
 		selectedItem = selectedSlot.Item;
 		if (selectedItem != null)
@@ -126,13 +135,20 @@ public class InventoryManager : MonoBehaviour
 		GameEvents.Instance.OnItemUsed -= OnItemUsed;
 	}
 
+	public void SelectSlotById(int id)
+	{
+		var selectedSlot = slots.FirstOrDefault(s => s.Id == id);
+		UpdateSelectedItem(selectedSlot);
+	}
+
 	public InventoryItem GetSelectedItem()
 	{
 		return selectedItem;
 	}
 
-	public void ResetSlotsColor()
+	public void ClearSelectedItem()
 	{
+		selectedItem = null;
 		foreach (var image in slots.Select(s => s.Image))
 		{
 			image.color = Color.white;

@@ -84,6 +84,6 @@ public abstract class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHan
 
 	private void OnDestroy()
 	{
-		inventory.ResetSlotsColor();
+		inventory.ClearSelectedItem();
 	}
 }

@@ -133,24 +133,6 @@
             "id": "4848c470-52e9-411f-815c-b4d29a75406a",
             "actions": [
                 {
-                    "name": "Bucket",
-                    "type": "Button",
-                    "id": "d75c50af-0452-4a87-a517-360da7f8d4a4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Tree",
-                    "type": "Button",
-                    "id": "6345d4c5-6400-4c42-b486-d608e6ea2dcf",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "House",
                     "type": "Button",
                     "id": "a71cef92-25d6-4ef1-9909-073309cf166e",
@@ -190,30 +172,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "8fffe07d-6d07-4e79-895d-3e911d2011c5",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "Bucket",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0b33b065-df66-4f0e-8848-1317724d2269",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "Tree",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cc44db4e-06ba-4274-814e-2c11f059b1a2",
-                    "path": "<Keyboard>/3",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "New control scheme",
@@ -224,7 +184,7 @@
                 {
                     "name": "",
                     "id": "ea4f3084-e808-4b84-97f4-d382dc006f5c",
-                    "path": "<Keyboard>/4",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "New control scheme",
@@ -246,7 +206,7 @@
                 {
                     "name": "",
                     "id": "2c4ee0fa-cea3-4885-b583-2c658db3f6f7",
-                    "path": "<Keyboard>/5",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "New control scheme",
@@ -257,106 +217,9 @@
             ]
         },
         {
-            "name": "TreeTypes",
-            "id": "30d6b118-7f40-4adc-beb7-28be34d55ecb",
-            "actions": [
-                {
-                    "name": "Birch",
-                    "type": "Button",
-                    "id": "bec303db-690f-4ef3-b317-c1ef56ee0887",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fir",
-                    "type": "Button",
-                    "id": "1aa8bbdf-40eb-4187-a59f-002572137195",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Oak",
-                    "type": "Button",
-                    "id": "246489dc-7679-4586-a690-d6ca0e9ada5a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MouseRightClick",
-                    "type": "Button",
-                    "id": "da3d0dba-1aa7-4b83-8b95-eb279d79ee12",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "c15cb859-0460-4ecb-84c3-8bc075d0cf94",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "Fir",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fb1c6d85-bba8-4d64-9ef3-720816a881d3",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "Oak",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7cadc8b9-1fa6-4ffd-bb16-2705f4be203a",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseRightClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5f469b41-e7d1-4c34-a4d9-be306dea674e",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "Birch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "Interaction",
             "id": "81a2b714-daec-4d39-ae0e-d73f8ab03414",
             "actions": [
-                {
-                    "name": "Till",
-                    "type": "Button",
-                    "id": "bc9d001f-5866-4ab1-8759-96c081fe90d5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
                 {
                     "name": "Reset",
                     "type": "Button",
@@ -395,17 +258,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "e9491f69-2c9b-4e19-a6fe-deeaad4715cf",
-                    "path": "<Keyboard>/e",
-                    "interactions": "Hold(duration=3)",
-                    "processors": "",
-                    "groups": "New control scheme",
-                    "action": "Till",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "d0a34188-b847-4287-9550-79522f27baa3",
@@ -495,6 +347,109 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseRightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Inventory",
+            "id": "0af86a1f-89e4-47b9-9f69-a214ace85ed6",
+            "actions": [
+                {
+                    "name": "RightMouseClick",
+                    "type": "Button",
+                    "id": "399d72c3-857f-403c-be4f-f81f011afe01",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Items",
+                    "type": "Button",
+                    "id": "3bfd95b8-ab1d-49ac-b3fa-273d72e1a2c1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "303d222f-43e0-4667-ab36-739ac813c051",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightMouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "082189c5-6641-45e3-94fb-1fd83490c3d6",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Scale(factor=0)",
+                    "groups": "",
+                    "action": "Items",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4b5c045-f67e-47ae-860f-03d693525de2",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "Items",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a76eb28-3578-475a-8ebc-048444199e73",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "Items",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5b7f888-76f2-4c55-acd5-251b7fd84c1a",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "Scale(factor=3)",
+                    "groups": "",
+                    "action": "Items",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bec7688a-04fd-4d74-8019-b1594de38135",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "Scale(factor=4)",
+                    "groups": "",
+                    "action": "Items",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9576b840-eb8e-4c41-98da-e0967af0557b",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "Scale(factor=5)",
+                    "groups": "",
+                    "action": "Items",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
