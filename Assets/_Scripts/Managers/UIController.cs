@@ -19,11 +19,13 @@ public class UIController : MonoBehaviour
 
 	private BuildingManager buildingManager;
 	private PipeBuilder pipeBuilder;
+	private InventoryManager inventoryManager;
 
 	private void Awake()
 	{
 		buildingManager = GameObject.FindGameObjectWithTag(Constants.Tags.BuildingManager).GetComponent<BuildingManager>();
 		pipeBuilder = GameObject.FindGameObjectWithTag(Constants.Tags.PipeBuilder).GetComponent<PipeBuilder>();
+		inventoryManager = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
 	}
 
 	private void Start()
@@ -69,5 +71,6 @@ public class UIController : MonoBehaviour
 	{
 		buildingManager.SetActiveBuildingType(null);
 		pipeBuilder.SetActivePipe(null);
+		inventoryManager.ClearSelectedItem();
 	}
 }

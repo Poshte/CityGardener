@@ -12,8 +12,12 @@ public class InventoryManager : MonoBehaviour
 
 	private InventoryItem selectedItem;
 
+	private UIController uiController;
+
 	private void Awake()
 	{
+		uiController = GameObject.FindGameObjectWithTag(Constants.Tags.UIController).GetComponent<UIController>();
+
 		for (int i = 0; i < slotsCount; i++)
 		{
 			var slot = Instantiate(slotPrefab, transform);
@@ -85,6 +89,7 @@ public class InventoryManager : MonoBehaviour
 	private void UpdateSelectedItem(InventorySlot selectedSlot)
 	{
 		ClearSelectedItem();
+		uiController.ClearUp();
 
 		selectedItem = selectedSlot.Item;
 		if (selectedItem != null)
