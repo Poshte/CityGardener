@@ -31,7 +31,10 @@ public class Player : MonoBehaviour
 	{
 		//disables movement when player is purchasing items
 		if (isStoreOpen)
+		{
+			Move(Vector2.zero);
 			return;
+		}
 
 		playerMovement = input.Movement.PlayerMovements.ReadValue<Vector2>();
 
