@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class LevelsHub : MonoBehaviour
 {
-	public Level[] Levels { get => levels; set => levels = value; }
-	[SerializeField] private Level[] levels;
+	public Level[] Levels { get => _levels; set => _levels = value; }
+	[SerializeField] private Level[] _levels;
 
 	private void Start()
 	{

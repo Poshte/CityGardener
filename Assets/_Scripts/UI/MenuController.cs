@@ -21,12 +21,6 @@ public class MenuController : MonoBehaviour
 	{
 		Time.timeScale = 1f;
 
-		//TODO
-		//if its a new game
-		//initialize clean levels
-		//else load from Save file
-		//LoadLevels();
-
 		Initialize();
 		MakeUnlockedLevelsInteractable();
 	}
