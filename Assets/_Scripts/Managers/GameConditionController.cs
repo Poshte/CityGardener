@@ -5,7 +5,6 @@ public class GameConditionController : MonoBehaviour
 {
 	[SerializeField] private CanvasGroup lostGameCanvasGroup;
 	[SerializeField] private CanvasGroup wonGameCanvasGroup;
-	[SerializeField] private Button nextLevelBtn;
 
 	[SerializeField] private CanvasGroup UiCanvas;
 	[SerializeField] private float fadeDuration;
@@ -16,17 +15,13 @@ public class GameConditionController : MonoBehaviour
 		GameEvents.Instance.OnLosingLevel += LoseLevel;
 	}
 
-	private void Start()
-	{
-		nextLevelBtn.enabled = false;
-	}
-
 	private void WinLevel()
 	{
 		Time.timeScale = 0f;
 		StartCoroutine(ScreenFadeService.Fade(UiCanvas, 1f, 0f, fadeDuration));
+
+		wonGameCanvasGroup.gameObject.SetActive(true);
 		StartCoroutine(ScreenFadeService.Fade(wonGameCanvasGroup, 0f, 1f, fadeDuration));
-		nextLevelBtn.enabled = true;
 	}
 
 	private void LoseLevel()

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3935937818167993406}
   - component: {fileID: 7509887281003036197}
   - component: {fileID: 8197102694089175621}
-  - component: {fileID: 3960516661540698360}
+  - component: {fileID: 8020534295727515025}
   m_Layer: 5
   m_Name: FadingCanvas
   m_TagString: Untagged
@@ -156,7 +156,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &3960516661540698360
+--- !u!114 &8020534295727515025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,8 +165,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3219469361837295489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560164d944ce2af4aa2e7c69aa70cf5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 46a38b08802fbaa4da8bb4977ced7a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   reverse: 0
-  fadeDuration: 1
+  fadeDuration: 0

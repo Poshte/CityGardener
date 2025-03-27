@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3090119123806574892}
   m_Layer: 0
   m_Name: UIController
-  m_TagString: Untagged
+  m_TagString: UIController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,15 +42,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6114798283890925068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e69e3ab3180db94b8f6f0e14ce4c761, type: 3}
+  m_Script: {fileID: 11500000, guid: e79b6b13dc5267847bcff371d0724ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionBar: {fileID: 0}
+  itemPrefabs: []
   btnHouse: {fileID: 0}
   btnFactory: {fileID: 0}
   btnPipe: {fileID: 0}
-  houseSO: {fileID: 11400000, guid: 83e19e690692fe84e8f86e46d65a9454, type: 2}
-  factorySO: {fileID: 11400000, guid: df931165845f5a4439953bf359e2c365, type: 2}
-  dripPipeSO: {fileID: 11400000, guid: 1f4adddecbf7f204f9495f3a593c3765, type: 2}
+  houseSO: {fileID: 0}
+  factorySO: {fileID: 0}
+  dripPipeSO: {fileID: 0}
 --- !u!114 &3090119123806574892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +62,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6114798283890925068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b833259907048045abde9c3afc511d0, type: 3}
+  m_Script: {fileID: 11500000, guid: f2eb0e05d385eeb4cab498c0ad2bec03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

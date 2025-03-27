@@ -46,11 +46,8 @@ public class SceneController : MonoBehaviour
 
 	private IEnumerator LoadSceneAsynchronously(int index)
 	{
-		//fire BeforeSceneDestroyed event
-		GameEvents.Instance.BeforeSceneDestroyed();
-
-		yield return new WaitForSeconds(waitTime);
 		SceneManager.LoadSceneAsync(index);
+		yield return new WaitForSeconds(waitTime);
 	}
 
 	public void LoadScene(int? index = null)

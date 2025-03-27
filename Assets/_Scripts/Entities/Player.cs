@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
 
 	private Vector2 playerMovement;
 	[SerializeField] private float speed;
+
+	//TODO
+	//encapsulate
 	public bool IsWalking;
 	private Vector2 moveToTargetPosition;
 

@@ -25,8 +25,14 @@ public enum InventoryItemType
 {
 	WateringCan,
 	Shovel,
-	Pipe,
 	Seed
+}
+
+public enum ActionBarItemType
+{
+	House,
+	Factory,
+	Pipe
 }
 
 public enum GameScene

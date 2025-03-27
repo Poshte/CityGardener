@@ -16,30 +16,26 @@ public class LevelManager : MonoBehaviour
 	private bool treeGoalsFulfilled;
 	private PollutionManager pollutionManager;
 
-	private readonly List<ILevelInitializer> levelInitializers = new();
+	private LevelsHub levelsHub;
+	private Level currentLevel;
+
+	private InventoryManager inventoryManager;
+	private UIController uiController;
 
 	private void Awake()
 	{
+		levelsHub = GameObject.FindGameObjectWithTag(Constants.Tags.LevelsHub).GetComponent<LevelsHub>();
 		pollutionManager = GameObject.FindGameObjectWithTag(Constants.Tags.PollutionManager).GetComponent<PollutionManager>();
+		inventoryManager = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
+		uiController = GameObject.FindGameObjectWithTag(Constants.Tags.UIController).GetComponent<UIController>();
 	}
 
 	private void Start()
 	{
-		GameEvents.Instance.OnMatureTreePlanted += OnMatureTreePlanted;
-
-		levelInitializers.Add(new Level_1());
-		levelInitializers.Add(new Level_2());
-		levelInitializers.Add(new Level_3());
-		levelInitializers.Add(new Level_4());
+		Time.timeScale = 1f;
 
 		InitializeGoals();
-		InitializeLevel((GameScene)SceneManager.GetActiveScene().buildIndex);
-	}
-
-	private void InitializeLevel(GameScene gameScene)
-	{
-		var level = levelInitializers.FirstOrDefault(l => l.GameScene == gameScene);
-		level?.Initialize();
+		InitializeLevel();
 	}
 
 	private void Update()
@@ -51,6 +47,27 @@ public class LevelManager : MonoBehaviour
 				GameEvents.Instance.WinLevel();
 			}
 		}
+	}
+
+	private void InitializeLevel()
+	{
+		currentLevel = levelsHub.Levels.FirstOrDefault(l => l.GameScene == (GameScene)SceneManager.GetActiveScene().buildIndex);
+
+		foreach (var invItem in currentLevel.InventoryItems)
+		{
+			inventoryManager.AddItem(invItem);
+		}
+
+		foreach (var actItem in currentLevel.ActionBarItems)
+		{
+			uiController.AddActionBarItem(actItem);
+		}
+	}
+
+	public void UnlockNextLevel()
+	{
+		var nextLvl = levelsHub.Levels.FirstOrDefault(l => l.GameScene == (GameScene)SceneManager.GetActiveScene().buildIndex + 1);
+		nextLvl.Unlocked = true;
 	}
 
 	private bool PollutionGoalWinConditionFulfilled()
@@ -131,9 +148,16 @@ public class LevelManager : MonoBehaviour
 		pollutionGoalsUI.text = "- Reduce the amount of pollution to " + levelGoals.PollutionGoal + " index";
 	}
 
+	private void OnEnable()
+	{
+		GameEvents.Instance.OnMatureTreePlanted += OnMatureTreePlanted;
+		GameEvents.Instance.OnWinningLevel += UnlockNextLevel;
+	}
+
 	private void OnDisable()
 	{
 		GameEvents.Instance.OnMatureTreePlanted -= OnMatureTreePlanted;
+		GameEvents.Instance.OnWinningLevel -= UnlockNextLevel;
 	}
 
 	private void OnDestroy()

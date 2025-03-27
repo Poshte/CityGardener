@@ -14,6 +14,8 @@ TagManager:
   - InventoryManager
   - Garden
   - UIController
+  - LevelsHub
+  - LevelManager
   layers:
   - Default
   - TransparentFX

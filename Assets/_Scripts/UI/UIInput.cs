@@ -27,7 +27,9 @@ public class UIInput : MonoBehaviour
 		}
 		else if (input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
 		{
-			uiController.OnNextLevelClicked();
+			//TODO
+			//this is for testing
+			GameEvents.Instance.WinLevel();
 
 			//uiController.ClearUp();
 		}

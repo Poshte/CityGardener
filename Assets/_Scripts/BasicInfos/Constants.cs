@@ -15,6 +15,7 @@ public static class Constants
 		public const string SeedsManager = "SeedsManager";
 		public const string Garden = "Garden";
 		public const string UIController = "UIController";
+		public const string LevelsHub = "LevelsHub";
 	}
 
 	public static class LayerMasks

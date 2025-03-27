@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6712356547763274973}
-  - component: {fileID: 5026725011033386549}
+  - component: {fileID: 4843480592769664726}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -30,9 +30,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5026725011033386549
+--- !u!114 &4843480592769664726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

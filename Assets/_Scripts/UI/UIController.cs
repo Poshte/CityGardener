@@ -1,17 +1,11 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public partial class UIController : MonoBehaviour
 {
 	[SerializeField] private GameObject actionBar;
-
-	public Button BtnHouse { get => btnHouse; }
-	[SerializeField] private Button btnHouse;
-	public Button BtnFactory { get => btnFactory; }
-	[SerializeField] private Button btnFactory;
-	public Button BtnPipe { get => btnPipe; }
-	[SerializeField] private Button btnPipe;
+	[SerializeField] private ActionBarItem[] actionBarItemPrefabs;
 
 	[SerializeField] private BuildingTypeSO houseSO;
 	[SerializeField] private BuildingTypeSO factorySO;
@@ -34,6 +28,18 @@ public class UIController : MonoBehaviour
 		GameEvents.Instance.OnStoreClosed += OnStoreClosed;
 	}
 
+	public void AddActionBarItem(ActionBarItemType itemType)
+	{
+		var item = actionBarItemPrefabs.FirstOrDefault(i => i.Type == itemType);
+		AddActionBarItem(item);
+	}
+
+	public void AddActionBarItem(ActionBarItem item)
+	{
+		var s = Instantiate(item, actionBar.transform);
+		s.UIController = this;
+	}
+
 	public void OnHouseClicked()
 	{
 		ClearUp();
@@ -54,6 +60,9 @@ public class UIController : MonoBehaviour
 
 	public void OnNextLevelClicked()
 	{
+		//fire BeforeSceneDestroyed event
+		GameEvents.Instance.BeforeSceneDestroyed();
+
 		SceneController.Instance.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
