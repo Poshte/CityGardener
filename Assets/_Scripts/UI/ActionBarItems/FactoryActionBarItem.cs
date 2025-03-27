@@ -3,11 +3,10 @@ using UnityEngine.UI;
 
 public class FactoryActionBarItem : ActionBarItem
 {
-	public override Button Button { get => _button; }
+	public override Button Button => _button;
 	private Button _button;
 	public override ActionBarItemType Type => ActionBarItemType.Factory;
-
-	public override ScriptableObject ScriptableObject { get => factorySO; }
+	public override ScriptableObject ScriptableObject => factorySO;
 	[SerializeField] private BuildingTypeSO factorySO;
 
 	private void Awake()

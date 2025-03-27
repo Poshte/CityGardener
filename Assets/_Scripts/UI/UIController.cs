@@ -36,8 +36,8 @@ public partial class UIController : MonoBehaviour
 
 	public void AddActionBarItem(ActionBarItem item)
 	{
-		var s = Instantiate(item, actionBar.transform);
-		s.UIController = this;
+		var actionBarItem = Instantiate(item, actionBar.transform);
+		actionBarItem.UIController = this;
 	}
 
 	public void OnHouseClicked()
@@ -62,7 +62,6 @@ public partial class UIController : MonoBehaviour
 	{
 		//fire BeforeSceneDestroyed event
 		GameEvents.Instance.BeforeSceneDestroyed();
-
 		SceneController.Instance.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 

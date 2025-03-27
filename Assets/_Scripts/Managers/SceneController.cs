@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+	private readonly float waitTime = 1f;
+	private const int defaultSceneIndex = 1;
+
 	private static SceneController _instance;
 	public static SceneController Instance
 	{
@@ -28,20 +31,6 @@ public class SceneController : MonoBehaviour
 		{
 			_instance = this;
 		}
-	}
-
-	private readonly float waitTime = 1f;
-
-	private const int defaultSceneIndex = 1;
-
-	private void LoadNextScene()
-	{
-		LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-	}
-
-	private void LoadPreviousScene()
-	{
-		LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
 	}
 
 	private IEnumerator LoadSceneAsynchronously(int index)
