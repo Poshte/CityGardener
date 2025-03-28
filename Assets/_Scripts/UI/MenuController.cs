@@ -46,7 +46,19 @@ public class MenuController : MonoBehaviour
 
 	public void OnLevel_Clicked(int levelIndex)
 	{
+		//this was added to prevent clicking multiple times
+		//that would cause weird issues
+		MakeLevelButtonsUnintractable();
+
 		SceneController.Instance.LoadScene(levelIndex);
+	}
+
+	private void MakeLevelButtonsUnintractable()
+	{
+		foreach (var btn in buttons)
+		{
+			btn.interactable = false;
+		}
 	}
 
 	public void OnBack_Clicked()

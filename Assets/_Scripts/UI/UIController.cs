@@ -22,10 +22,16 @@ public partial class UIController : MonoBehaviour
 		inventoryManager = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
 	}
 
-	private void Start()
+	private void OnEnable()
 	{
 		GameEvents.Instance.OnStoreOpened += OnStoreOpened;
 		GameEvents.Instance.OnStoreClosed += OnStoreClosed;
+	}
+
+	private void OnDisable()
+	{
+		GameEvents.Instance.OnStoreOpened -= OnStoreOpened;
+		GameEvents.Instance.OnStoreClosed -= OnStoreClosed;
 	}
 
 	public void AddActionBarItem(ActionBarItemType itemType)
