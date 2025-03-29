@@ -44,13 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b09323003cd40a4bad69c19dfebbff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Levels:
-  - {fileID: 1675106170832747775, guid: 2542babd283d0454ab03eea9061f0d09, type: 3}
-  - {fileID: 1675106170832747775, guid: 001d2b0095e3ded4ab5ac30603c8875f, type: 3}
-  - {fileID: 1675106170832747775, guid: 97e24d3e62e879e4d8026e496822135e, type: 3}
-  - {fileID: 1675106170832747775, guid: 409c5214b69c3be48bde3254cc126837, type: 3}
+  _levels:
+  - {fileID: 11400000, guid: 5e3fe598a0bc8a34b8238c1bc81c5869, type: 2}
+  - {fileID: 11400000, guid: a21ab19233b251e44832275a8f810204, type: 2}
+  - {fileID: 11400000, guid: cf87905c95cd216488dff0590c9ffecc, type: 2}
+  - {fileID: 11400000, guid: ba7852040a2218f40b72f1d1be467aca, type: 2}

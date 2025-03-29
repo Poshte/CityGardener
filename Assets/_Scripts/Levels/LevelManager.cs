@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-	[SerializeField] private LevelGoalsSO levelGoals;
 	[SerializeField] private TextMeshProUGUI pollutionGoalsUI;
 	[SerializeField] private RectTransform treeGoalsParent;
 	[SerializeField] private Goal treeGoalPrefab;
@@ -28,14 +27,16 @@ public class LevelManager : MonoBehaviour
 		pollutionManager = GameObject.FindGameObjectWithTag(Constants.Tags.PollutionManager).GetComponent<PollutionManager>();
 		inventoryManager = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
 		uiController = GameObject.FindGameObjectWithTag(Constants.Tags.UIController).GetComponent<UIController>();
+
 	}
 
 	private void Start()
 	{
 		Time.timeScale = 1f;
 
-		InitializeGoals();
+		currentLevel = levelsHub.Levels.FirstOrDefault(l => l.GameScene == (GameScene)SceneManager.GetActiveScene().buildIndex);
 		InitializeLevel();
+		InitializeGoals();
 	}
 
 	private void Update()
@@ -51,8 +52,6 @@ public class LevelManager : MonoBehaviour
 
 	private void InitializeLevel()
 	{
-		currentLevel = levelsHub.Levels.FirstOrDefault(l => l.GameScene == (GameScene)SceneManager.GetActiveScene().buildIndex);
-
 		foreach (var invItem in currentLevel.InventoryItems)
 		{
 			inventoryManager.AddItem(invItem);
@@ -72,7 +71,7 @@ public class LevelManager : MonoBehaviour
 
 	private bool PollutionGoalWinConditionFulfilled()
 	{
-		return levelGoals.PollutionGoal > pollutionManager.GetCurrentPollutionIndex();
+		return currentLevel.PollutionGoal > pollutionManager.GetCurrentPollutionIndex();
 	}
 
 	private void OnMatureTreePlanted(TreeType tree)
@@ -120,7 +119,7 @@ public class LevelManager : MonoBehaviour
 
 	private void GetTreeGoals()
 	{
-		var groupedTrees = levelGoals.TreesToPlant.GroupBy(t => t)
+		var groupedTrees = currentLevel.TreesToPlant.GroupBy(t => t)
 			.Select(g => new { Type = g.Key, Count = g.Count() });
 
 		var pos = treeGoalsParent.position;
@@ -145,7 +144,7 @@ public class LevelManager : MonoBehaviour
 
 	private void GetPollutionGoal()
 	{
-		pollutionGoalsUI.text = "- Reduce the amount of pollution to " + levelGoals.PollutionGoal + " index";
+		pollutionGoalsUI.text = "- Reduce the amount of pollution to " + currentLevel.PollutionGoal + " index";
 	}
 
 	private void OnEnable()

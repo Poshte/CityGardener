@@ -15,7 +15,6 @@ TagManager:
   - Garden
   - UIController
   - LevelsHub
-  - LevelManager
   layers:
   - Default
   - TransparentFX
