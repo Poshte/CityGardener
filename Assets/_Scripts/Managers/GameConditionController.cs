@@ -27,6 +27,8 @@ public class GameConditionController : MonoBehaviour
 	{
 		Time.timeScale = 0f;
 		StartCoroutine(ScreenFadeService.Fade(UiCanvas, 1f, 0f, fadeDuration));
+
+		lostGameCanvasGroup.gameObject.SetActive(true);
 		StartCoroutine(ScreenFadeService.Fade(lostGameCanvasGroup, 0f, 1f, fadeDuration));
 	}
 

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerInteractionController : MonoBehaviour
 {
@@ -9,9 +8,6 @@ public class PlayerInteractionController : MonoBehaviour
 
 	[SerializeField] private GameObject pauseCanvas;
 	[SerializeField] private Canvas uiCanvas;
-
-	[SerializeField] private Button resumeBtn;
-	[SerializeField] private Button quitBtn;
 
 	private void Awake()
 	{
@@ -36,6 +32,11 @@ public class PlayerInteractionController : MonoBehaviour
 	public void OnResumeClicked()
 	{
 		PerformPausingFunction();
+	}
+
+	public void OnRetryClicked()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	public void OnQuitClicked()
