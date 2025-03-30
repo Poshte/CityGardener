@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reverse: 1
-  fadeDuration: 5
+  fadeDuration: 2
 --- !u!225 &496502501
 CanvasGroup:
   m_ObjectHideFlags: 0

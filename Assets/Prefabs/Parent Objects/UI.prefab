@@ -557,7 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8020534295727515025, guid: 47ec82793aea54b46b49348b7af183eb, type: 3}
       propertyPath: fadeDuration
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8124257556000903785, guid: 47ec82793aea54b46b49348b7af183eb, type: 3}
       propertyPath: m_Pivot.x
@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reverse: 1
-  fadeDuration: 5
+  fadeDuration: 2
 --- !u!1001 &7663082855254127247
 PrefabInstance:
   m_ObjectHideFlags: 0
