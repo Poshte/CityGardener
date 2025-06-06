@@ -6,8 +6,8 @@ public class Oak : TreeEntity
 	public override int Cost { get => 500; }
 	public override int PollutionAbsorption { get => 1; }
 	public override float AbsorptionBaseInterval { get => 3f; }
-	public override float WateringInterval { get => 120f; }
-	public override float GrowthInterval { get => 70f; }
+	public override float WateringInterval { get => 25f; } //120f
+	public override float GrowthInterval { get => 15f; } //70f
 	public override GrowthStage Stage { get => _stage; set => _stage = value; }
 	[SerializeField] private GrowthStage _stage;
 	public override SpriteRenderer NeedWaterSprite { get => needWaterSprite; }

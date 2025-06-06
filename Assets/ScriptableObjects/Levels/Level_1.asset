@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameScene: 1
   InventoryItems: 00000000
-  ActionBarItems: 0000000001000000
+  ActionBarItems: 
   Unlocked: 1
-  TreesToPlant: 03000000
+  TreesToPlant: 0300000001000000
   PollutionGoal: 150

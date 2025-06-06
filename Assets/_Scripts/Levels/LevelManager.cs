@@ -27,7 +27,6 @@ public class LevelManager : MonoBehaviour
 		pollutionManager = GameObject.FindGameObjectWithTag(Constants.Tags.PollutionManager).GetComponent<PollutionManager>();
 		inventoryManager = GameObject.FindGameObjectWithTag(Constants.Tags.InventoryManager).GetComponent<InventoryManager>();
 		uiController = GameObject.FindGameObjectWithTag(Constants.Tags.UIController).GetComponent<UIController>();
-
 	}
 
 	private void Start()
@@ -65,7 +64,23 @@ public class LevelManager : MonoBehaviour
 
 	public void UnlockNextLevel()
 	{
+		//TODO
+		//a change for the demo
+		//this was added to avoid loading unfinhsed levels (3 & 4)
 		var nextLvl = levelsHub.Levels.FirstOrDefault(l => l.GameScene == (GameScene)SceneManager.GetActiveScene().buildIndex + 1);
+		if (nextLvl.GameScene == GameScene.Level_3 || 
+			nextLvl.GameScene == GameScene.Level_4)	
+			{
+				#if UNITY_STANDALONE
+					Application.Quit();
+			#endif
+
+			#if UNITY_EDITOR
+					UnityEditor.EditorApplication.isPlaying = false;
+			#endif
+			}
+
+		// var nextLvl = levelsHub.Levels.FirstOrDefault(l => l.GameScene == (GameScene)SceneManager.GetActiveScene().buildIndex + 1);
 		nextLvl.Unlocked = true;
 	}
 

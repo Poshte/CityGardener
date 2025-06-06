@@ -6,8 +6,8 @@ public class Fir : TreeEntity
 	public override int Cost { get => 250; }
 	public override int PollutionAbsorption { get => 1; }
 	public override float AbsorptionBaseInterval { get => 6f; }
-	public override float WateringInterval { get => 30f; }
-	public override float GrowthInterval { get => 50f; }
+	public override float WateringInterval { get => 7f; } //30f
+	public override float GrowthInterval { get => 10f; } //50f
 	public override GrowthStage Stage { get => _stage; set => _stage = value; }
 	[SerializeField] private GrowthStage _stage;
 	public override SpriteRenderer NeedWaterSprite { get => _needWaterSprite; }

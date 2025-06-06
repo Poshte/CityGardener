@@ -31,7 +31,7 @@ public class UIInput : MonoBehaviour
 			//this is for testing
 			GameEvents.Instance.WinLevel();
 
-			//uiController.ClearUp();
+			// uiController.ClearUp();
 		}
 	}
 
