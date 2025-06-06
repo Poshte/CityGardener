@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8651422623820897812}
   - component: {fileID: 7312555064754211101}
-  - component: {fileID: 6781626350670604825}
   - component: {fileID: 2566364251374412323}
+  - component: {fileID: 2676123998820640601}
   m_Layer: 0
   m_Name: Store
   m_TagString: Untagged
@@ -28,12 +28,12 @@ Transform:
   m_GameObject: {fileID: 5938908296386292581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 14, y: 8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3656951977576045622}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7312555064754211101
 SpriteRenderer:
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 678043401
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5529412, g: 0.8000001, b: 0.5294118, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0e27b10d9ab32bb4197dafa7b5c4aee3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,8 +87,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6781626350670604825
-BoxCollider2D:
+--- !u!114 &2566364251374412323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938908296386292581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c811bcfa34737da48949e25a81fe1be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storeCanvas: {fileID: 0}
+  interactSprite: {fileID: 5177441385502637302}
+--- !u!68 &2676123998820640601
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,36 +134,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2566364251374412323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938908296386292581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c811bcfa34737da48949e25a81fe1be8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnBirchSeed: {fileID: 0}
-  btnFirSeed: {fileID: 0}
-  btnOakSeed: {fileID: 0}
-  storeCanvas: {fileID: 0}
-  actionBar: {fileID: 0}
-  interactSprite: {fileID: 5177441385502637302}
+  m_Points:
+  - {x: 6.8767776, y: 11.277183}
+  - {x: -0.3442688, y: 6.369862}
+  - {x: -5.907501, y: 9.006544}
+  - {x: -9.031961, y: 10.487375}
+  - {x: -1.9842987, y: 15.546008}
+  - {x: 6.746174, y: 11.30801}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &3428803608665538762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,19 +160,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2113759177892650236, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2113759177892650236, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2113759177892650236, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 2113759177892650236, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 22.4
       objectReference: {fileID: 0}
     - target: {fileID: 2113759177892650236, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_LocalPosition.z
@@ -228,19 +224,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8882790770932993330, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_Size.x
-      value: 0.75
+      value: 0.39163977
       objectReference: {fileID: 0}
     - target: {fileID: 8882790770932993330, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_Size.y
-      value: 0.75
+      value: 0.24170566
       objectReference: {fileID: 0}
     - target: {fileID: 8882790770932993330, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: 0.18565053
       objectReference: {fileID: 0}
     - target: {fileID: 8882790770932993330, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
       propertyPath: m_Offset.y
-      value: -0.35
+      value: -0.518975
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882790770932993330, guid: e1c37a0a19b4b4e4d858eae07bd0b069, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
