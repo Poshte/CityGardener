@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WealthManager : MonoBehaviour
 {
-	private int wealth = 4500;
+	private int wealth = 450;
 	[SerializeField] private TextMeshProUGUI wealthAmount;
 
 	private void Start()

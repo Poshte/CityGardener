@@ -69037,6 +69037,14 @@ PrefabInstance:
       propertyPath: actionBar
       value: 
       objectReference: {fileID: 770764981}
+    - target: {fileID: 1027853217294239730, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
+      propertyPath: actionBarItemPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3850806515766741595, guid: f5e028bc3ee5c774e92cc4c0ce3e2ccf, type: 3}
+    - target: {fileID: 1027853217294239730, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
+      propertyPath: actionBarItemPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3916061143042717917, guid: f193f9dd5469e194a8be552e122fea09, type: 3}
     - target: {fileID: 1665968615001692465, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
       propertyPath: treeGoalsParent
       value: 

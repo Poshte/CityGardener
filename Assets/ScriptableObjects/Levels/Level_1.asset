@@ -16,5 +16,5 @@ MonoBehaviour:
   InventoryItems: 00000000
   ActionBarItems: 
   Unlocked: 1
-  TreesToPlant: 0300000001000000
+  TreesToPlant: 03000000
   PollutionGoal: 150
