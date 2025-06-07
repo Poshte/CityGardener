@@ -38,9 +38,6 @@ public class Garden : MonoBehaviour, IInteractable
 			return false;
 
 		var prefab = treeSO.TreePrefabs.Find(p => p.Type == type && p.Stage == GrowthStage.Seed);
-		if (!PayTreeCost(prefab.Cost))
-			return false;
-
 		SpawnTree(prefab);
 		DisableInteraction();
 		return true;

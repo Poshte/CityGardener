@@ -29,9 +29,9 @@ public class UIInput : MonoBehaviour
 		{
 			//TODO
 			//this is for testing
-			GameEvents.Instance.WinLevel();
+			//GameEvents.Instance.WinLevel();
 
-			// uiController.ClearUp();
+			uiController.ClearUp();
 		}
 	}
 
