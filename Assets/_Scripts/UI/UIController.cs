@@ -7,7 +7,7 @@ public partial class UIController : MonoBehaviour
 	[SerializeField] private GameObject actionBar;
 	[SerializeField] private ActionBarItem[] actionBarItemPrefabs;
 
-	[SerializeField] private BuildingTypeSO houseSO;
+	[SerializeField] private BuildingTypeSO[] houseSOList;
 	[SerializeField] private BuildingTypeSO factorySO;
 	[SerializeField] private PipeSO dripPipeSO;
 
@@ -49,7 +49,7 @@ public partial class UIController : MonoBehaviour
 	public void OnHouseClicked()
 	{
 		ClearUp();
-		buildingManager.SetActiveBuildingType(houseSO);
+		buildingManager.SetActiveBuildingType(houseSOList[Random.Range(0, houseSOList.Length)]);
 	}
 
 	public void OnFactoryClicked()

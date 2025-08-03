@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a51dbcb8627d7e41bd98d67ee85730b, type: 3}
-  m_Name: Factory
+  m_Name: House_3
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 984327031845352386, guid: d72816813d38c974ebcdee66deb6d523, type: 3}
-  Type: 3
-  Cost: 200
+  Prefab: {fileID: 1252519314823193889, guid: ae686e555fc3a8d4c894f2088c7f38c5, type: 3}
+  Type: 2
+  Cost: 75

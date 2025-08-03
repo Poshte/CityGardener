@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionBar: {fileID: 0}
-  itemPrefabs: []
-  btnHouse: {fileID: 0}
-  btnFactory: {fileID: 0}
-  btnPipe: {fileID: 0}
-  houseSO: {fileID: 0}
+  actionBarItemPrefabs: []
+  houseSOList:
+  - {fileID: 11400000, guid: eb98f55063cf0d54dac2664f8e01a474, type: 2}
+  - {fileID: 11400000, guid: 6a06e1beb4e9fb448b068e5f0504ce4d, type: 2}
+  - {fileID: 11400000, guid: 83e19e690692fe84e8f86e46d65a9454, type: 2}
   factorySO: {fileID: 0}
   dripPipeSO: {fileID: 0}
 --- !u!114 &3090119123806574892

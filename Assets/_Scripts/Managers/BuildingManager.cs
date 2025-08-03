@@ -9,7 +9,9 @@ public class BuildingManager : MonoBehaviour
 	private WealthManager wealthManager;
 	private bool canSpawn;
 
-	[SerializeField] private SpriteRenderer houseSilhouettes;
+	[SerializeField] private SpriteRenderer houseSilhouette_1;
+	[SerializeField] private SpriteRenderer houseSilhouette_2;
+	[SerializeField] private SpriteRenderer houseSilhouette_3;
 	[SerializeField] private SpriteRenderer factorySilhouettes;
 	private readonly Dictionary<BuildingType, SpriteRenderer> silhouettes = new();
 	private SpriteRenderer selectedSilhouette;
@@ -22,7 +24,9 @@ public class BuildingManager : MonoBehaviour
 
 	private void Start()
 	{
-		silhouettes.Add(BuildingType.House, houseSilhouettes);
+		silhouettes.Add(BuildingType.House_1, houseSilhouette_1);
+		silhouettes.Add(BuildingType.House_2, houseSilhouette_2);
+		silhouettes.Add(BuildingType.House_3, houseSilhouette_3);
 		silhouettes.Add(BuildingType.Factory, factorySilhouettes);
 	}
 

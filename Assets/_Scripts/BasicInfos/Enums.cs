@@ -17,7 +17,9 @@ public enum TreeType
 
 public enum BuildingType
 {
-	House,
+	House_1,
+	House_2,
+	House_3,
 	Factory
 }
 
