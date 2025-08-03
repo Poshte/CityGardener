@@ -51,11 +51,6 @@ public class Garden : MonoBehaviour, IInteractable
 		SpawnTree(prefab);
 	}
 
-	private bool PayTreeCost(int treeCost)
-	{
-		return wealthManager.SpendWealth(treeCost);
-	}
-
 	private void SpawnTree(TreeEntity prefab)
 	{
 		gardenPlantedTree = Instantiate(prefab, transform.position, Quaternion.identity);

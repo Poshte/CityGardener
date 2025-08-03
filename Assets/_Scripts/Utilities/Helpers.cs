@@ -11,7 +11,6 @@ public static class Helper
 		return worldPos;
 	}
 
-
 	public static T FindNearest<T>(List<T> items, Vector2 position) where T : MonoBehaviour
 	{
 		float nearestDistance = Mathf.Infinity;
