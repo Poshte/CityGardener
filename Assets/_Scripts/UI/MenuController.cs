@@ -23,18 +23,6 @@ public class MenuController : MonoBehaviour
 
 		Initialize();
 		MakeUnlockedLevelsInteractable();
-
-		//TODO
-		//this was added to lock lvl 3 and 4
-		//as they were not ready yet for demo
-		foreach (var pair in LevelButtons)
-		{
-			if (pair.Value.GameScene == GameScene.Level_3 ||
-				pair.Value.GameScene == GameScene.Level_4)
-			{
-				pair.Key.interactable = false;
-			}
-		}
 	}
 
 	private void Initialize()
