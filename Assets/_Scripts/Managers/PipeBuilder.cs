@@ -124,7 +124,7 @@ public class PipeBuilder : MonoBehaviour
 		for (int i = 0; i < numberOfInstances; i++)
 		{
 			var pos = startingPosition + direction * (i * (prefabWidth + Pipes_Spacing));
-			previewObjects.Add(Instantiate(prefab, pos, Quaternion.Euler(0, 0, angle)));
+			previewObjects.Add(Instantiate(prefab, pos, Quaternion.Euler(0, 0, angle + 90)));
 		}
 	}
 
@@ -143,7 +143,7 @@ public class PipeBuilder : MonoBehaviour
 		foreach (var obj in previewObjects)
 		{
 			obj.tag = Constants.Tags.Pipe;
-			obj.GetComponent<SpriteRenderer>().color = Color.black;
+			obj.GetComponent<SpriteRenderer>().color = Color.white;
 		}
 
 		//this will allow player continue building pipes in a new direction

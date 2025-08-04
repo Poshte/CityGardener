@@ -516,6 +516,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1252519314823193889, guid: 504f7cce3e3065142b1e2343279c5605, type: 3}
   m_PrefabInstance: {fileID: 387732649}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &387732651 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6964293712133115264, guid: 504f7cce3e3065142b1e2343279c5605, type: 3}
+  m_PrefabInstance: {fileID: 387732649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &390082963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 984327031845352386, guid: 5f8a0a00cd822f0498eff6a8b0d31d23, type: 3}
@@ -1005,6 +1010,11 @@ PrefabInstance:
 --- !u!4 &755748729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1252519314823193889, guid: 9beba2c5eab799247ae403d2420c60d8, type: 3}
+  m_PrefabInstance: {fileID: 755748728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &755748730 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6964293712133115264, guid: 9beba2c5eab799247ae403d2420c60d8, type: 3}
   m_PrefabInstance: {fileID: 755748728}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &770764981 stripped
@@ -13918,6 +13928,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1252519314823193889, guid: 2fb8eb7d22048f845890ee71594a1285, type: 3}
   m_PrefabInstance: {fileID: 1204726293}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1204726295 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6964293712133115264, guid: 2fb8eb7d22048f845890ee71594a1285, type: 3}
+  m_PrefabInstance: {fileID: 1204726293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1227756431
 GameObject:
   m_ObjectHideFlags: 0
@@ -22919,6 +22934,18 @@ PrefabInstance:
       propertyPath: houseSilhouettes
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8725021504306417540, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
+      propertyPath: houseSilhouette_1
+      value: 
+      objectReference: {fileID: 755748730}
+    - target: {fileID: 8725021504306417540, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
+      propertyPath: houseSilhouette_2
+      value: 
+      objectReference: {fileID: 387732651}
+    - target: {fileID: 8725021504306417540, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
+      propertyPath: houseSilhouette_3
+      value: 
+      objectReference: {fileID: 1204726295}
     - target: {fileID: 8725021504306417540, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
       propertyPath: factorySilhouettes
       value: 
