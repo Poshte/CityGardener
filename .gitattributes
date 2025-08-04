@@ -1,1 +1,4 @@
 Assets/TextMesh?Pro/** linguist-generated
+
+# Ignore ShaderLab files for language statistics
+*.shader linguist-detectable=false
