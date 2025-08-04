@@ -1,15 +1,17 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PollutionManager : MonoBehaviour
 {
-	private int pollution = 130;
+	private int pollution = 40;
 	private const int maxPollution = 200;
 
 	[SerializeField] private TextMeshProUGUI pollutionAmount;
+	[SerializeField] private Image pollutionCanvasImage;
 
 	private int passivePollutionFactor = 1;
-	private const float passivePollutionRate = 20f;
+	private const float passivePollutionRate = .20f;
 	private float passivePollutionTimer;
 
 	private Color orange = new(1f, 0.7f, 0f);
@@ -27,6 +29,8 @@ public class PollutionManager : MonoBehaviour
 			IncreasePollution(passivePollutionFactor);
 			passivePollutionTimer = 0f;
 		}
+
+		SpawnPollution();
 	}
 
 	public void IncreasePollution(int amount)
@@ -81,6 +85,14 @@ public class PollutionManager : MonoBehaviour
 
 		pollutionAmount.color = color;
 		pollutionAmount.text = pollution.ToString();
+	}
+
+	private void SpawnPollution()
+	{
+		var color = pollutionCanvasImage.color;
+		float amount = passivePollutionFactor < 3 ? 0f : passivePollutionFactor / 20f;
+		color.a = amount;
+		pollutionCanvasImage.color = color;
 	}
 
 	private void CheckLoseCondition()
