@@ -60,6 +60,8 @@ public class LevelManager : MonoBehaviour
 		{
 			uiController.AddActionBarItem(actItem);
 		}
+
+		pollutionManager.IncreasePollution(currentLevel.startingPollution);
 	}
 
 	public void UnlockNextLevel()

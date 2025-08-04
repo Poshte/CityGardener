@@ -17,4 +17,5 @@ MonoBehaviour:
   ActionBarItems: 
   Unlocked: 1
   TreesToPlant: 03000000
-  PollutionGoal: 150
+  PollutionGoal: 90
+  startingPollution: 60

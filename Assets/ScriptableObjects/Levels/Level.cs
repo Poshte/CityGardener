@@ -10,4 +10,5 @@ public class Level : ScriptableObject
 	public bool Unlocked;
 	public List<TreeType> TreesToPlant = new();
 	public int PollutionGoal;
+	public int startingPollution;
 }
