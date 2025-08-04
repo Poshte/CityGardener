@@ -90,7 +90,7 @@ public class PollutionManager : MonoBehaviour
 	private void SpawnPollution()
 	{
 		var color = pollutionCanvasImage.color;
-		float amount = passivePollutionFactor < 3 ? 0f : passivePollutionFactor / 20f;
+		float amount = passivePollutionFactor < 3 ? 0f : passivePollutionFactor / 40f;
 		color.a = amount;
 		pollutionCanvasImage.color = color;
 	}

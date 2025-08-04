@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 7246912668144306783}
   - component: {fileID: 8498242509037215765}
   - component: {fileID: 3850806515766741595}
+  - component: {fileID: 8266167361766703874}
   m_Layer: 5
   m_Name: btnFactory
   m_TagString: Untagged
@@ -299,6 +300,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factorySO: {fileID: 11400000, guid: df931165845f5a4439953bf359e2c365, type: 2}
+--- !u!114 &8266167361766703874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2569947175448453981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034b7deaf4f01634cb66dd11da4acf3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoObject: {fileID: 7802966097967008950}
 --- !u!1 &2601106839315618845
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 135, y: -45}
+  m_AnchoredPosition: {x: 90, y: 0}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1941951209743109326

@@ -66,8 +66,22 @@ public class LevelManager : MonoBehaviour
 
 	public void UnlockNextLevel()
 	{
+		if (currentLevel.GameScene == GameScene.Level_4)
+		{
+#if UNITY_STANDALONE
+			Application.Quit();
+#endif
+
+#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+#endif
+		}
+
 		var nextLvl = levelsHub.Levels.FirstOrDefault(l => l.GameScene == (GameScene)SceneManager.GetActiveScene().buildIndex + 1);
-		nextLvl.Unlocked = true;
+		if (nextLvl != null)
+		{
+			nextLvl.Unlocked = true;
+		}
 	}
 
 	private bool PollutionGoalWinConditionFulfilled()

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3690046915654847162}
   - component: {fileID: 6583691117362950407}
   - component: {fileID: 3916061143042717917}
+  - component: {fileID: 594613257237214407}
   m_Layer: 5
   m_Name: btnHouse
   m_TagString: Untagged
@@ -162,6 +163,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   houseSO: {fileID: 11400000, guid: 83e19e690692fe84e8f86e46d65a9454, type: 2}
+--- !u!114 &594613257237214407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270953471652299339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034b7deaf4f01634cb66dd11da4acf3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoObject: {fileID: 4841886083783733296}
 --- !u!1 &4841886083783733296
 GameObject:
   m_ObjectHideFlags: 0

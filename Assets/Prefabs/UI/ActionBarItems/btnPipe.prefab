@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 7600359372178706938}
   - component: {fileID: 6809639314027789728}
   - component: {fileID: -4533311298346401877}
+  - component: {fileID: 7740320995399448684}
   m_Layer: 5
   m_Name: btnPipe
   m_TagString: Untagged
@@ -238,6 +239,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipeSO: {fileID: 11400000, guid: 1f4adddecbf7f204f9495f3a593c3765, type: 2}
+--- !u!114 &7740320995399448684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3879785872022446062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034b7deaf4f01634cb66dd11da4acf3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoObject: {fileID: 7220364254748454123}
 --- !u!1 &5589595902597789183
 GameObject:
   m_ObjectHideFlags: 0
