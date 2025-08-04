@@ -69772,6 +69772,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 224170107621417656, guid: 4700c56e17a52674296c7645e85db16f, type: 3}
   m_PrefabInstance: {fileID: 767100416744986837}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &767100416744986839 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5436352299081768040, guid: 4700c56e17a52674296c7645e85db16f, type: 3}
+  m_PrefabInstance: {fileID: 767100416744986837}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5016774527171997555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69978,9 +69989,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 740138631}
     - target: {fileID: 6894795076767113975, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
+      propertyPath: img
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894795076767113975, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
       propertyPath: pollutionAmount
       value: 
       objectReference: {fileID: 607201413}
+    - target: {fileID: 6894795076767113975, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
+      propertyPath: pollutionCanvasImage
+      value: 
+      objectReference: {fileID: 767100416744986839}
     - target: {fileID: 8109797618095784227, guid: 3f91a9257b78546448591f6a1997b6f5, type: 3}
       propertyPath: uiController
       value: 

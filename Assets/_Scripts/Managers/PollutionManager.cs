@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class PollutionManager : MonoBehaviour
 {
-	private int pollution = 40;
+	private int pollution = 90;
 	private const int maxPollution = 200;
 
 	[SerializeField] private TextMeshProUGUI pollutionAmount;
 	[SerializeField] private Image pollutionCanvasImage;
 
 	private int passivePollutionFactor = 1;
-	private const float passivePollutionRate = .20f;
+	private const float passivePollutionRate = 20f;
 	private float passivePollutionTimer;
 
 	private Color orange = new(1f, 0.7f, 0f);
