@@ -15,7 +15,7 @@ MonoBehaviour:
   GameScene: 2
   InventoryItems: 00000000
   ActionBarItems: 0000000001000000
-  Unlocked: 1
+  Unlocked: 0
   TreesToPlant: 030000000300000001000000
   PollutionGoal: 70
   startingPollution: 90
