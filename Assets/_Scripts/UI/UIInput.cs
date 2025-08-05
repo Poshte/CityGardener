@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIInput : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class UIInput : MonoBehaviour
 
 	private void Update()
 	{
+		if (SceneManager.GetActiveScene().buildIndex < 1)
+			return;
+
 		if (input.MainActionBar.House.WasPerformedThisFrame())
 		{
 			uiController.OnHouseClicked();
@@ -23,6 +27,9 @@ public class UIInput : MonoBehaviour
 		}
 		else if (input.MainActionBar.Pipe.WasPerformedThisFrame())
 		{
+			if (SceneManager.GetActiveScene().buildIndex < 3)
+				return;
+
 			uiController.OnPipeClicked();
 		}
 		else if (input.MainActionBar.MouseRightClick.WasPerformedThisFrame())
