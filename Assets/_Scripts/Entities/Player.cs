@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 	private Animator animator;
 	private bool isStoreOpen;
 
+	[SerializeField] private SpriteRenderer loadingRenderer;
+
 	private void Awake()
 	{
 		rigidBody2D = GetComponent<Rigidbody2D>();
@@ -25,9 +27,7 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
-		input.Movement.PlayerMovements.canceled += PlayerMovements_canceled;
-		GameEvents.Instance.OnStoreOpened += OnStoreOpened;
-		GameEvents.Instance.OnStoreClosed += OnStoreClosed;
+		loadingRenderer.enabled = false;
 	}
 
 	private void FixedUpdate()
@@ -122,14 +122,37 @@ public class Player : MonoBehaviour
 		isStoreOpen = false;
 	}
 
+	private void OnTillingSoil()
+	{
+		loadingRenderer.enabled = true;
+		animator.Play("loading");
+	}
+
+	private void OnStoppedTilling()
+	{
+		loadingRenderer.enabled = false;
+		animator.Play("Idle");
+	}
+
 	private void OnEnable()
 	{
 		input.Movement.Enable();
+
+		input.Movement.PlayerMovements.canceled += PlayerMovements_canceled;
+		GameEvents.Instance.OnStoreOpened += OnStoreOpened;
+		GameEvents.Instance.OnStoreClosed += OnStoreClosed;
+		GameEvents.Instance.OnTillingSoil += OnTillingSoil;
+		GameEvents.Instance.OnStoppedTilling += OnStoppedTilling;
 	}
 
 	private void OnDisable()
 	{
 		input.Movement.Disable();
+
+		input.Movement.PlayerMovements.canceled -= PlayerMovements_canceled;
+		GameEvents.Instance.OnStoreOpened -= OnStoreOpened;
+		GameEvents.Instance.OnStoreClosed -= OnStoreClosed;
+		GameEvents.Instance.OnTillingSoil -= OnTillingSoil;
 	}
 
 	public bool IsNearTarget(Vector2 targetPos, float interactDistance)

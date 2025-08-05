@@ -55,8 +55,7 @@ public class Shovel : InventoryItem
 
 	private void TillSoil()
 	{
-		//TODO
-		//play animation
+		GameEvents.Instance.TillSoil();
 
 		elapsedTime += Time.unscaledDeltaTime;
 		if (elapsedTime > duration)
@@ -68,6 +67,8 @@ public class Shovel : InventoryItem
 
 	private void StopTilling()
 	{
+		GameEvents.Instance.StoppedTilling();
+
 		tilling = false;
 		elapsedTime = 0f;
 		tillingPos = Vector2.zero;

@@ -59,4 +59,10 @@ public class GameEvents
 
 	public event Action OnStoreClosed;
 	public void StoreClosed() => OnStoreClosed?.Invoke();
+
+	public event Action OnTillingSoil;
+	public void TillSoil() => OnTillingSoil?.Invoke();
+
+	public event Action OnStoppedTilling;
+	public void StoppedTilling() => OnStoppedTilling?.Invoke();
 }
