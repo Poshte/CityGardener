@@ -14,7 +14,7 @@
 
 ---
 
-### Key Technical Highlights 🏗️
+## 🏗️ Key Technical Highlights
 * **Software Architecture:** The codebase is organized around modular, object-oriented principles to ensure maintainability and decoupled communication between systems.
 * **Event-Driven Architecture:** Uses `GameEvents` to decouple simulation state changes (pollution levels, wealth updates, goal completion) from UI updates and visual feedback.
 * **Object-Oriented Design:** Leverages interfaces and abstract base classes to make adding new items, tools, and entities straightforward.
@@ -32,7 +32,7 @@
 
 ## 👥 Collaboration & Credits
 
-* **Alireza Mohammadi Poshtahani** — Gameplay & simulation design, software architecture, UI systems, and level design.
+* **Alireza Poshtahani** — Gameplay & simulation design, software architecture, UI systems, and level design.
 * **Mahdis Choobdar** — 2D graphical assets, sprites, visual effects, and animations.
 
 ---
